@@ -408,6 +408,38 @@ h2.why-title{
 }
 .t-attr{font-size:.83rem;color:rgba(255,255,255,.45);letter-spacing:.04em;}
 
+/* ── SMART FORM ── */
+.form-service-tabs{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:.5rem;margin-bottom:.25rem;
+}
+.svc-tab{
+  padding:.7rem .5rem;
+  border:1.5px solid var(--border);
+  border-radius:4px;
+  background:var(--white);
+  color:var(--text-mid);
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.82rem;font-weight:600;
+  cursor:pointer;
+  transition:all .18s;
+}
+.svc-tab:hover{border-color:var(--purple);color:var(--purple);}
+.svc-tab.active{
+  background:var(--purple);
+  border-color:var(--purple);
+  color:#fff;
+}
+.form-fields{
+  display:flex;flex-direction:column;gap:.85rem;
+}
+.form-fields.disabled{
+  opacity:.35;
+  pointer-events:none;
+  user-select:none;
+}
+.form-fields.hidden{display:none;}
+
 /* ── CONTACT ── */
 .contact{
   padding:5.5rem 7vw;background:var(--white);
@@ -1106,25 +1138,97 @@ footer{
     </div>
   </div>
   <div class="cform">
-    <div class="form-row">
-      <input class="ci" type="text" placeholder="Your name"/>
-      <input class="ci" type="text" placeholder="Company name"/>
+
+    <!-- Step 1: Service type selector -->
+    <div class="form-service-tabs">
+      <button type="button" class="svc-tab" data-svc="residential">Residential</button>
+      <button type="button" class="svc-tab" data-svc="commercial">Commercial</button>
+      <button type="button" class="svc-tab" data-svc="tenancy">End of Tenancy</button>
     </div>
+
+    <!-- Always visible -->
     <div class="form-row">
-      <input class="ci" type="tel" placeholder="Phone number"/>
-      <input class="ci" type="email" placeholder="Email address"/>
+      <input class="ci" type="text" name="name" placeholder="Your name" required/>
+      <input class="ci" type="tel" name="phone" placeholder="Phone number" required/>
     </div>
-    <select class="ci">
-      <option value="" disabled selected>What type of premises do you have?</option>
-      <option>Office / Commercial</option>
-      <option>Industrial / Warehouse</option>
-      <option>Healthcare</option>
-      <option>School / Education</option>
-      <option>Retail / Hospitality</option>
-      <option>Other</option>
-    </select>
-    <input class="ci" type="text" placeholder="Approximate size (sq ft / m²) optional"/>
-    <button class="csub">Book My Free Site Survey →</button>
+    <input class="ci" type="email" name="email" placeholder="Email address" required/>
+
+    <!-- Residential fields -->
+    <div class="form-fields" id="fields-residential">
+      <div class="form-row">
+        <input class="ci" type="text" name="res_address" placeholder="Property address"/>
+        <select class="ci" name="res_frequency">
+          <option value="" disabled selected>Cleaning frequency</option>
+          <option>Weekly</option>
+          <option>Fortnightly</option>
+          <option>One-off</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <input class="ci" type="text" name="res_bedrooms" placeholder="Number of bedrooms"/>
+        <input class="ci" type="text" name="res_bathrooms" placeholder="Number of bathrooms"/>
+      </div>
+    </div>
+
+    <!-- Commercial fields -->
+    <div class="form-fields" id="fields-commercial">
+      <div class="form-row">
+        <input class="ci" type="text" name="com_company" placeholder="Company name"/>
+        <input class="ci" type="text" name="com_address" placeholder="Premises address"/>
+      </div>
+      <div class="form-row">
+        <select class="ci" name="com_type">
+          <option value="" disabled selected>Type of premises</option>
+          <option>Office</option>
+          <option>Gym / Leisure</option>
+          <option>Clinic / GP Surgery</option>
+          <option>Dental Practice</option>
+          <option>Salon / Spa</option>
+          <option>Retail</option>
+          <option>Other</option>
+        </select>
+        <select class="ci" name="com_frequency">
+          <option value="" disabled selected>Cleaning frequency</option>
+          <option>Daily</option>
+          <option>Weekly</option>
+          <option>Fortnightly</option>
+          <option>One-off</option>
+        </select>
+      </div>
+      <input class="ci" type="text" name="com_size" placeholder="Approximate size (sq ft / m²) — optional"/>
+    </div>
+
+    <!-- End of Tenancy fields -->
+    <div class="form-fields" id="fields-tenancy">
+      <div class="form-row">
+        <input class="ci" type="text" name="eot_address" placeholder="Property address"/>
+        <input class="ci" type="text" name="eot_date" placeholder="Preferred clean date"/>
+      </div>
+      <div class="form-row">
+        <select class="ci" name="eot_type">
+          <option value="" disabled selected>Property type</option>
+          <option>Flat / Apartment</option>
+          <option>House</option>
+          <option>Studio</option>
+          <option>Commercial unit</option>
+        </select>
+        <select class="ci" name="eot_furnished">
+          <option value="" disabled selected>Furnished or unfurnished?</option>
+          <option>Furnished</option>
+          <option>Unfurnished</option>
+          <option>Part-furnished</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <input class="ci" type="text" name="eot_bedrooms" placeholder="Number of bedrooms"/>
+        <input class="ci" type="text" name="eot_bathrooms" placeholder="Number of bathrooms"/>
+      </div>
+    </div>
+
+    <!-- Always visible -->
+    <textarea class="ci" name="notes" rows="3" placeholder="Anything else you'd like us to know (optional)" style="resize:vertical;"></textarea>
+    <button class="csub" type="submit">Book My Free Site Survey →</button>
+
   </div>
 </section>
 
@@ -1191,6 +1295,20 @@ footer{
 </footer>
 
 <script>
+// Smart form tabs
+const tabs = document.querySelectorAll('.svc-tab');
+const allFields = document.querySelectorAll('.form-fields');
+
+function activateTab(svc) {
+  tabs.forEach(t => t.classList.toggle('active', t.dataset.svc === svc));
+  allFields.forEach(f => {
+    f.classList.toggle('hidden', f.id !== `fields-${svc}`);
+  });
+}
+
+allFields.forEach(f => f.classList.add('hidden'));
+tabs.forEach(tab => tab.addEventListener('click', () => activateTab(tab.dataset.svc)));
+
 // Hamburger menu
 const ham = document.getElementById('navHamburger');
 const mob = document.getElementById('navMobile');
