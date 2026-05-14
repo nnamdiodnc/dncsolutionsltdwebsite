@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>COSHH Policy — DNC Solutions Limited</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{--navy:#1C2141;--purple:#5B2BD9;--cream:#F5F2EC;--white:#FFFFFF;--text:#2e3150;--text-mid:#565978;--text-light:#8b8ea8;--border:#dddbe5;}
+html{scroll-behavior:smooth;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--white);color:var(--text);line-height:1.7;font-size:16px;}
+nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 6vw;display:flex;align-items:center;height:68px;}
+.logo{display:flex;align-items:center;gap:.85rem;text-decoration:none;}
+.logo-words{display:flex;flex-direction:column;gap:0;}
+.logo-name{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.1rem;color:var(--navy);}
+.logo-name em{color:var(--purple);font-style:normal;}
+.logo-sub{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-light);}
+.page-hero{background:var(--navy);padding:4rem 6vw 3rem;}
+.page-hero-kicker{font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--purple);margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem;}
+.page-hero-kicker::before{content:'';display:inline-block;width:18px;height:1.5px;background:var(--purple);}
+.page-hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(1.8rem,3vw,2.6rem);color:#fff;letter-spacing:-.025em;line-height:1.15;margin-bottom:.75rem;}
+.page-hero-meta{font-size:.83rem;color:rgba(255,255,255,.4);}
+.page-content{max-width:780px;margin:0 auto;padding:4rem 6vw 6rem;}
+.page-content h2{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.15rem;color:var(--navy);margin:2.5rem 0 .75rem;padding-bottom:.5rem;border-bottom:2px solid var(--purple);display:inline-block;}
+.page-content h3{font-weight:600;font-size:.98rem;color:var(--navy);margin:1.5rem 0 .5rem;}
+.page-content p{font-size:.95rem;color:var(--text-mid);margin-bottom:1rem;line-height:1.8;}
+.page-content ul{margin:.5rem 0 1rem 1.5rem;}
+.page-content li{font-size:.93rem;color:var(--text-mid);margin-bottom:.4rem;line-height:1.7;}
+.page-content strong{color:var(--text);font-weight:600;}
+.page-content a{color:var(--purple);text-decoration:none;}
+.info-box{background:var(--cream);border-left:3px solid var(--purple);border-radius:0 4px 4px 0;padding:1rem 1.25rem;margin:1.25rem 0;font-size:.88rem;color:var(--text-mid);}
+.warning-box{background:#fff8f0;border-left:3px solid #e07b00;border-radius:0 4px 4px 0;padding:1rem 1.25rem;margin:1.25rem 0;font-size:.88rem;color:#6b4000;}
+.assessment-table{width:100%;border-collapse:collapse;margin:1.25rem 0;font-size:.88rem;}
+.assessment-table th{background:var(--navy);color:#fff;font-weight:600;padding:.65rem 1rem;text-align:left;font-size:.78rem;letter-spacing:.05em;}
+.assessment-table td{padding:.65rem 1rem;border-bottom:1px solid var(--border);color:var(--text-mid);vertical-align:top;}
+.assessment-table tr:nth-child(even) td{background:var(--cream);}
+.assessment-table .field-label{font-weight:600;color:var(--text);width:40%;}
+.assessment-table .field-value{color:var(--text-light);font-style:italic;}
+.risk-badge{display:inline-block;padding:.2rem .7rem;border-radius:100px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+.risk-low{background:#e6f9f0;color:#0a6640;}
+.risk-med{background:#fff3e0;color:#944700;}
+.risk-high{background:#fde8e8;color:#8b0000;}
+.sig-block{background:var(--cream);border:1px solid var(--border);border-radius:4px;padding:1.75rem;margin-top:2.5rem;}
+.sig-block h3{font-weight:700;font-size:.95rem;color:var(--navy);margin-bottom:1rem;}
+.sig-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-top:1rem;}
+.sig-field label{display:block;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-light);margin-bottom:.5rem;}
+.sig-line{border-bottom:1.5px solid var(--border);height:36px;}
+footer{background:var(--navy);padding:2rem 6vw;border-top:3px solid var(--purple);}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:.78rem;color:rgba(255,255,255,.3);}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.footer-links a{font-size:.78rem;color:rgba(255,255,255,.4);text-decoration:none;transition:color .18s;}
+.footer-links a:hover{color:#fff;}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  nav{ padding:0 5vw; }
+  .page-hero{ padding:3rem 5vw 2.5rem; }
+  .page-content{ padding:2.5rem 5vw 4rem; }
+  .page-content h2{ font-size:1.05rem; }
+  .sig-row{ grid-template-columns:1fr; gap:1.25rem; }
+  .assessment-table{ display:block; overflow-x:auto; }
+  footer{ padding:1.75rem 5vw; }
+  .footer-inner{ flex-direction:column; align-items:flex-start; gap:.75rem; }
+  .footer-links{ gap:1rem; flex-wrap:wrap; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+<a class="logo" href="index.html" style="text-decoration:none;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="497 326 403 122" class="nav-logo-svg nav-logo-light" aria-label="DNC Solutions" style="height:38px;width:auto;display:block;">
+      <path d="M0 0 C6.6 0 13.2 0 20 0 C20.33 18.48 20.66 36.96 21 56 C22.28777344 52.12507813 23.57554687 48.25015625 24.90234375 44.2578125 C25.92880016 41.17201413 26.95555822 38.0863165 27.98252106 35.00068665 C29.06717492 31.74144037 30.1512941 28.48201845 31.23413086 25.22216797 C32.47604596 21.48349784 33.7203775 17.74563426 34.96484375 14.0078125 C35.35341049 12.83695099 35.74197723 11.66608948 36.14231873 10.45974731 C36.50261673 9.37877777 36.86291473 8.29780823 37.23413086 7.18408203 C37.55167831 6.22921906 37.86922577 5.27435608 38.19639587 4.29055786 C39 2 39 2 40 0 C46.6 0 53.2 0 60 0 C51.99605825 24.81457248 43.85243584 49.57910171 35.5869751 74.30773926 C34.15706812 78.58692852 32.72902223 82.86673884 31.30078125 87.14648438 C28.53559054 95.43157032 25.76830668 103.71595467 23 112 C15.41 112 7.82 112 0 112 C0 75.04 0 38.08 0 0 Z " fill="#5A2AD8" transform="translate(563,328)"/>
+    <path d="M0 0 C6.6 0 13.2 0 20 0 C20 36.96 20 73.92 20 112 C13.4 112 6.8 112 0 112 C0 75.04 0 38.08 0 0 Z " fill="#0A1B39" transform="translate(531,328)"/>
+    <path d="M0 0 C6.6 0 13.2 0 20 0 C20 36.96 20 73.92 20 112 C13.4 112 6.8 112 0 112 C0 75.04 0 38.08 0 0 Z " fill="#0A1B39" transform="translate(499,328)"/>
+    <path d="M0 0 C6.6 0 13.2 0 20 0 C21.57894271 31.22662849 22.92607549 60.98991757 12.25 90.875 C11.88438965 91.90713623 11.5187793 92.93927246 11.14208984 94.00268555 C10.09604588 96.89057548 9.01098899 99.75738223 7.890625 102.6171875 C7.56120911 103.46203705 7.23179321 104.3068866 6.89239502 105.17733765 C6.57244568 105.93720978 6.25249634 106.69708191 5.92285156 107.47998047 C5.64749573 108.1404538 5.37213989 108.80092712 5.08843994 109.48141479 C4 111 4 111 0 112 C0 75.04 0 38.08 0 0 Z " fill="#0A1B3A" transform="translate(563,328)"/>
+    <path d="M0 0 C6.93 0 13.86 0 21 0 C25.62 10.89 30.24 21.78 35 33 C35.33 22.11 35.66 11.22 36 0 C39.96 0 43.92 0 48 0 C48 15.51 48 31.02 48 47 C41.07 47 34.14 47 27 47 C22.38 36.11 17.76 25.22 13 14 C12.67 24.89 12.34 35.78 12 47 C8.04 47 4.08 47 0 47 C0 31.49 0 15.98 0 0 Z " fill="#0A1A39" transform="translate(767,341)"/>
+    <path d="M0 0 C4.16653186 -0.08777806 8.33282276 -0.14065272 12.5 -0.1875 C13.67304687 -0.21263672 14.84609375 -0.23777344 16.0546875 -0.26367188 C23.70950282 -0.32817875 29.95633014 -0.16336651 36.20703125 4.7265625 C41.13475171 10.55350202 43.54633011 15.84135931 44.375 23.4375 C43.51519213 31.60567479 41.47479322 38.62077527 35 44 C27.52264943 48.23575016 20.35864002 48.53372084 11.9375 48.3125 C10.79861328 48.30283203 9.65972656 48.29316406 8.48632812 48.28320312 C0.16899497 48.16899497 0.16899497 48.16899497 -1 47 C-1.09804125 45.5985474 -1.12798179 44.19223055 -1.12939453 42.78735352 C-1.13254669 41.89295059 -1.13569885 40.99854767 -1.13894653 40.07704163 C-1.1369223 39.10415695 -1.13489807 38.13127228 -1.1328125 37.12890625 C-1.13376923 36.13624252 -1.13472595 35.1435788 -1.13571167 34.12083435 C-1.13639366 32.01667213 -1.13453806 29.91250782 -1.13037109 27.80834961 C-1.12502874 24.5798674 -1.13031255 21.35152469 -1.13671875 18.12304688 C-1.13605786 16.08333302 -1.13477648 14.04361926 -1.1328125 12.00390625 C-1.13483673 11.03304581 -1.13686096 10.06218536 -1.13894653 9.06190491 C-1.13579437 8.16434982 -1.13264221 7.26679474 -1.12939453 6.34204102 C-1.12859894 5.55007828 -1.12780334 4.75811554 -1.12698364 3.94215393 C-1 2 -1 2 0 0 Z M12 12 C12 19.92 12 27.84 12 36 C21.27392314 36.83895518 21.27392314 36.83895518 28 33 C31.22239634 27.52192622 31.4491553 23.98984189 30 18 C27.82619087 14.59436569 26.84744051 13.28248017 23 12 C19.37 12 15.74 12 12 12 Z " fill="#0A1A39" transform="translate(719,340)"/>
+    <path d="M0 0 C6.13755062 4.9275347 8.61721816 9.50919056 9.64453125 17.3203125 C5.26045125 17.66242279 1.01617538 17.86744516 -3.35546875 17.3203125 C-6.04296875 14.3828125 -6.04296875 14.3828125 -7.35546875 11.3203125 C-10.84973516 9.5731793 -14.54270068 9.7671648 -18.35546875 10.3203125 C-21.62851698 12.36596765 -22.96858959 13.88885961 -23.98046875 17.6328125 C-24.82264999 23.38771765 -24.36823626 27.33366283 -21.35546875 32.3203125 C-18.46074569 34.7861877 -15.05188049 34.73486716 -11.3203125 34.64453125 C-8.18989326 34.12798096 -6.51998521 32.54849121 -4.35546875 30.3203125 C-3.69546875 29.3303125 -3.03546875 28.3403125 -2.35546875 27.3203125 C0.46484375 27.02734375 0.46484375 27.02734375 3.76953125 27.1328125 C4.86523438 27.15988281 5.9609375 27.18695313 7.08984375 27.21484375 C8.35441406 27.26705078 8.35441406 27.26705078 9.64453125 27.3203125 C9.31051753 33.66657314 8.20906971 37.76682619 3.64453125 42.3203125 C-2.54604717 47.73194397 -9.62492149 48.22170678 -17.52734375 47.80859375 C-24.02021264 46.9804217 -27.99572095 44.55250636 -32.66796875 40.1328125 C-37.03106244 32.86098968 -39.65809596 25.86714203 -38.35546875 17.3203125 C-36.20604942 9.26602772 -32.41184422 2.99579419 -25.41796875 -1.6171875 C-17.79992395 -4.33791779 -6.97209231 -4.34426667 0 0 Z " fill="#0A1A39" transform="translate(858.35546875,341.6796875)"/>
+    <path d="M0 0 C4.62 0 9.24 0 14 0 C14 4.29 14 8.58 14 13 C9.38 13 4.76 13 0 13 C0 8.71 0 4.42 0 0 Z " fill="#5A2AD9" transform="translate(870,375)"/>
+    <path d="M0 0 C5 1 5 1 6.8125 3.5625 C7.204375 4.366875 7.59625 5.17125 8 6 C8.33 4.02 8.66 2.04 9 0 C9.99 0 10.98 0 12 0 C12 4.29 12 8.58 12 13 C10.35 13 8.7 13 7 13 C6.01 11.02 5.02 9.04 4 7 C3.67 8.98 3.34 10.96 3 13 C2.01 13 1.02 13 0 13 C0 8.71 0 4.42 0 0 Z " fill="#1C2141" transform="translate(840,425)"/>
+    <path d="M0 0 C3 2 3 2 3.8125 4.875 C4.00583978 8.09732959 3.83094313 9.39813344 2 12 C-1.19405084 13.59702542 -4.53271429 13.50343003 -8 13 C-10.7286109 10.78300364 -10.94936082 9.41355329 -11.375 5.9375 C-11 3 -11 3 -10 1.125 C-6.85103686 -0.64629177 -3.52961671 -0.54794453 0 0 Z M-8 5 C-7.98617135 7.05714832 -7.98617135 7.05714832 -7 9 C-5.0162233 10.28436734 -5.0162233 10.28436734 -3 11 C-2.01 10.34 -1.02 9.68 0 9 C0.33343551 6.45792029 0.33343551 6.45792029 0 4 C-1.05310277 2.72996677 -1.05310277 2.72996677 -3.4375 2.8125 C-6.16734675 2.73160017 -6.16734675 2.73160017 -8 5 Z " fill="#1C2141" transform="translate(744,425)"/>
+    <path d="M0 0 C2 1.125 2 1.125 3 3 C3.41616519 6.25996064 3.2766188 8.34303035 2 11.375 C-0.7116264 13.57819645 -2.71144351 13.50842972 -6.12890625 13.3203125 C-8 13 -8 13 -9.9375 11.8125 C-11.30814118 9.4743474 -11.80182486 7.70839364 -12 5 C-9.89323239 -0.83412569 -5.64715134 -0.6236118 0 0 Z M-8 4 C-8.04063832 5.66617115 -8.042721 7.33388095 -8 9 C-5.525 9.99 -5.525 9.99 -3 11 C-1.33378575 9.8354799 -1.33378575 9.8354799 0 8 C-0.23043864 5.34533951 -0.23043864 5.34533951 -1 3 C-4.80621045 2.56152641 -4.80621045 2.56152641 -8 4 Z " fill="#1C2141" transform="translate(829,425)"/>
+    <path d="M0 0 C0.33 0 0.66 0 1 0 C1 36.3 1 72.6 1 110 C0.67 110 0.34 110 0 110 C0 73.7 0 37.4 0 0 Z " fill="#0B1637" transform="translate(677,329)"/>
+    <path d="M0 0 C1.134375 0.020625 2.26875 0.04125 3.4375 0.0625 C3.7675 1.3825 4.0975 2.7025 4.4375 4.0625 C2.4575 4.0625 0.4775 4.0625 -1.5625 4.0625 C1.9025 5.5475 1.9025 5.5475 5.4375 7.0625 C5.480221 8.72861905 5.47813832 10.39632885 5.4375 12.0625 C4.4375 13.0625 4.4375 13.0625 2.37109375 13.16015625 C1.54738281 13.14855469 0.72367188 13.13695312 -0.125 13.125 C-0.95128906 13.11597656 -1.77757812 13.10695313 -2.62890625 13.09765625 C-3.26699219 13.08605469 -3.90507813 13.07445312 -4.5625 13.0625 C-4.8925 11.7425 -5.2225 10.4225 -5.5625 9.0625 C-4.593125 9.248125 -3.62375 9.43375 -2.625 9.625 C-1.614375 9.769375 -0.60375 9.91375 0.4375 10.0625 C0.7675 9.7325 1.0975 9.4025 1.4375 9.0625 C-0.8725 8.0725 -3.1825 7.0825 -5.5625 6.0625 C-4.48849278 0.07874549 -4.48849278 0.07874549 0 0 Z " fill="#1C2141" transform="translate(720.5625,424.9375)"/>
+    <path d="M0 0 C3.625 -0.1875 3.625 -0.1875 7 0 C7.66 1.32 8.32 2.64 9 4 C6.69 3.67 4.38 3.34 2 3 C2 3.66 2 4.32 2 5 C2.969375 5.144375 3.93875 5.28875 4.9375 5.4375 C8 6 8 6 9 7 C9.125 9.5 9.125 9.5 9 12 C8 13 8 13 6.15234375 13.09765625 C4.1015625 13.06510417 2.05078125 13.03255208 0 13 C-0.66 11.68 -1.32 10.36 -2 9 C0.64 9.33 3.28 9.66 6 10 C6 9.34 6 8.68 6 8 C3.69 7.67 1.38 7.34 -1 7 C-1.625 5.1875 -1.625 5.1875 -2 3 C-1.34 2.01 -0.68 1.02 0 0 Z " fill="#1C2141" transform="translate(862,425)"/>
+    <path d="M0 0 C0.99 0 1.98 0 3 0 C3.33 2.97 3.66 5.94 4 9 C5.32 9 6.64 9 8 9 C8.33 6.03 8.66 3.06 9 0 C9.99 0 10.98 0 12 0 C12.05391993 1.79133978 12.09275571 3.58313899 12.125 5.375 C12.14820313 6.37273437 12.17140625 7.37046875 12.1953125 8.3984375 C12 11 12 11 10 13 C8.125 13.30078125 8.125 13.30078125 6 13.3125 C5.29875 13.32925781 4.5975 13.34601563 3.875 13.36328125 C3.25625 13.24339844 2.6375 13.12351562 2 13 C-0.20914 9.68629 -0.22481553 8.6553979 -0.125 4.8125 C-0.10695313 3.91144531 -0.08890625 3.01039063 -0.0703125 2.08203125 C-0.04710937 1.39496094 -0.02390625 0.70789063 0 0 Z " fill="#1C2141" transform="translate(770,425)"/>
+    <path d="M0 0 C3.63 0 7.26 0 11 0 C11 0.66 11 1.32 11 2 C9.68 2 8.36 2 7 2 C7 5.63 7 9.26 7 13 C6.01 13 5.02 13 4 13 C4 9.37 4 5.74 4 2 C2.68 2 1.36 2 0 2 C0 1.34 0 0.68 0 0 Z " fill="#1C2141" transform="translate(789,425)"/>
+    <path d="M0 0 C0.99 0 1.98 0 3 0 C3 3.63 3 7.26 3 11 C4.98 11 6.96 11 9 11 C9 11.66 9 12.32 9 13 C6.03 13 3.06 13 0 13 C0 8.71 0 4.42 0 0 Z " fill="#1C2141" transform="translate(755,425)"/>
+    <path d="M0 0 C0.99 0 1.98 0 3 0 C3 4.29 3 8.58 3 13 C2.01 13 1.02 13 0 13 C0 8.71 0 4.42 0 0 Z " fill="#1C2141" transform="translate(807,425)"/>
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="497 326 403 122" class="nav-logo-svg nav-logo-dark" aria-label="DNC Solutions" style="height:38px;width:auto;display:none;">
+      <path d="M0 0 C6.6 0 13.2 0 20 0 C20.33 18.48 20.66 36.96 21 56 C22.28777344 52.12507813 23.57554687 48.25015625 24.90234375 44.2578125 C25.92880016 41.17201413 26.95555822 38.0863165 27.98252106 35.00068665 C29.06717492 31.74144037 30.1512941 28.48201845 31.23413086 25.22216797 C32.47604596 21.48349784 33.7203775 17.74563426 34.96484375 14.0078125 C35.35341049 12.83695099 35.74197723 11.66608948 36.14231873 10.45974731 C36.50261673 9.37877777 36.86291473 8.29780823 37.23413086 7.18408203 C37.55167831 6.22921906 37.86922577 5.27435608 38.19639587 4.29055786 C39 2 39 2 40 0 C46.6 0 53.2 0 60 0 C51.99605825 24.81457248 43.85243584 49.57910171 35.5869751 74.30773926 C34.15706812 78.58692852 32.72902223 82.86673884 31.30078125 87.14648438 C28.53559054 95.43157032 25.76830668 103.71595467 23 112 C15.41 112 7.82 112 0 112 C0 75.04 0 38.08 0 0 Z " fill="#5A2AD8" transform="translate(563,328)"/>
+    <path d="M0 0 C6.6 0 13.2 0 20 0 C20 36.96 20 73.92 20 112 C13.4 112 6.8 112 0 112 C0 75.04 0 38.08 0 0 Z " fill="#E0E4F5" transform="translate(531,328)"/>
+    <path d="M0 0 C6.6 0 13.2 0 20 0 C20 36.96 20 73.92 20 112 C13.4 112 6.8 112 0 112 C0 75.04 0 38.08 0 0 Z " fill="#E0E4F5" transform="translate(499,328)"/>
+    <path d="M0 0 C6.6 0 13.2 0 20 0 C21.57894271 31.22662849 22.92607549 60.98991757 12.25 90.875 C11.88438965 91.90713623 11.5187793 92.93927246 11.14208984 94.00268555 C10.09604588 96.89057548 9.01098899 99.75738223 7.890625 102.6171875 C7.56120911 103.46203705 7.23179321 104.3068866 6.89239502 105.17733765 C6.57244568 105.93720978 6.25249634 106.69708191 5.92285156 107.47998047 C5.64749573 108.1404538 5.37213989 108.80092712 5.08843994 109.48141479 C4 111 4 111 0 112 C0 75.04 0 38.08 0 0 Z " fill="#E0E4F5" transform="translate(563,328)"/>
+    <path d="M0 0 C6.93 0 13.86 0 21 0 C25.62 10.89 30.24 21.78 35 33 C35.33 22.11 35.66 11.22 36 0 C39.96 0 43.92 0 48 0 C48 15.51 48 31.02 48 47 C41.07 47 34.14 47 27 47 C22.38 36.11 17.76 25.22 13 14 C12.67 24.89 12.34 35.78 12 47 C8.04 47 4.08 47 0 47 C0 31.49 0 15.98 0 0 Z " fill="#E0E4F5" transform="translate(767,341)"/>
+    <path d="M0 0 C4.16653186 -0.08777806 8.33282276 -0.14065272 12.5 -0.1875 C13.67304687 -0.21263672 14.84609375 -0.23777344 16.0546875 -0.26367188 C23.70950282 -0.32817875 29.95633014 -0.16336651 36.20703125 4.7265625 C41.13475171 10.55350202 43.54633011 15.84135931 44.375 23.4375 C43.51519213 31.60567479 41.47479322 38.62077527 35 44 C27.52264943 48.23575016 20.35864002 48.53372084 11.9375 48.3125 C10.79861328 48.30283203 9.65972656 48.29316406 8.48632812 48.28320312 C0.16899497 48.16899497 0.16899497 48.16899497 -1 47 C-1.09804125 45.5985474 -1.12798179 44.19223055 -1.12939453 42.78735352 C-1.13254669 41.89295059 -1.13569885 40.99854767 -1.13894653 40.07704163 C-1.1369223 39.10415695 -1.13489807 38.13127228 -1.1328125 37.12890625 C-1.13376923 36.13624252 -1.13472595 35.1435788 -1.13571167 34.12083435 C-1.13639366 32.01667213 -1.13453806 29.91250782 -1.13037109 27.80834961 C-1.12502874 24.5798674 -1.13031255 21.35152469 -1.13671875 18.12304688 C-1.13605786 16.08333302 -1.13477648 14.04361926 -1.1328125 12.00390625 C-1.13483673 11.03304581 -1.13686096 10.06218536 -1.13894653 9.06190491 C-1.13579437 8.16434982 -1.13264221 7.26679474 -1.12939453 6.34204102 C-1.12859894 5.55007828 -1.12780334 4.75811554 -1.12698364 3.94215393 C-1 2 -1 2 0 0 Z M12 12 C12 19.92 12 27.84 12 36 C21.27392314 36.83895518 21.27392314 36.83895518 28 33 C31.22239634 27.52192622 31.4491553 23.98984189 30 18 C27.82619087 14.59436569 26.84744051 13.28248017 23 12 C19.37 12 15.74 12 12 12 Z " fill="#E0E4F5" transform="translate(719,340)"/>
+    <path d="M0 0 C6.13755062 4.9275347 8.61721816 9.50919056 9.64453125 17.3203125 C5.26045125 17.66242279 1.01617538 17.86744516 -3.35546875 17.3203125 C-6.04296875 14.3828125 -6.04296875 14.3828125 -7.35546875 11.3203125 C-10.84973516 9.5731793 -14.54270068 9.7671648 -18.35546875 10.3203125 C-21.62851698 12.36596765 -22.96858959 13.88885961 -23.98046875 17.6328125 C-24.82264999 23.38771765 -24.36823626 27.33366283 -21.35546875 32.3203125 C-18.46074569 34.7861877 -15.05188049 34.73486716 -11.3203125 34.64453125 C-8.18989326 34.12798096 -6.51998521 32.54849121 -4.35546875 30.3203125 C-3.69546875 29.3303125 -3.03546875 28.3403125 -2.35546875 27.3203125 C0.46484375 27.02734375 0.46484375 27.02734375 3.76953125 27.1328125 C4.86523438 27.15988281 5.9609375 27.18695313 7.08984375 27.21484375 C8.35441406 27.26705078 8.35441406 27.26705078 9.64453125 27.3203125 C9.31051753 33.66657314 8.20906971 37.76682619 3.64453125 42.3203125 C-2.54604717 47.73194397 -9.62492149 48.22170678 -17.52734375 47.80859375 C-24.02021264 46.9804217 -27.99572095 44.55250636 -32.66796875 40.1328125 C-37.03106244 32.86098968 -39.65809596 25.86714203 -38.35546875 17.3203125 C-36.20604942 9.26602772 -32.41184422 2.99579419 -25.41796875 -1.6171875 C-17.79992395 -4.33791779 -6.97209231 -4.34426667 0 0 Z " fill="#E0E4F5" transform="translate(858.35546875,341.6796875)"/>
+    <path d="M0 0 C4.62 0 9.24 0 14 0 C14 4.29 14 8.58 14 13 C9.38 13 4.76 13 0 13 C0 8.71 0 4.42 0 0 Z " fill="#5A2AD9" transform="translate(870,375)"/>
+    <path d="M0 0 C5 1 5 1 6.8125 3.5625 C7.204375 4.366875 7.59625 5.17125 8 6 C8.33 4.02 8.66 2.04 9 0 C9.99 0 10.98 0 12 0 C12 4.29 12 8.58 12 13 C10.35 13 8.7 13 7 13 C6.01 11.02 5.02 9.04 4 7 C3.67 8.98 3.34 10.96 3 13 C2.01 13 1.02 13 0 13 C0 8.71 0 4.42 0 0 Z " fill="#E0E4F5" transform="translate(840,425)"/>
+    <path d="M0 0 C3 2 3 2 3.8125 4.875 C4.00583978 8.09732959 3.83094313 9.39813344 2 12 C-1.19405084 13.59702542 -4.53271429 13.50343003 -8 13 C-10.7286109 10.78300364 -10.94936082 9.41355329 -11.375 5.9375 C-11 3 -11 3 -10 1.125 C-6.85103686 -0.64629177 -3.52961671 -0.54794453 0 0 Z M-8 5 C-7.98617135 7.05714832 -7.98617135 7.05714832 -7 9 C-5.0162233 10.28436734 -5.0162233 10.28436734 -3 11 C-2.01 10.34 -1.02 9.68 0 9 C0.33343551 6.45792029 0.33343551 6.45792029 0 4 C-1.05310277 2.72996677 -1.05310277 2.72996677 -3.4375 2.8125 C-6.16734675 2.73160017 -6.16734675 2.73160017 -8 5 Z " fill="#E0E4F5" transform="translate(744,425)"/>
+    <path d="M0 0 C2 1.125 2 1.125 3 3 C3.41616519 6.25996064 3.2766188 8.34303035 2 11.375 C-0.7116264 13.57819645 -2.71144351 13.50842972 -6.12890625 13.3203125 C-8 13 -8 13 -9.9375 11.8125 C-11.30814118 9.4743474 -11.80182486 7.70839364 -12 5 C-9.89323239 -0.83412569 -5.64715134 -0.6236118 0 0 Z M-8 4 C-8.04063832 5.66617115 -8.042721 7.33388095 -8 9 C-5.525 9.99 -5.525 9.99 -3 11 C-1.33378575 9.8354799 -1.33378575 9.8354799 0 8 C-0.23043864 5.34533951 -0.23043864 5.34533951 -1 3 C-4.80621045 2.56152641 -4.80621045 2.56152641 -8 4 Z " fill="#E0E4F5" transform="translate(829,425)"/>
+    <path d="M0 0 C0.33 0 0.66 0 1 0 C1 36.3 1 72.6 1 110 C0.67 110 0.34 110 0 110 C0 73.7 0 37.4 0 0 Z " fill="#E0E4F5" transform="translate(677,329)"/>
+    <path d="M0 0 C1.134375 0.020625 2.26875 0.04125 3.4375 0.0625 C3.7675 1.3825 4.0975 2.7025 4.4375 4.0625 C2.4575 4.0625 0.4775 4.0625 -1.5625 4.0625 C1.9025 5.5475 1.9025 5.5475 5.4375 7.0625 C5.480221 8.72861905 5.47813832 10.39632885 5.4375 12.0625 C4.4375 13.0625 4.4375 13.0625 2.37109375 13.16015625 C1.54738281 13.14855469 0.72367188 13.13695312 -0.125 13.125 C-0.95128906 13.11597656 -1.77757812 13.10695313 -2.62890625 13.09765625 C-3.26699219 13.08605469 -3.90507813 13.07445312 -4.5625 13.0625 C-4.8925 11.7425 -5.2225 10.4225 -5.5625 9.0625 C-4.593125 9.248125 -3.62375 9.43375 -2.625 9.625 C-1.614375 9.769375 -0.60375 9.91375 0.4375 10.0625 C0.7675 9.7325 1.0975 9.4025 1.4375 9.0625 C-0.8725 8.0725 -3.1825 7.0825 -5.5625 6.0625 C-4.48849278 0.07874549 -4.48849278 0.07874549 0 0 Z " fill="#E0E4F5" transform="translate(720.5625,424.9375)"/>
+    <path d="M0 0 C3.625 -0.1875 3.625 -0.1875 7 0 C7.66 1.32 8.32 2.64 9 4 C6.69 3.67 4.38 3.34 2 3 C2 3.66 2 4.32 2 5 C2.969375 5.144375 3.93875 5.28875 4.9375 5.4375 C8 6 8 6 9 7 C9.125 9.5 9.125 9.5 9 12 C8 13 8 13 6.15234375 13.09765625 C4.1015625 13.06510417 2.05078125 13.03255208 0 13 C-0.66 11.68 -1.32 10.36 -2 9 C0.64 9.33 3.28 9.66 6 10 C6 9.34 6 8.68 6 8 C3.69 7.67 1.38 7.34 -1 7 C-1.625 5.1875 -1.625 5.1875 -2 3 C-1.34 2.01 -0.68 1.02 0 0 Z " fill="#E0E4F5" transform="translate(862,425)"/>
+    <path d="M0 0 C0.99 0 1.98 0 3 0 C3.33 2.97 3.66 5.94 4 9 C5.32 9 6.64 9 8 9 C8.33 6.03 8.66 3.06 9 0 C9.99 0 10.98 0 12 0 C12.05391993 1.79133978 12.09275571 3.58313899 12.125 5.375 C12.14820313 6.37273437 12.17140625 7.37046875 12.1953125 8.3984375 C12 11 12 11 10 13 C8.125 13.30078125 8.125 13.30078125 6 13.3125 C5.29875 13.32925781 4.5975 13.34601563 3.875 13.36328125 C3.25625 13.24339844 2.6375 13.12351562 2 13 C-0.20914 9.68629 -0.22481553 8.6553979 -0.125 4.8125 C-0.10695313 3.91144531 -0.08890625 3.01039063 -0.0703125 2.08203125 C-0.04710937 1.39496094 -0.02390625 0.70789063 0 0 Z " fill="#E0E4F5" transform="translate(770,425)"/>
+    <path d="M0 0 C3.63 0 7.26 0 11 0 C11 0.66 11 1.32 11 2 C9.68 2 8.36 2 7 2 C7 5.63 7 9.26 7 13 C6.01 13 5.02 13 4 13 C4 9.37 4 5.74 4 2 C2.68 2 1.36 2 0 2 C0 1.34 0 0.68 0 0 Z " fill="#E0E4F5" transform="translate(789,425)"/>
+    <path d="M0 0 C0.99 0 1.98 0 3 0 C3 3.63 3 7.26 3 11 C4.98 11 6.96 11 9 11 C9 11.66 9 12.32 9 13 C6.03 13 3.06 13 0 13 C0 8.71 0 4.42 0 0 Z " fill="#E0E4F5" transform="translate(755,425)"/>
+    <path d="M0 0 C0.99 0 1.98 0 3 0 C3 4.29 3 8.58 3 13 C2.01 13 1.02 13 0 13 C0 8.71 0 4.42 0 0 Z " fill="#E0E4F5" transform="translate(807,425)"/>
+    </svg>
+  </a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-kicker">Legal</div>
+  <h1>COSHH Assessment Policy</h1>
+  <p class="page-hero-meta">Control of Substances Hazardous to Health &nbsp;·&nbsp; DNC Solutions Limited</p>
+</div>
+
+<div class="page-content">
+
+  <div class="info-box">
+    This document sets out DNC Solutions Limited's approach to COSHH compliance in line with the Control of Substances Hazardous to Health Regulations 2002 (as amended). All staff must be familiar with and follow these procedures.
+  </div>
+
+  <h2>1. Substance Details</h2>
+  <p>A COSHH assessment must be completed for every hazardous substance used on site. The following information must be recorded for each product:</p>
+  <table class="assessment-table">
+    <tr><td class="field-label">Company Name</td><td class="field-value">DNC Solutions Limited</td></tr>
+    <tr><td class="field-label">Site / Client Name</td><td class="field-value">To be completed per job</td></tr>
+    <tr><td class="field-label">Product Name</td><td class="field-value">To be completed per product</td></tr>
+    <tr><td class="field-label">Supplier</td><td class="field-value">To be completed per product</td></tr>
+    <tr><td class="field-label">Intended Use</td><td class="field-value">To be completed per product</td></tr>
+    <tr><td class="field-label">SDS Attached</td><td class="field-value">Yes / No</td></tr>
+    <tr><td class="field-label">Assessment Date</td><td class="field-value">To be completed on assessment</td></tr>
+    <tr><td class="field-label">Review Date</td><td class="field-value">Annual review required</td></tr>
+  </table>
+
+  <h2>2. Hazard Information</h2>
+  <p>Before using any product, staff must identify:</p>
+  <ul>
+    <li>All hazard symbols shown on the product label or Safety Data Sheet (SDS)</li>
+    <li>Relevant H-codes (hazard statements) from the SDS</li>
+    <li>Any specific warnings relating to the intended use</li>
+  </ul>
+  <p>Safety Data Sheets must be requested from suppliers and kept on file for all hazardous products in use.</p>
+
+  <h2>3. Persons at Risk</h2>
+  <p>The following persons may be at risk from exposure to cleaning chemicals and must be considered in every assessment:</p>
+  <ul>
+    <li><strong>Cleaning staff</strong> — primary users of chemicals</li>
+    <li><strong>Client employees</strong> — present in commercial premises</li>
+    <li><strong>Visitors and members of the public</strong> — including in residential properties</li>
+  </ul>
+
+  <h2>4. Routes of Exposure</h2>
+  <p>Staff must be aware of the following exposure routes and take appropriate precautions for each:</p>
+  <ul>
+    <li><strong>Skin contact</strong> — wear appropriate gloves at all times</li>
+    <li><strong>Eye contact</strong> — wear eye protection where splash risk is present</li>
+    <li><strong>Inhalation</strong> — ensure adequate ventilation; never use products in enclosed spaces without airflow</li>
+    <li><strong>Ingestion</strong> — never eat, drink, or smoke while handling chemicals</li>
+  </ul>
+
+  <h2>5. Control Measures</h2>
+  <p>The following control measures are mandatory for all DNC Solutions staff:</p>
+  <ul>
+    <li>Always follow the correct dilution rates as specified on the product label or SDS</li>
+    <li>Never mix chemicals unless explicitly trained and instructed to do so</li>
+    <li>Always use products in well-ventilated areas</li>
+    <li>Only use chemicals in their original or correctly labelled containers</li>
+    <li>Follow the colour-coded cleaning system at all times to prevent cross-contamination</li>
+  </ul>
+
+  <h2>6. Personal Protective Equipment (PPE)</h2>
+  <p>The following PPE must be worn when handling cleaning chemicals:</p>
+  <ul>
+    <li><strong>Protective gloves</strong> — mandatory at all times when handling products</li>
+    <li><strong>Eye protection</strong> — required where there is any risk of splash</li>
+    <li><strong>Closed footwear</strong> — non-slip, closed-toe shoes or boots required on all sites</li>
+    <li><strong>Additional PPE</strong> — as specified in the product SDS</li>
+  </ul>
+
+  <h2>7. Safe Handling &amp; Storage</h2>
+  <ul>
+    <li>All chemicals must be stored in a secure cleaning cupboard when not in use</li>
+    <li>Products must always be kept in their original containers with labels intact</li>
+    <li>Chemicals must be stored away from food preparation areas</li>
+    <li>Products must be kept out of reach of children and pets, especially in residential properties</li>
+    <li>Damaged or leaking containers must be reported and disposed of safely</li>
+  </ul>
+
+  <h2>8. First Aid Measures</h2>
+  <p>In the event of chemical exposure, follow the guidance in the product SDS. General first aid measures are:</p>
+  <ul>
+    <li><strong>Skin contact</strong> — remove contaminated clothing, rinse skin thoroughly with water for at least 15 minutes</li>
+    <li><strong>Eye contact</strong> — rinse eye with clean water for at least 15 minutes, seek medical attention</li>
+    <li><strong>Inhalation</strong> — move to fresh air immediately, seek medical attention if symptoms persist</li>
+    <li><strong>Ingestion</strong> — do not induce vomiting, seek immediate medical attention and show the product label</li>
+  </ul>
+  <p>All incidents involving chemical exposure must be reported to management immediately regardless of severity.</p>
+
+  <h2>9. Spill Procedure</h2>
+  <p>In the event of a chemical spill:</p>
+  <ul>
+    <li>Put on appropriate PPE before attempting to clean up</li>
+    <li>Contain the spill using absorbent material where available</li>
+    <li>Dispose of contaminated materials safely and in accordance with local regulations</li>
+    <li>Report the spill to management immediately</li>
+    <li>Complete an incident report</li>
+  </ul>
+
+  <h2>10. Training Requirements</h2>
+  <p>All DNC Solutions staff must complete the following before working independently:</p>
+  <ul>
+    <li><strong>COSHH Awareness Training</strong> — understanding of hazards and legal requirements</li>
+    <li><strong>PPE Usage Training</strong> — correct use, fitting, and disposal of PPE</li>
+    <li><strong>Chemical Dilution Training</strong> — correct dilution ratios for all products in use</li>
+  </ul>
+  <p>Training records are maintained by management and reviewed annually.</p>
+
+  <h2>11. Risk Rating</h2>
+  <p>Each substance assessment must be assigned an overall risk level:</p>
+  <p>
+    <span class="risk-badge risk-low">Low</span> &nbsp;
+    <span class="risk-badge risk-med">Medium</span> &nbsp;
+    <span class="risk-badge risk-high">High</span>
+  </p>
+  <p style="margin-top:.75rem;">Any substance assessed as High risk must be reviewed with management before use and additional controls put in place.</p>
+
+  <div class="sig-block">
+    <h3>Declaration</h3>
+    <p style="font-size:.88rem;color:var(--text-mid);margin-bottom:1.25rem;">I confirm that this assessment has been completed accurately and that the control measures described are in place.</p>
+    <div class="sig-row">
+      <div class="sig-field">
+        <label>Assessed By</label>
+        <div class="sig-line"></div>
+      </div>
+      <div class="sig-field">
+        <label>Signature</label>
+        <div class="sig-line"></div>
+      </div>
+      <div class="sig-field">
+        <label>Date</label>
+        <div class="sig-line"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2025 DNC Solutions Limited. Registered in England &amp; Wales.</span>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="health-and-safety.html">Health &amp; Safety</a>
+      <a href="coshh.html">COSHH Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
