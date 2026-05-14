@@ -407,6 +407,53 @@ h2.why-title{
 }
 .t-attr{font-size:.83rem;color:rgba(255,255,255,.45);letter-spacing:.04em;}
 
+.form-no-service{
+  background:rgba(255,100,100,.12);
+  border:1px solid rgba(255,100,100,.3);
+  border-radius:4px;
+  padding:.75rem 1rem;
+  font-size:.83rem;
+  color:#ffaaaa;
+}
+.ci.error{border-color:rgba(255,100,100,.6);}
+.ci.error:focus{border-color:rgba(255,100,100,.9);}
+
+/* ── FORM THANK YOU ── */
+.form-thankyou{
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  padding:3rem 2rem;
+}
+.form-thankyou.show{
+  display:flex;
+}
+.ty-icon{
+  width:72px;height:72px;
+  margin-bottom:1.5rem;
+}
+.ty-icon svg{
+  width:100%;height:100%;
+  filter:drop-shadow(0 6px 16px rgba(91,43,217,.3));
+}
+.ty-heading{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-weight:800;font-size:1.35rem;
+  color:var(--navy);margin-bottom:.75rem;
+  letter-spacing:-.02em;
+}
+.ty-body{
+  font-size:.95rem;line-height:1.75;
+  color:var(--text-mid);
+  max-width:380px;margin-bottom:1rem;
+}
+.ty-sub{
+  font-size:.82rem;color:var(--text-light);
+}
+.ty-sub a{color:var(--purple);text-decoration:none;}
+.ty-sub a:hover{text-decoration:underline;}
+
 /* ── SMART FORM ── */
 .form-service-tabs{
   display:grid;grid-template-columns:repeat(3,1fr);
@@ -813,11 +860,8 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
 }
 .c-heading.revealed{opacity:1;transform:translateY(0);}
 .cform{
-  opacity:0;transform:translateY(20px);
-  transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);
-  transition-delay:.15s;
+  opacity:1;transform:none;
 }
-.cform.revealed{opacity:1;transform:translateY(0);}
 
 /* Testimonial quote */
 .t-quote{
@@ -1288,7 +1332,8 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
       </div>
     </div>
   </div>
-  <div class="cform">
+  <div class="cform" id="contactFormWrap">
+    <form id="contactForm" novalidate>
 
     <!-- Step 1: Service type selector -->
     <div class="form-service-tabs">
@@ -1378,7 +1423,28 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
 
     <!-- Always visible -->
     <textarea class="ci" name="notes" rows="3" placeholder="Anything else you'd like us to know (optional)" style="resize:vertical;"></textarea>
+
+    <!-- Service not selected warning -->
+    <div class="form-no-service" id="noServiceWarning" style="display:none;">
+      <span>Please select a service type above before submitting.</span>
+    </div>
+
     <button class="csub" type="submit">Book My Free Site Survey →</button>
+
+    </form>
+
+    <!-- Thank you message -->
+    <div class="form-thankyou" id="formThankyou">
+      <div class="ty-icon">
+        <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="26" cy="26" r="26" fill="#5B2BD9"/>
+          <path d="M14 27l9 9 15-16" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3 class="ty-heading">Thank you — we'll be in touch.</h3>
+      <p class="ty-body">Your enquiry has been received. A member of the DNC Solutions team will contact you within 24 hours to arrange your free site survey and quote.</p>
+      <p class="ty-sub">In the meantime, feel free to email us at <a href="mailto:contact@dncsolutionsltd.co.uk">contact@dncsolutionsltd.co.uk</a></p>
+    </div>
 
   </div>
 </section>
@@ -1446,19 +1512,72 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
 </footer>
 
 <script>
-// Smart form tabs
-const tabs = document.querySelectorAll('.svc-tab');
-const allFields = document.querySelectorAll('.form-fields');
+// ── FORM ──────────────────────────────────────────────────────
+const form          = document.getElementById('contactForm');
+const formWrap      = document.getElementById('contactFormWrap');
+const formThankyou  = document.getElementById('formThankyou');
+const noSvcWarning  = document.getElementById('noServiceWarning');
+const tabs          = document.querySelectorAll('.svc-tab');
+const allFieldSets  = document.querySelectorAll('.form-fields');
+let activeSvc       = null;
 
-function activateTab(svc) {
-  tabs.forEach(t => t.classList.toggle('active', t.dataset.svc === svc));
-  allFields.forEach(f => {
-    f.classList.toggle('hidden', f.id !== `fields-${svc}`);
+// Disable all inputs in hidden field sets so required doesn't fire on them
+function setFieldsState(svc) {
+  allFieldSets.forEach(fs => {
+    const isActive = fs.id === 'fields-' + svc;
+    fs.classList.toggle('hidden', !isActive);
+    fs.querySelectorAll('input, select, textarea').forEach(el => {
+      el.disabled = !isActive;
+    });
   });
 }
 
-allFields.forEach(f => f.classList.add('hidden'));
-tabs.forEach(tab => tab.addEventListener('click', () => activateTab(tab.dataset.svc)));
+// Initialise — all field sets disabled and hidden
+setFieldsState(null);
+
+// Tab click
+tabs.forEach(tab => {
+  tab.addEventListener('click', function() {
+    activeSvc = this.dataset.svc;
+    tabs.forEach(t => t.classList.toggle('active', t === this));
+    setFieldsState(activeSvc);
+    noSvcWarning.style.display = 'none';
+  });
+});
+
+// Submit
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  // Must have selected a service
+  if (!activeSvc) {
+    noSvcWarning.style.display = 'block';
+    noSvcWarning.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+  noSvcWarning.style.display = 'none';
+
+  // Validate required fields (only enabled ones)
+  let valid = true;
+  form.querySelectorAll('[required]:not([disabled])').forEach(el => {
+    el.classList.remove('error');
+    if (!el.value.trim()) {
+      el.classList.add('error');
+      valid = false;
+    }
+  });
+
+  if (!valid) {
+    const firstError = form.querySelector('.error');
+    if (firstError) firstError.focus();
+    return;
+  }
+
+  // All good — show thank you
+  document.getElementById('contactForm').style.display = 'none';
+  var ty = document.getElementById('formThankyou');
+  ty.classList.add('show');
+});
 
 // Hamburger menu
 const ham = document.getElementById('navHamburger');
@@ -1469,6 +1588,9 @@ ham.addEventListener('click', () => {
   mob.classList.toggle('open');
 });
 document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', closeNav));
+
+// Clear error styling when user types
+form.addEventListener('input', e => e.target.classList.remove('error'));
 
 const revealObs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
@@ -1498,7 +1620,7 @@ const singleObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 
 document.querySelectorAll(
-  '.sec-kicker,.why-kicker,.c-kicker,h2.sec-title,h2.why-title,h2.c-title,.sec-sub,.why-body,.c-body,.why-panel,.t-quote,.c-heading,.cform'
+  '.sec-kicker,.why-kicker,.c-kicker,h2.sec-title,h2.why-title,h2.c-title,.sec-sub,.why-body,.c-body,.why-panel,.t-quote,.c-heading'
 ).forEach(el => singleObs.observe(el));
 
 const obs = new IntersectionObserver(entries => {
