@@ -110,9 +110,28 @@ nav{
 .nav-logo-light{display:block;}
 .nav-logo-dark{display:none;}
 
+/* ── LOCATION BAR ── */
+.location-bar{
+  background:var(--navy);
+  overflow:hidden;
+  white-space:nowrap;
+  padding:.5rem 0;
+  margin-top:68px;
+}
+.location-bar-inner{
+  display:inline-flex;
+  gap:2rem;
+  animation:scroll 18s linear infinite;
+  font-size:.75rem;
+  font-weight:600;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.55);
+}
+.lb-dot{color:var(--purple);}
+
 /* ── HERO ── */
 .hero{
-  margin-top:68px;
   background:var(--cream);
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -918,6 +937,20 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
   <a href="#why" onclick="closeNav()">About Us</a>
   <a href="#process" onclick="closeNav()">How We Work</a>
   <a href="#contact" onclick="closeNav()" class="nav-cta-mob">Get a Quote</a>
+</div>
+
+<!-- LOCATION BAR -->
+<div class="location-bar">
+  <span class="location-bar-inner">
+    <span>📍 Proudly serving Essex &amp; the surrounding areas</span>
+    <span class="lb-dot">·</span>
+    <span>📍 Proudly serving Essex &amp; the surrounding areas</span>
+    <span class="lb-dot">·</span>
+    <span>📍 Proudly serving Essex &amp; the surrounding areas</span>
+    <span class="lb-dot">·</span>
+    <span>📍 Proudly serving Essex &amp; the surrounding areas</span>
+    <span class="lb-dot">·</span>
+  </span>
 </div>
 
 <!-- HERO -->
