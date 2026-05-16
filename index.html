@@ -595,61 +595,6 @@ footer{
 .f-copy{font-size:.76rem;color:rgba(255,255,255,.18);}
 .f-reg{font-size:.73rem;color:rgba(255,255,255,.12);}
 
-/* ── GALLERY ── */
-.gallery{padding:5.5rem 7vw;background:var(--white);}
-.gallery-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:1.5rem;
-  margin-top:0;
-}
-.ba-card{
-  border:1px solid var(--border);
-  border-radius:6px;
-  overflow:hidden;
-  background:var(--white);
-  transition:box-shadow .2s;
-}
-.ba-card:hover{box-shadow:0 8px 28px rgba(15,18,53,.09);}
-.ba-images{
-  display:grid;
-  grid-template-columns:1fr 3px 1fr;
-  height:220px;
-}
-.ba-side{position:relative;}
-.ba-img{
-  width:100%;height:100%;
-  object-fit:cover;
-  display:block;
-}
-.ba-placeholder{
-  width:100%;height:100%;
-  background:var(--cream);
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  gap:.5rem;
-  cursor:default;
-}
-.ba-placeholder-after{background:var(--cream-dark);}
-.ba-icon svg{width:28px;height:28px;stroke:var(--text-light);}
-.ba-hint{font-size:.72rem;color:var(--text-light);letter-spacing:.05em;}
-.ba-label{
-  position:absolute;bottom:.6rem;left:.6rem;
-  font-size:.65rem;font-weight:700;
-  letter-spacing:.12em;text-transform:uppercase;
-  padding:.25rem .6rem;border-radius:3px;
-}
-.ba-label-before{background:rgba(15,18,53,.55);color:rgba(255,255,255,.85);}
-.ba-label-after{background:var(--purple);color:#fff;}
-.ba-divider{background:var(--white);position:relative;z-index:1;}
-.ba-caption{
-  padding:.9rem 1.1rem;
-  font-size:.85rem;font-weight:600;
-  color:var(--navy);
-  border-top:1px solid var(--border);
-  text-align:center;
-}
-
 /* ── SCROLL FADE ── */
 .fade-in{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease;}
 .fade-in.visible{opacity:1;transform:none;}
@@ -668,7 +613,9 @@ footer{
 
   /* Hero */
   .hero{ grid-template-columns:1fr; min-height:auto; }
-  .hero-left{ padding:5rem 5vw 3rem; }
+  .hero-left{ padding:5rem 5vw 3rem; text-align:center; align-items:center; }
+  .hero-kicker{ justify-content:center; }
+  .hero-btns{ justify-content:center; }
   .hero-right{ min-height:320px; }
   .hero-stat-row{ grid-template-columns:repeat(3,1fr); }
 
@@ -697,7 +644,6 @@ footer{
   .footer-grid{ grid-template-columns:1fr 1fr; gap:2rem; }
 
   /* Gallery */
-  .gallery-grid{ grid-template-columns:1fr 1fr; }
 }
 
 @media (max-width: 640px) {
@@ -761,9 +707,6 @@ footer{
   .footer-bot{ flex-direction:column; align-items:flex-start; gap:.5rem; }
 
   /* Gallery */
-  .gallery{ padding:4rem 5vw; }
-  .gallery-grid{ grid-template-columns:1fr; }
-  .ba-images{ height:180px; }
 }
 
 @media (max-width: 400px) {
@@ -856,12 +799,12 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
 }
 
 /* Staggered card reveals */
-.svc-card,.why-item,.ba-card{
+.svc-card,.why-item{
   opacity:0;transform:translateY(22px);
   transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1),
              box-shadow .2s ease, border-color .2s ease;
 }
-.svc-card.revealed,.why-item.revealed,.ba-card.revealed{
+.svc-card.revealed,.why-item.revealed{
   opacity:1;transform:translateY(0);
 }
 
@@ -960,7 +903,6 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#sectors">Sectors</a></li>
-    <li><a href="#gallery">Our Work</a></li>
     <li><a href="#why">About Us</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
@@ -973,7 +915,6 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
 <div class="nav-mobile" id="navMobile">
   <a href="#services" onclick="closeNav()">Services</a>
   <a href="#sectors" onclick="closeNav()">Sectors</a>
-  <a href="#gallery" onclick="closeNav()">Our Work</a>
   <a href="#why" onclick="closeNav()">About Us</a>
   <a href="#process" onclick="closeNav()">How We Work</a>
   <a href="#contact" onclick="closeNav()" class="nav-cta-mob">Get a Quote</a>
@@ -1043,7 +984,7 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
 <!-- TICKER -->
 <div class="services-strip">
   <div class="strip-inner">
-    <span class="strip-item">Residential Cleaning</span>    <span class="strip-item">Commercial Cleaning</span>    <span class="strip-item">End of Tenancy Cleans</span>    <span class="strip-item">Offices · Gyms · Clinics</span>    <span class="strip-item">Weekly &amp; Fortnightly</span>    <span class="strip-item">Photo Reports Every Visit</span>    <span class="strip-item">Fixed-Price Contracts</span>    <span class="strip-item">Essex &amp; London</span>    <span class="strip-item">Residential Cleaning</span>    <span class="strip-item">Commercial Cleaning</span>    <span class="strip-item">End of Tenancy Cleans</span>    <span class="strip-item">Offices · Gyms · Clinics</span>    <span class="strip-item">Weekly &amp; Fortnightly</span>    <span class="strip-item">Photo Reports Every Visit</span>    <span class="strip-item">Fixed-Price Contracts</span>    <span class="strip-item">Essex &amp; London</span>  </div>
+    <span class="strip-item">Residential Cleaning</span>    <span class="strip-item">Commercial Cleaning</span>    <span class="strip-item">End of Tenancy Cleans</span>    <span class="strip-item">Offices · Gyms · Clinics</span>    <span class="strip-item">Weekly &amp; Fortnightly</span>    <span class="strip-item">Photo Reports Every Visit</span>    <span class="strip-item">Fixed-Price Contracts</span>    <span class="strip-item">Essex &amp; Surrounding Areas</span>    <span class="strip-item">Residential Cleaning</span>    <span class="strip-item">Commercial Cleaning</span>    <span class="strip-item">End of Tenancy Cleans</span>    <span class="strip-item">Offices · Gyms · Clinics</span>    <span class="strip-item">Weekly &amp; Fortnightly</span>    <span class="strip-item">Photo Reports Every Visit</span>    <span class="strip-item">Fixed-Price Contracts</span>    <span class="strip-item">Essex &amp; Surrounding Areas</span>  </div>
 </div>
 
 <!-- INTRO BAND -->
@@ -1192,7 +1133,7 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
       <li>DBS-checked, uniformed staff on every site</li>
       <li>24-hour emergency response, 7 days a week</li>
       <li>Fixed-price contracts. No invoice surprises.</li>
-      <li>Proudly serving businesses across Essex &amp; London</li>
+      <li>Proudly serving businesses across Essex &amp; Surrounding Areas</li>
     </ul>
     <a href="#contact" class="btn-primary">Book Your Free Survey</a>
   </div>
@@ -1230,93 +1171,6 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
 </section>
 
 <!-- TESTIMONIAL -->
-<!-- BEFORE & AFTER -->
-<section class="gallery fade-in" id="gallery">
-  <div class="sec-head">
-    <div class="sec-kicker">Our Work</div>
-    <h2 class="sec-title">Before &amp; After</h2>
-    <p class="sec-sub">The difference a proper clean makes. Add your own photos to each slot.</p>
-  </div>
-  <div class="gallery-grid">
-
-    <div class="ba-card">
-      <div class="ba-images">
-        <div class="ba-side">
-          <div class="ba-img ba-placeholder">
-            <span class="ba-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            </span>
-            <span class="ba-hint">Add photo</span>
-          </div>
-          <div class="ba-label ba-label-before">Before</div>
-        </div>
-        <div class="ba-divider"></div>
-        <div class="ba-side">
-          <div class="ba-img ba-placeholder ba-placeholder-after">
-            <span class="ba-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            </span>
-            <span class="ba-hint">Add photo</span>
-          </div>
-          <div class="ba-label ba-label-after">After</div>
-        </div>
-      </div>
-      <div class="ba-caption">Office Deep Clean</div>
-    </div>
-
-    <div class="ba-card">
-      <div class="ba-images">
-        <div class="ba-side">
-          <div class="ba-img ba-placeholder">
-            <span class="ba-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            </span>
-            <span class="ba-hint">Add photo</span>
-          </div>
-          <div class="ba-label ba-label-before">Before</div>
-        </div>
-        <div class="ba-divider"></div>
-        <div class="ba-side">
-          <div class="ba-img ba-placeholder ba-placeholder-after">
-            <span class="ba-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            </span>
-            <span class="ba-hint">Add photo</span>
-          </div>
-          <div class="ba-label ba-label-after">After</div>
-        </div>
-      </div>
-      <div class="ba-caption">End of Tenancy Clean</div>
-    </div>
-
-    <div class="ba-card">
-      <div class="ba-images">
-        <div class="ba-side">
-          <div class="ba-img ba-placeholder">
-            <span class="ba-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            </span>
-            <span class="ba-hint">Add photo</span>
-          </div>
-          <div class="ba-label ba-label-before">Before</div>
-        </div>
-        <div class="ba-divider"></div>
-        <div class="ba-side">
-          <div class="ba-img ba-placeholder ba-placeholder-after">
-            <span class="ba-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            </span>
-            <span class="ba-hint">Add photo</span>
-          </div>
-          <div class="ba-label ba-label-after">After</div>
-        </div>
-      </div>
-      <div class="ba-caption">Residential Weekly Clean</div>
-    </div>
-
-  </div>
-</section>
-
 <div class="testimonial fade-in">
   <p class="t-quote">Switching to DNC was the best decision we made. The consistency and professionalism is something other contractors simply haven't matched.</p>
   <div class="t-attr">— Operations Manager, Regional Logistics Company</div>
@@ -1331,15 +1185,15 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
     <div class="c-details">
       <div class="c-detail">
         <div class="cd-ico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6 19.79 19.79 0 0 1 1.64 5a2 2 0 0 1 1.95-2.18h3a2 2 0 0 1 2 1.72c.123.96.358 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.4a16 16 0 0 0 6.29 6.29l1.73-1.73a2 2 0 0 1 2.11-.45c.907.342 1.85.577 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-        <span class="cd-text">0800 123 4567</span>
+        <a href="tel:01279927101" class="cd-text" style="text-decoration:none;color:inherit;">01279 927101</a>
       </div>
       <div class="c-detail">
         <div class="cd-ico"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-        <span class="cd-text">contact@dncsolutionsltd.co.uk</span>
+        <a href="mailto:contact@dncsolutionsltd.co.uk" class="cd-text" style="text-decoration:none;color:inherit;">contact@dncsolutionsltd.co.uk</a>
       </div>
       <div class="c-detail">
         <div class="cd-ico"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <span class="cd-text">Serving Essex &amp; London</span>
+        <span class="cd-text">Serving Essex &amp; Surrounding Areas</span>
       </div>
     </div>
   </div>
@@ -1484,7 +1338,7 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
           <path d="M280.14 158.63L280.14 158.63Q278.45 158.63 277.27 158.08Q276.09 157.53 275.48 156.56Q274.86 155.60 274.86 154.38L274.86 154.38L276.99 154.38Q276.99 154.93 277.29 155.47Q277.60 156.01 278.28 156.37Q278.97 156.72 280.14 156.72L280.14 156.72Q281.20 156.72 281.89 156.41Q282.59 156.10 282.92 155.60Q283.25 155.10 283.25 154.48L283.25 154.48Q283.25 153.73 282.60 153.25Q281.96 152.77 280.66 152.67L280.66 152.67L279.35 152.54Q277.53 152.40 276.45 151.42Q275.37 150.43 275.37 148.83L275.37 148.83Q275.37 147.61 275.95 146.71Q276.54 145.81 277.60 145.30Q278.66 144.78 280.07 144.78L280.07 144.78Q281.51 144.78 282.57 145.30Q283.63 145.81 284.21 146.74Q284.80 147.66 284.80 148.94L284.80 148.94L282.68 148.94Q282.68 148.36 282.40 147.85Q282.12 147.34 281.54 147.01Q280.97 146.69 280.07 146.69L280.07 146.69Q279.20 146.69 278.63 147.00Q278.07 147.30 277.78 147.79Q277.49 148.27 277.49 148.83L277.49 148.83Q277.49 149.50 278.00 150.01Q278.50 150.52 279.54 150.61L279.54 150.61L280.84 150.72Q282.23 150.83 283.24 151.31Q284.26 151.78 284.83 152.58Q285.39 153.37 285.39 154.48L285.39 154.48Q285.39 155.71 284.74 156.64Q284.08 157.58 282.90 158.10Q281.72 158.63 280.14 158.63Z M299.83 158.63L299.83 158.63Q298.05 158.63 296.76 158.00Q295.47 157.38 294.63 156.36Q293.78 155.33 293.38 154.15Q292.97 152.97 292.97 151.89L292.97 151.89L292.97 151.50Q292.97 150.31 293.39 149.12Q293.82 147.93 294.67 146.95Q295.53 145.97 296.81 145.38Q298.10 144.78 299.83 144.78L299.83 144.78Q301.56 144.78 302.84 145.38Q304.11 145.97 304.98 146.95Q305.84 147.93 306.26 149.12Q306.69 150.31 306.69 151.50L306.69 151.50L306.69 151.89Q306.69 152.97 306.27 154.15Q305.86 155.33 305.02 156.36Q304.19 157.38 302.89 158.00Q301.59 158.63 299.83 158.63ZM299.83 156.63Q300.91 156.63 301.77 156.23Q302.64 155.83 303.25 155.15Q303.86 154.47 304.18 153.58Q304.49 152.70 304.49 151.71Q304.49 150.67 304.17 149.78Q303.84 148.89 303.24 148.21Q302.64 147.54 301.77 147.16Q300.91 146.78 299.83 146.78Q298.75 146.78 297.89 147.16Q297.02 147.54 296.41 148.21Q295.80 148.89 295.48 149.78Q295.17 150.67 295.17 151.71Q295.17 152.70 295.48 153.58Q295.80 154.47 296.41 155.15Q297.02 155.83 297.89 156.23Q298.75 156.63 299.83 156.63Z M322.78 158.30L315.13 158.30L315.13 145.16L317.29 145.16L317.29 156.38L322.78 156.38L322.78 158.30Z M335.72 158.63Q333.90 158.63 332.67 157.93Q331.44 157.24 330.80 155.98Q330.16 154.72 330.16 153.04L330.16 145.16L332.32 145.16L332.32 153.22Q332.32 154.23 332.72 155.01Q333.11 155.78 333.87 156.20Q334.62 156.63 335.72 156.63Q336.82 156.63 337.57 156.21Q338.31 155.80 338.71 155.02Q339.11 154.25 339.11 153.22L339.11 145.16L341.27 145.16L341.27 153.04Q341.27 154.72 340.64 155.98Q340.01 157.24 338.77 157.93Q337.54 158.63 335.72 158.63Z M355.00 158.30L352.84 158.30L352.84 147.07L348.95 147.07L348.95 145.16L358.91 145.16L358.91 147.07L355.00 147.07L355.00 158.30Z M369.06 158.30L366.90 158.30L366.90 145.16L369.06 145.16L369.06 158.30Z M384.41 158.63Q382.63 158.63 381.34 158.00Q380.06 157.38 379.21 156.36Q378.36 155.33 377.96 154.15Q377.55 152.97 377.55 151.89L377.55 151.50Q377.55 150.31 377.98 149.12Q378.40 147.93 379.25 146.95Q380.11 145.97 381.40 145.38Q382.68 144.78 384.41 144.78Q386.14 144.78 387.42 145.38Q388.70 145.97 389.56 146.95Q390.42 147.93 390.85 149.12Q391.27 150.31 391.27 151.50L391.27 151.89Q391.27 152.97 390.86 154.15Q390.44 155.33 389.60 156.36Q388.77 157.38 387.47 158.00Q386.18 158.63 384.41 158.63ZM384.41 156.63Q385.49 156.63 386.36 156.23Q387.22 155.83 387.83 155.15Q388.44 154.47 388.76 153.58Q389.07 152.70 389.07 151.71Q389.07 150.67 388.75 149.78Q388.43 148.89 387.82 148.21Q387.22 147.54 386.36 147.16Q385.49 146.78 384.41 146.78Q383.33 146.78 382.47 147.16Q381.60 147.54 380.99 148.21Q380.38 148.89 380.06 149.78Q379.75 150.67 379.75 151.71Q379.75 152.70 380.06 153.58Q380.38 154.47 380.99 155.15Q381.60 155.83 382.47 156.23Q383.33 156.63 384.41 156.63Z M401.73 158.30L399.71 158.30L399.71 145.16L403.24 145.16L409.34 156.45L409.58 156.45L409.58 145.16L411.63 145.16L411.63 158.30L408.06 158.30L401.96 147.01L401.73 147.01L401.73 158.30Z M425.29 158.63Q423.60 158.63 422.42 158.08Q421.24 157.53 420.63 156.56Q420.02 155.60 420.02 154.38L422.14 154.38Q422.14 154.93 422.45 155.47Q422.75 156.01 423.44 156.37Q424.12 156.72 425.29 156.72Q426.35 156.72 427.04 156.41Q427.74 156.10 428.07 155.60Q428.40 155.10 428.40 154.48Q428.40 153.73 427.76 153.25Q427.11 152.77 425.81 152.67L424.50 152.54Q422.68 152.40 421.60 151.42Q420.52 150.43 420.52 148.83Q420.52 147.61 421.10 146.71Q421.69 145.81 422.75 145.30Q423.81 144.78 425.22 144.78Q426.66 144.78 427.72 145.30Q428.78 145.81 429.37 146.74Q429.95 147.66 429.95 148.94L427.83 148.94Q427.83 148.36 427.55 147.85Q427.27 147.34 426.69 147.01Q426.12 146.69 425.22 146.69Q424.35 146.69 423.79 147.00Q423.22 147.30 422.93 147.79Q422.64 148.27 422.64 148.83Q422.64 149.50 423.15 150.01Q423.65 150.52 424.70 150.61L425.99 150.72Q427.38 150.83 428.39 151.31Q429.41 151.78 429.98 152.58Q430.55 153.37 430.55 154.48Q430.55 155.71 429.89 156.64Q429.23 157.58 428.05 158.10Q426.87 158.63 425.29 158.63Z" fill="#ffffff" fill-opacity="0.82"/>
         </svg>
       </a>
-      <p class="fb-desc">Residential, commercial and end of tenancy cleaning across Essex &amp; London. Quick quotes, fixed prices, no site visits needed.</p>
+      <p class="fb-desc">Residential, commercial and end of tenancy cleaning across Essex &amp; Surrounding Areas. Quick quotes, fixed prices, no site visits needed.</p>
     </div>
     <div>
       <div class="fc-head">Services</div>
@@ -1492,7 +1346,6 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
         <li><a href="#services">Residential Cleaning</a></li>
         <li><a href="#services">Commercial Cleaning</a></li>
         <li><a href="#services">End of Tenancy</a></li>
-        <li><a href="#gallery">Our Work</a></li>
       </ul>
     </div>
     <div>
@@ -1516,7 +1369,7 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
   </div>
   <div class="footer-bot">
     <span class="f-copy">© 2025 DNC Solutions Limited. All rights reserved.</span>
-    <span class="f-reg">Registered in England &amp; Wales</span>
+    <span class="f-reg">Registered in England &amp; Wales · Company No. 17203534 · Registered office: 4th Floor, Silverstream House, 45 Fitzroy Street, Fitzrovia, London, W1T 6EB</span>
   </div>
 </footer>
 
@@ -1631,7 +1484,7 @@ const revealObs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       const siblings = e.target.parentElement.querySelectorAll(
-        '.svc-card,.sec-item,.why-item,.ba-card,.pstep,.intro-stat'
+        '.svc-card,.sec-item,.why-item,.pstep,.intro-stat'
       );
       const idx = Array.from(siblings).indexOf(e.target);
       const delay = idx >= 0 ? idx * 80 : 0;
@@ -1644,7 +1497,7 @@ const revealObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 
 document.querySelectorAll(
-  '.svc-card,.sec-item,.why-item,.ba-card,.pstep,.intro-stat'
+  '.svc-card,.sec-item,.why-item,.pstep,.intro-stat'
 ).forEach(el => revealObs.observe(el));
 
 const singleObs = new IntersectionObserver((entries) => {
