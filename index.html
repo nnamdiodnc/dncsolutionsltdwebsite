@@ -1262,6 +1262,41 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
         <input class="ci" type="text" name="res_bedrooms" placeholder="Number of bedrooms *" required/>
         <input class="ci" type="text" name="res_bathrooms" placeholder="Number of bathrooms (optional)"/>
       </div>
+      <div class="form-row">
+        <select class="ci" name="res_clutter">
+          <option value="" disabled selected>Clutter level</option>
+          <option>Minimal — very tidy</option>
+          <option>Average — some clutter</option>
+          <option>Heavy — significant clutter throughout</option>
+        </select>
+        <select class="ci" name="res_pets">
+          <option value="" disabled selected>Do you have pets?</option>
+          <option>No pets</option>
+          <option>Yes — short hair</option>
+          <option>Yes — heavy shedding</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <select class="ci" name="res_condition">
+          <option value="" disabled selected>General property condition</option>
+          <option>Well maintained — cleaned regularly</option>
+          <option>Average — not cleaned in a while</option>
+          <option>Needs attention — build-up of dirt or limescale</option>
+        </select>
+        <select class="ci" name="res_last_cleaned">
+          <option value="" disabled selected>Last professionally cleaned</option>
+          <option>Within the last month</option>
+          <option>1–3 months ago</option>
+          <option>3–6 months ago</option>
+          <option>Over 6 months ago</option>
+          <option>Never / unsure</option>
+        </select>
+      </div>
+      <select class="ci" name="res_had_cleaner">
+        <option value="" disabled selected>Have you had a regular cleaner before?</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
     </div>
 
     <!-- Commercial fields -->
@@ -1316,6 +1351,35 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
       <div class="form-row">
         <input class="ci" type="text" name="eot_bedrooms" placeholder="Number of bedrooms *" required/>
         <input class="ci" type="text" name="eot_bathrooms" placeholder="Number of bathrooms (optional)"/>
+      </div>
+      <div class="form-row">
+        <select class="ci" name="eot_condition" required>
+          <option value="" disabled selected>Property condition *</option>
+          <option>Good — well maintained throughout</option>
+          <option>Average — standard wear and tear</option>
+          <option>Poor — significant build-up, limescale or neglect</option>
+        </select>
+        <select class="ci" name="eot_clutter">
+          <option value="" disabled selected>Clutter level</option>
+          <option>Clear — tenants have moved out fully</option>
+          <option>Some items remaining</option>
+          <option>Heavy — lots still to be removed</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <select class="ci" name="eot_pets">
+          <option value="" disabled selected>Were there pets in the property?</option>
+          <option>No</option>
+          <option>Yes — short hair</option>
+          <option>Yes — heavy shedding</option>
+        </select>
+        <select class="ci" name="eot_inventory_check">
+          <option value="" disabled selected>Is there an inventory check booked?</option>
+          <option>Yes — date confirmed</option>
+          <option>Yes — date TBC</option>
+          <option>No</option>
+          <option>Unsure</option>
+        </select>
       </div>
     </div>
 
