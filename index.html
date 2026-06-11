@@ -36,7 +36,7 @@
 <!-- ── FONTS ── -->
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,420;0,9..144,520;0,9..144,580;0,9..144,640;1,9..144,480;1,9..144,560&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
@@ -46,11 +46,15 @@
   --purple-mid:#7B57E0;
   --cream:#F5F2EC;
   --cream-dark:#EAE6DE;
+  --lilac:#EFEAFB;
   --white:#FFFFFF;
   --text:#2e3150;
   --text-mid:#565978;
   --text-light:#8b8ea8;
   --border:#dddbe5;
+  --display:'Fraunces',Georgia,serif;
+  --sh-card:0 1px 2px rgba(28,33,65,.04),0 4px 12px rgba(28,33,65,.05),0 16px 40px rgba(28,33,65,.06);
+  --sh-float:0 2px 4px rgba(28,33,65,.05),0 12px 28px rgba(28,33,65,.09),0 32px 64px rgba(91,47,212,.10);
 }
 html{scroll-behavior:smooth;}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;font-size:16px;line-height:1.6;}
@@ -79,6 +83,7 @@ nav{
   display:block;padding:.5rem 1.1rem;
   text-decoration:none;font-size:.88rem;
   color:var(--text-mid);font-weight:400;
+  white-space:nowrap;
   transition:color .18s;
 }
 .nav-links li a:hover{color:var(--navy);}
@@ -86,10 +91,57 @@ nav{
   margin-left:.75rem;
   background:var(--purple);color:var(--white)!important;
   padding:.55rem 1.4rem!important;
-  border-radius:3px;font-weight:600!important;
+  border-radius:7px;font-weight:600!important;
+  white-space:nowrap;
   transition:background .18s!important;
 }
 .nav-cta:hover{background:var(--navy)!important;}
+
+/* ── NAV PHONE ── */
+.nav-phone{
+  display:flex;align-items:center;gap:.42rem;
+  color:var(--navy);text-decoration:none;
+  font-weight:600;font-size:.82rem;
+  padding:.5rem .85rem;
+  white-space:nowrap;
+  transition:color .15s;
+}
+.nav-phone:hover{color:var(--purple);}
+.nav-phone svg{width:13px;height:13px;flex-shrink:0;}
+
+/* ── OUR METHOD SECTION ── */
+.method{background:var(--cream);padding:6rem 7vw;}
+.method-head{max-width:720px;margin:0 auto 3.2rem;text-align:center;}
+.method-kicker{display:inline-block;color:var(--purple);font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:.72rem;margin-bottom:.9rem;}
+.method-kicker::before{content:'\2726  ';font-size:.85em;}
+.method-title{font-family:var(--display);font-weight:540;font-optical-sizing:auto;font-size:clamp(1.9rem,3vw,2.7rem);color:var(--navy);line-height:1.1;letter-spacing:-.01em;margin:0 0 1.1rem;}
+.method-lead{font-size:.98rem;color:var(--text-mid);line-height:1.65;margin:0;}
+.method-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:1.4rem;max-width:1080px;margin:0 auto;
+}
+.method-item{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:1.7rem 1.6rem;
+  display:flex;gap:1rem;align-items:flex-start;
+  transition:border-color .25s,transform .25s,box-shadow .25s;
+}
+.method-item:hover{border-color:rgba(91,47,212,.35);transform:translateY(-3px);box-shadow:var(--sh-card);}
+.method-num{
+  flex-shrink:0;
+  width:30px;height:30px;
+  background:var(--lilac);color:var(--purple);
+  border:1px solid rgba(91,47,212,.18);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:.8rem;
+  margin-top:.15rem;
+}
+.method-body{flex:1;}
+.method-h{font-weight:700;color:var(--navy);font-size:1.02rem;margin:0 0 .4rem;line-height:1.3;}
+.method-p{color:var(--text-mid);font-size:.92rem;line-height:1.6;margin:0;}
 .nav-hamburger{
   display:none;
   flex-direction:column;gap:5px;
@@ -162,13 +214,41 @@ nav{
 
 /* ── HERO ── */
 .hero{
-  background:var(--cream);
+  background:
+    radial-gradient(ellipse 60% 50% at 78% 18%, rgba(123,87,224,.10), transparent 60%),
+    radial-gradient(ellipse 50% 45% at 12% 85%, rgba(91,47,212,.06), transparent 65%),
+    radial-gradient(ellipse 45% 40% at 50% 0%, rgba(255,255,255,.85), transparent 70%),
+    var(--cream);
   display:grid;
   grid-template-columns:1fr 1fr;
   min-height:580px;
+  position:relative;
+}
+.hero::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity:.035;mix-blend-mode:multiply;
+}
+
+/* ── HERO ENTRANCE ── */
+@keyframes heroRise{
+  from{opacity:0;transform:translateY(18px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.hero-kicker,.hero-left h1,.hero-p,.hero-btns,.hero-trust{
+  animation:heroRise .7s cubic-bezier(.22,.8,.3,1) both;
+}
+.hero-left h1{animation-delay:.08s;}
+.hero-p{animation-delay:.17s;}
+.hero-btns{animation-delay:.26s;}
+.hero-trust{animation-delay:.36s;}
+#hqForm{animation:heroRise .8s cubic-bezier(.22,.8,.3,1) .2s both;}
+@media (prefers-reduced-motion: reduce){
+  .hero-kicker,.hero-left h1,.hero-p,.hero-btns,.hero-trust,#hqForm{animation:none;}
+  *{transition-duration:.01ms!important;}
 }
 .hero-left{
-  padding:5rem 4vw 5rem 7vw;
+  padding:calc(5rem + 68px) 4vw 5rem 7vw;
   display:flex;flex-direction:column;justify-content:center;
 }
 .hero-kicker{
@@ -178,10 +258,16 @@ nav{
 }
 .hero-kicker span{display:inline-block;width:28px;height:1.5px;background:var(--purple);}
 h1{
-  font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;
-  font-size:clamp(2.2rem,3.8vw,3.3rem);
-  line-height:1.1;letter-spacing:-.03em;
-  color:var(--navy);margin-bottom:1.25rem;
+  font-family:var(--display);font-weight:530;
+  font-optical-sizing:auto;
+  font-size:clamp(2.5rem,4.4vw,3.9rem);
+  line-height:1.04;letter-spacing:-.015em;
+  color:var(--navy);margin-bottom:1.4rem;
+}
+.h1-em{
+  font-style:italic;font-weight:520;
+  color:var(--purple);
+  letter-spacing:0;
 }
 .hero-p{
   font-size:1.05rem;line-height:1.8;
@@ -191,16 +277,20 @@ h1{
 .hero-btns{display:flex;gap:.9rem;align-items:center;flex-wrap:wrap;}
 .btn-primary{
   background:var(--navy);color:var(--white);
-  padding:.78rem 1.85rem;border-radius:3px;
+  padding:.82rem 1.95rem;border-radius:7px;
   text-decoration:none;font-weight:600;font-size:.9rem;
-  transition:background .18s;display:inline-block;
+  transition:background .2s,transform .2s,box-shadow .2s;display:inline-block;
+  box-shadow:0 1px 2px rgba(28,33,65,.12);
 }
-.btn-primary:hover{background:var(--purple);}
+.btn-primary:hover{
+  background:var(--purple);transform:translateY(-2px);
+  box-shadow:0 6px 18px rgba(91,47,212,.30),0 2px 6px rgba(91,47,212,.18);
+}
 .btn-outline{
   border:1.5px solid var(--navy);color:var(--navy);
-  padding:.76rem 1.7rem;border-radius:3px;
+  padding:.8rem 1.8rem;border-radius:7px;
   text-decoration:none;font-weight:500;font-size:.9rem;
-  transition:all .18s;display:inline-block;
+  transition:all .2s;display:inline-block;
 }
 .btn-outline:hover{border-color:var(--purple);color:var(--purple);}
 .hero-trust{
@@ -223,7 +313,10 @@ h1{
 
 /* Hero right: warm info panel, no dark background */
 .hero-right{
-  background:var(--navy);
+  background:
+    radial-gradient(ellipse 90% 80% at 72% 25%, rgba(123,87,224,.30), transparent 62%),
+    radial-gradient(ellipse 70% 55% at 15% 95%, rgba(91,47,212,.22), transparent 58%),
+    linear-gradient(165deg, #232952 0%, var(--navy) 55%, #161a35 100%);
   display:flex;flex-direction:column;
   justify-content:flex-end;
   position:relative;overflow:hidden;
@@ -263,6 +356,153 @@ h1{
 .hstat-n em{color:var(--purple-mid);font-style:normal;}
 .hstat-l{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.3rem;}
 
+/* ── HERO QUOTE WIZARD ── */
+.hero-quote{
+  flex:1;
+  padding:calc(68px + 2rem) 2.5rem 2.5rem;
+  display:flex;
+}
+#hqForm{
+  width:100%;max-width:380px;margin:auto;
+  background:var(--white);
+  border-radius:16px;
+  padding:1.6rem 1.5rem;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.06),
+    0 2px 8px rgba(0,0,0,.25),
+    0 24px 60px -16px rgba(0,0,0,.55),
+    0 0 80px -10px rgba(123,87,224,.25);
+  position:relative;overflow:hidden;
+}
+.hq-progress{position:absolute;top:0;left:0;right:0;height:3px;background:rgba(28,33,65,.08);}
+.hq-progress span{display:block;height:100%;width:25%;background:var(--purple);transition:width .35s cubic-bezier(.16,1,.3,1);}
+.hq-phase{display:none;}
+.hq-phase.active{display:block;animation:hqFade .35s ease;}
+@keyframes hqFade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.hq-back{
+  background:none;border:none;cursor:pointer;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.78rem;font-weight:600;color:var(--text-light);
+  padding:0;margin-bottom:.9rem;transition:color .15s;
+}
+.hq-back:hover{color:var(--purple);}
+.hq-q{
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;
+  font-size:1.15rem;color:var(--navy);
+  letter-spacing:-.02em;line-height:1.25;margin-bottom:1.1rem;
+}
+.hq-opts{display:flex;flex-direction:column;gap:.5rem;}
+.hq-opts.hq-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;}
+.hq-opt{
+  width:100%;text-align:left;
+  padding:.85rem 1rem;
+  border:1.5px solid var(--border);background:var(--white);
+  border-radius:8px;cursor:pointer;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.88rem;font-weight:600;color:var(--navy);
+  transition:all .16s;
+  display:flex;align-items:center;justify-content:space-between;gap:.4rem;
+}
+.hq-opt:hover{border-color:var(--purple);background:rgba(91,43,217,.04);transform:translateY(-1px);}
+.hq-grid .hq-opt{justify-content:center;text-align:center;padding:.85rem .5rem;font-size:.84rem;}
+.hq-badge{
+  font-size:.6rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  background:rgba(91,43,217,.1);color:var(--purple);
+  padding:.15rem .4rem;border-radius:3px;
+}
+.hq-price-box{background:var(--navy);border-radius:10px;padding:1.1rem 1.25rem;margin-bottom:1rem;text-align:center;}
+.hq-price-label{font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.3rem;}
+.hq-price{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:2rem;color:#fff;line-height:1;letter-spacing:-.02em;}
+.hq-price .hq-per{font-size:.85rem;font-weight:600;opacity:.6;margin-left:.25rem;}
+.hq-price-note{font-size:.72rem;color:var(--purple-mid);margin-top:.45rem;font-weight:500;}
+.hq-in{
+  width:100%;background:var(--white);
+  border:1.5px solid var(--border);border-radius:7px;
+  padding:.75rem .9rem;margin-bottom:.5rem;
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:.88rem;color:var(--text);
+  outline:none;transition:border-color .16s,box-shadow .16s;
+}
+.hq-in::placeholder{color:var(--text-light);}
+.hq-in:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(91,43,217,.12);}
+.hq-in.hq-err{border-color:#e3506a;box-shadow:0 0 0 3px rgba(227,80,106,.12);}
+.hq-submit{
+  width:100%;margin-top:.4rem;
+  background:var(--navy);color:#fff;border:none;
+  padding:.95rem 1rem;border-radius:8px;cursor:pointer;
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:.92rem;font-weight:700;
+  transition:background .18s,transform .18s;
+}
+.hq-submit:hover{background:var(--purple);transform:translateY(-1px);}
+.hq-submit:disabled{opacity:.6;cursor:default;transform:none;}
+.hq-addon-q-sub{font-size:.78rem;color:var(--text-light);margin:-.6rem 0 1rem;line-height:1.5;}
+.hq-addons{display:none;flex-direction:column;gap:.4rem;margin-bottom:.9rem;}
+.hq-addons.active{display:flex;}
+.hq-addon{
+  display:flex;align-items:center;gap:.6rem;
+  padding:.65rem .8rem;
+  background:var(--cream);
+  border:1.5px solid transparent;
+  border-radius:6px;cursor:pointer;
+  font-size:.84rem;
+  transition:all .15s;
+}
+.hq-addon:hover{border-color:var(--purple);}
+.hq-addon input[type="checkbox"]{
+  appearance:none;width:15px;height:15px;
+  border:1.5px solid var(--border);border-radius:3px;
+  cursor:pointer;flex-shrink:0;position:relative;background:var(--white);
+  transition:all .15s;
+}
+.hq-addon input[type="checkbox"]:checked{background:var(--purple);border-color:var(--purple);}
+.hq-addon input[type="checkbox"]:checked::after{
+  content:'';position:absolute;left:3.5px;top:.5px;
+  width:3.5px;height:7px;border:solid #fff;border-width:0 2px 2px 0;
+  transform:rotate(45deg);
+}
+.hq-addon-name{flex:1;color:var(--navy);font-weight:500;line-height:1.3;}
+.hq-addon-price{color:var(--text-mid);font-weight:600;font-size:.76rem;flex-shrink:0;}
+.hq-addon.included-note{background:rgba(91,43,217,.06);border-style:dashed;cursor:not-allowed;opacity:.7;}
+.hq-addon.included-note .hq-addon-price{color:var(--purple);font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;}
+.hq-addon.included-note input{pointer-events:none;}
+.hq-continue{
+  width:100%;margin-top:.3rem;
+  background:var(--navy);color:#fff;border:none;
+  padding:.9rem 1rem;border-radius:8px;cursor:pointer;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.9rem;font-weight:700;
+  transition:background .18s,transform .18s;
+}
+.hq-continue:hover{background:var(--purple);transform:translateY(-1px);}
+
+/* ── QTY STEPPER (shared by both calculators) ── */
+.qty-stepper{display:none;align-items:center;gap:.4rem;flex-shrink:0;}
+.calc-addon input:checked ~ .qty-stepper,
+.hq-addon input:checked ~ .qty-stepper{display:inline-flex;}
+.qty-btn{
+  width:22px;height:22px;border:1px solid var(--border);background:var(--white);
+  border-radius:3px;cursor:pointer;color:var(--navy);font-weight:700;
+  font-size:.95rem;line-height:1;padding:0;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .15s;
+}
+.qty-btn:hover{border-color:var(--purple);color:var(--purple);}
+.qty-num{min-width:1.2rem;text-align:center;font-weight:700;color:var(--navy);font-size:.85rem;line-height:1;}
+.hq-com-body{font-size:.85rem;line-height:1.6;color:var(--text-mid);margin:0 0 1.1rem;}
+.hq-com-btn{
+  display:block;text-align:center;background:var(--navy);color:#fff;
+  text-decoration:none;padding:.85rem 1rem;border-radius:8px;
+  font-weight:600;font-size:.85rem;transition:background .18s;
+}
+.hq-com-btn:hover{background:var(--purple);}
+.hq-com-call{display:block;text-align:center;margin-top:.8rem;font-size:.82rem;color:var(--purple);text-decoration:none;font-weight:600;}
+.hq-done-ico{
+  width:48px;height:48px;margin:0 auto 1rem;border-radius:50%;
+  background:rgba(91,43,217,.12);color:var(--purple);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;font-weight:800;
+}
+.hq-phase[data-phase="done"]{text-align:center;}
+
 /* ── SERVICES STRIP ── */
 .services-strip{
   background:var(--purple);
@@ -301,11 +541,11 @@ h1{
   font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
   color:var(--purple);margin-bottom:.85rem;
 }
-.sec-kicker::before,.sec-kicker::after{content:'';display:inline-block;width:16px;height:1.5px;background:var(--purple);}
+.sec-kicker::before{content:'\2726';font-size:.85em;line-height:1;color:var(--purple);transform:translateY(-.5px);}
 h2.sec-title{
-  font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;
-  font-size:clamp(1.75rem,2.8vw,2.4rem);
-  color:var(--navy);line-height:1.15;letter-spacing:-.025em;margin-bottom:.85rem;
+  font-family:var(--display);font-weight:540;font-optical-sizing:auto;
+  font-size:clamp(1.9rem,3vw,2.7rem);
+  color:var(--navy);line-height:1.1;letter-spacing:-.01em;margin-bottom:.9rem;
 }
 .sec-sub{font-size:.98rem;color:var(--text-mid);max-width:520px;margin:0 auto;line-height:1.75;}
 
@@ -314,11 +554,11 @@ h2.sec-title{
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
 .svc-card{
   border:1px solid var(--border);
-  border-radius:4px;padding:2rem 1.75rem;
-  transition:border-color .2s,box-shadow .2s;cursor:default;
+  border-radius:14px;padding:2.1rem 1.85rem;
+  transition:border-color .25s,box-shadow .25s,transform .25s;cursor:default;
   background:var(--white);
 }
-.svc-card:hover{border-color:var(--purple);box-shadow:0 4px 20px rgba(91,47,212,.08);}
+.svc-card:hover{border-color:rgba(91,47,212,.35);box-shadow:var(--sh-card);transform:translateY(-3px);}
 .svc-ico{
   width:44px;height:44px;
   border:1.5px solid var(--border);
@@ -406,7 +646,7 @@ h2.sec-title{
   display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;
 }
 .why-panel{
-  background:var(--navy);border-radius:4px;
+  background:var(--navy);border-radius:16px;
   padding:3rem 2.5rem;
 }
 .wp-label{
@@ -440,9 +680,9 @@ h2.sec-title{
 }
 .why-kicker::before{content:'';display:inline-block;width:16px;height:1.5px;background:var(--purple);}
 h2.why-title{
-  font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;
-  font-size:clamp(1.65rem,2.6vw,2.2rem);
-  color:var(--navy);line-height:1.15;letter-spacing:-.025em;margin-bottom:1.1rem;
+  font-family:var(--display);font-weight:540;font-optical-sizing:auto;
+  font-size:clamp(1.75rem,2.7vw,2.35rem);
+  color:var(--navy);line-height:1.14;letter-spacing:-.01em;margin-bottom:1.25rem;
 }
 .why-body{font-size:.97rem;line-height:1.82;color:var(--text-mid);margin-bottom:1.35rem;}
 .check-list{list-style:none;display:flex;flex-direction:column;gap:.75rem;margin-bottom:2.25rem;}
@@ -545,9 +785,9 @@ h2.why-title{
   gap:.5rem;margin-bottom:.25rem;
 }
 .svc-tab{
-  padding:.7rem .5rem;
+  padding:.78rem .5rem;
   border:1.5px solid var(--border);
-  border-radius:4px;
+  border-radius:7px;
   background:var(--white);
   color:var(--text-mid);
   font-family:'Plus Jakarta Sans',sans-serif;
@@ -573,6 +813,221 @@ h2.why-title{
 
 input[type="date"].ci{ color:var(--text-mid); }
 input[type="date"].ci::-webkit-calendar-picker-indicator{ opacity:.5; cursor:pointer; }
+/* ── WHAT'S INCLUDED ── */
+.included{
+  padding:5.5rem 7vw;background:var(--cream);
+  border-top:1px solid var(--border);
+}
+.inc-head{max-width:760px;margin:0 auto 3rem;text-align:center;}
+.inc-kicker{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--purple);margin-bottom:1rem;
+}
+.inc-kicker::before{content:'';display:inline-block;width:16px;height:1.5px;background:var(--purple);}
+.inc-title{
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;
+  font-size:clamp(1.8rem,3vw,2.5rem);
+  color:var(--navy);line-height:1.15;letter-spacing:-.025em;margin-bottom:1rem;
+}
+.inc-sub{font-size:1rem;line-height:1.7;color:var(--text-mid);}
+.scope-tabs{
+  display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;
+  max-width:560px;margin:0 auto 2.5rem;
+}
+.scope-tab{
+  padding:.85rem 1.4rem;
+  border:1.5px solid var(--border);background:var(--white);
+  border-radius:4px;cursor:pointer;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.88rem;font-weight:600;color:var(--text-mid);
+  transition:all .2s cubic-bezier(.16,1,.3,1);
+}
+.scope-tab:hover{border-color:var(--purple);color:var(--purple);}
+.scope-tab.active{
+  background:var(--navy);border-color:var(--navy);color:#fff;
+  transform:translateY(-1px);box-shadow:0 6px 18px rgba(28,33,65,.18);
+}
+.scope-panel{display:none;}
+.scope-panel.active{display:block;animation:scopeFade .4s ease;}
+@keyframes scopeFade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.scope-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;
+  max-width:1200px;margin:0 auto;
+}
+.scope-card{
+  background:var(--white);
+  border:1px solid var(--border);border-radius:14px;
+  padding:1.5rem 1.4rem;
+}
+.scope-card-head{
+  display:flex;align-items:center;gap:.6rem;
+  padding-bottom:.9rem;margin-bottom:1rem;
+  border-bottom:1px solid var(--border);
+}
+.scope-card-head svg{width:18px;height:18px;stroke:var(--purple);fill:none;stroke-width:2;}
+.scope-card-title{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-weight:700;color:var(--navy);
+  font-size:.98rem;letter-spacing:-.01em;
+}
+.scope-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.55rem;}
+.scope-list li{
+  position:relative;padding-left:1.4rem;
+  font-size:.85rem;line-height:1.5;color:var(--text-mid);
+}
+.scope-list li::before{
+  content:'';position:absolute;left:0;top:.5rem;
+  width:8px;height:8px;border-radius:50%;background:var(--purple);opacity:.45;
+}
+.scope-panel[data-panel="deep"] .scope-list li::before,
+.scope-panel[data-panel="eot"] .scope-list li::before{
+  content:'+';
+  width:auto;height:auto;background:none;border-radius:0;
+  top:-1px;left:0;opacity:1;
+  color:var(--purple);font-weight:800;font-size:1rem;line-height:1.5;
+}
+.scope-panel[data-panel="deep"] .scope-list li:has(em)::before,
+.scope-panel[data-panel="eot"] .scope-list li:has(em)::before{content:none;}
+.scope-list li:has(em){padding-left:0;margin-bottom:.1rem;}
+.scope-eot-note{
+  max-width:760px;margin:2.5rem auto 0;text-align:center;
+  background:rgba(91,43,217,.06);
+  border-left:3px solid var(--purple);
+  padding:1.25rem 1.5rem;
+  font-size:.92rem;line-height:1.7;color:var(--text);
+}
+.scope-eot-note strong{color:var(--navy);font-weight:700;}
+
+/* ── CALCULATOR ── */
+.calc-section{margin-bottom:1.25rem;}
+.calc-label{
+  font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--navy);margin-bottom:.65rem;
+}
+.calc-chips{display:flex;flex-wrap:wrap;gap:.45rem;}
+.calc-chip{
+  position:relative;
+  padding:.65rem .95rem;
+  border:1.5px solid var(--border);background:var(--white);
+  border-radius:4px;cursor:pointer;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.82rem;font-weight:600;color:var(--text-mid);
+  transition:all .18s;
+}
+.calc-chip:hover{border-color:var(--purple);color:var(--purple);}
+.calc-chip.active{
+  background:var(--purple);border-color:var(--purple);color:#fff;
+  transform:translateY(-1px);box-shadow:0 4px 12px rgba(91,43,217,.3);
+}
+.chip-badge{
+  display:inline-block;margin-left:.35rem;
+  font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:.12rem .35rem;border-radius:2px;
+  background:rgba(255,255,255,.22);color:#fff;
+}
+.calc-chip:not(.active) .chip-badge{
+  background:rgba(91,43,217,.1);color:var(--purple);
+}
+.calc-addons{
+  display:grid;grid-template-columns:1fr 1fr;gap:.5rem;
+}
+.calc-addon{
+  display:flex;align-items:center;flex-wrap:wrap;gap:.6rem;
+  padding:.65rem .8rem;
+  border:1.5px solid var(--border);background:var(--white);
+  border-radius:4px;cursor:pointer;
+  transition:all .18s;
+  font-size:.82rem;
+}
+.calc-addon:hover{border-color:var(--purple);}
+.calc-addon input[type="checkbox"]{
+  appearance:none;width:16px;height:16px;
+  border:1.5px solid var(--border);border-radius:3px;
+  cursor:pointer;flex-shrink:0;position:relative;
+  transition:all .15s;
+}
+.calc-addon input[type="checkbox"]:checked{
+  background:var(--purple);border-color:var(--purple);
+}
+.calc-addon input[type="checkbox"]:checked::after{
+  content:'';position:absolute;left:4px;top:1px;
+  width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;
+  transform:rotate(45deg);
+}
+.addon-name{flex:1;color:var(--text);font-weight:500;line-height:1.3;}
+.addon-info{
+  background:transparent;border:none;cursor:pointer;
+  width:18px;height:18px;padding:0;margin:0;
+  display:inline-flex;align-items:center;justify-content:center;
+  border-radius:50%;
+  color:var(--text-light);
+  transition:color .15s, background .15s;
+  flex-shrink:0;
+}
+.addon-info:hover{color:var(--purple);background:rgba(91,43,217,.08);}
+.addon-info svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.addon-price{color:var(--text-mid);font-weight:600;font-size:.78rem;flex-shrink:0;}
+.addon-desc{
+  flex-basis:100%;
+  max-height:0;overflow:hidden;opacity:0;
+  font-size:.76rem;line-height:1.5;
+  color:var(--text-mid);font-style:italic;
+  transition:max-height .25s ease, opacity .2s ease, padding-top .25s ease, margin-top .25s ease;
+}
+.calc-addon.addon-expanded{border-color:var(--purple);}
+.calc-addon.addon-expanded .addon-desc{
+  max-height:80px;opacity:1;
+  padding-top:.6rem;margin-top:.1rem;
+  border-top:1px solid var(--border);
+}
+.calc-addon.included-note{
+  background:rgba(91,43,217,.04);border-style:dashed;
+  cursor:not-allowed;opacity:.7;
+}
+.calc-addon.included-note .addon-price{color:var(--purple);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;}
+.calc-addon.included-note input{pointer-events:none;}
+.calc-price{
+  margin-top:1.5rem;
+  background:var(--navy);
+  border-radius:12px;
+  padding:1.5rem 1.6rem;
+  color:#fff;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  flex-wrap:wrap;
+}
+.calc-price-l{}
+.calc-price-label{
+  font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(255,255,255,.6);margin-bottom:.25rem;
+}
+.calc-price-amount{
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;
+  font-size:2.2rem;letter-spacing:-.025em;line-height:1;
+}
+.calc-price-amount .small{font-size:.95rem;font-weight:600;opacity:.6;margin-left:.35rem;}
+.calc-price-r{
+  font-size:.78rem;line-height:1.5;color:rgba(255,255,255,.78);
+  max-width:220px;text-align:right;
+}
+.calc-price-r strong{color:#fff;font-weight:700;}
+.calc-empty .calc-price-amount{font-size:1.05rem;font-weight:600;color:rgba(255,255,255,.55);}
+.calc-empty .calc-price-amount .small{display:none;}
+
+@media (max-width:900px){
+  .scope-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:640px){
+  .included{padding:4rem 6vw;}
+  .scope-grid{grid-template-columns:1fr;}
+  .scope-tabs{gap:.35rem;}
+  .scope-tab{padding:.7rem 1rem;font-size:.82rem;}
+  .calc-addons{grid-template-columns:1fr;}
+  .calc-price{flex-direction:column;align-items:flex-start;text-align:left;}
+  .calc-price-r{text-align:left;max-width:none;}
+  .calc-price-amount{font-size:1.9rem;}
+}
+
 /* ── CONTACT ── */
 .contact{
   padding:5.5rem 7vw;background:var(--white);
@@ -587,9 +1042,9 @@ input[type="date"].ci::-webkit-calendar-picker-indicator{ opacity:.5; cursor:poi
 }
 .c-kicker::before{content:'';display:inline-block;width:16px;height:1.5px;background:var(--purple);}
 h2.c-title{
-  font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;
-  font-size:clamp(1.65rem,2.6vw,2.2rem);
-  color:var(--navy);line-height:1.15;letter-spacing:-.025em;margin-bottom:1rem;
+  font-family:var(--display);font-weight:540;font-optical-sizing:auto;
+  font-size:clamp(1.7rem,2.6vw,2.3rem);
+  color:var(--navy);line-height:1.12;letter-spacing:-.01em;margin-bottom:1rem;
 }
 .c-body{font-size:.97rem;line-height:1.82;color:var(--text-mid);margin-bottom:2rem;}
 .c-details{display:flex;flex-direction:column;gap:.85rem;}
@@ -602,27 +1057,83 @@ h2.c-title{
 .cd-ico svg{width:16px;height:16px;stroke:var(--purple);fill:none;stroke-width:2;}
 .cd-text{font-size:.88rem;color:var(--text-mid);}
 
-.cform{display:flex;flex-direction:column;gap:.85rem;}
+.cform{
+  display:flex;flex-direction:column;
+  background:var(--cream);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:1.9rem;
+  box-shadow:0 14px 44px -16px rgba(28,33,65,.2);
+}
+#contactForm{display:flex;flex-direction:column;gap:1rem;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;}
 .ci{
   background:var(--white);
-  border:1px solid var(--border);
-  border-radius:3px;padding:.8rem 1rem;
+  border:1.5px solid var(--border);
+  border-radius:7px;padding:.85rem 1rem;
   color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;
   font-size:.9rem;width:100%;outline:none;
-  transition:border-color .18s;
+  transition:border-color .18s, box-shadow .18s;
 }
 .ci::placeholder{color:var(--text-light);}
-.ci:focus{border-color:var(--purple);}
+.ci:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(91,43,217,.12);}
 select.ci{appearance:none;cursor:pointer;color:var(--text-light);}
 select.ci option{color:var(--text);}
 .csub{
   background:var(--navy);color:white;border:none;
-  padding:.9rem 2rem;border-radius:3px;
-  font-family:'Plus Jakarta Sans',sans-serif;font-size:.92rem;font-weight:600;
-  cursor:pointer;transition:background .18s;text-align:left;
+  padding:1rem 2rem;border-radius:8px;
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:.95rem;font-weight:700;
+  cursor:pointer;transition:background .18s;text-align:center;width:100%;
+  box-shadow:0 8px 20px -8px rgba(28,33,65,.45);margin-top:.35rem;
 }
 .csub:hover{background:var(--purple);}
+
+@media (max-width:640px){
+  .cform{padding:1.3rem;border-radius:12px;}
+}
+
+/* ── COMMERCIAL EMAIL CTA ── */
+.com-cta{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:2.5rem 1.75rem;
+  text-align:center;
+}
+.com-cta-ico{
+  width:54px;height:54px;margin:0 auto 1.1rem;
+  background:var(--navy);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
+.com-cta-ico svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.com-cta-title{
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;
+  font-size:1.25rem;color:var(--navy);
+  letter-spacing:-.02em;margin-bottom:.75rem;line-height:1.2;
+}
+.com-cta-body{
+  font-size:.93rem;line-height:1.7;color:var(--text-mid);
+  margin:0 auto 1.6rem;max-width:420px;
+}
+.com-cta-btn{
+  display:inline-block;background:var(--navy);color:#fff;
+  text-decoration:none;padding:.95rem 1.5rem;border-radius:7px;
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.92rem;
+  transition:background .18s,transform .18s;
+}
+.com-cta-btn:hover{background:var(--purple);transform:translateY(-1px);}
+.com-cta-or{margin:1.1rem 0 0;font-size:.88rem;color:var(--text-mid);}
+.com-cta-or a{color:var(--purple);text-decoration:none;font-weight:600;}
+.com-cta-or a:hover{text-decoration:underline;}
+.com-cta-reply{
+  margin:.4rem 0 0;font-size:.75rem;color:var(--text-light);
+  letter-spacing:.04em;
+}
+
+/* When commercial tab is active, hide everything except tabs + the commercial panel */
+form#contactForm.mode-commercial > *:not(.form-service-tabs):not(#fields-commercial){
+  display:none !important;
+}
 
 /* ── FOOTER ── */
 footer{
@@ -636,6 +1147,9 @@ footer{
   border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:1.75rem;
 }
 .fb-desc{font-size:.83rem;line-height:1.75;color:rgba(255,255,255,.3);max-width:210px;margin-top:1.1rem;}
+.fb-phone{display:inline-flex;align-items:center;gap:.5rem;color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;margin-top:1.2rem;transition:color .15s;}
+.fb-phone:hover{color:var(--purple);}
+.fb-phone svg{width:15px;height:15px;flex-shrink:0;}
 .fc-head{font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:1.1rem;}
 .flinks{list-style:none;display:flex;flex-direction:column;gap:.6rem;}
 .flinks a{text-decoration:none;font-size:.86rem;color:rgba(255,255,255,.42);transition:color .18s;}
@@ -662,7 +1176,7 @@ footer{
 
   /* Hero */
   .hero{ grid-template-columns:1fr; min-height:auto; }
-  .hero-left{ padding:5rem 5vw 3rem; text-align:center; align-items:center; }
+  .hero-left{ padding:calc(5rem + 68px) 5vw 3rem; text-align:center; align-items:center; }
   .hero-kicker{ justify-content:center; }
   .hero-btns{ justify-content:center; }
   .hero-right{ min-height:320px; }
@@ -695,9 +1209,30 @@ footer{
   /* Gallery */
 }
 
+/* ── NAV PROGRESSIVE TRIMMING ── */
+@media (max-width:1280px){
+  .nav-links li a{ padding:.5rem .75rem; font-size:.85rem; }
+  .nav-phone-text{ display:none; }            /* phone goes icon-only */
+  .nav-phone{ padding:.5rem .6rem; }
+}
+@media (max-width:1120px){
+  .nav-links li:has(a[href="#sectors"]){ display:none; }   /* least essential link; still in footer + mobile menu */
+}
+@media (max-width:980px){
+  /* Switch to hamburger early: tablets get the clean mobile nav, not a cramped desktop one */
+  .nav-links li:not(.nav-phone-li) a:not(.nav-cta){ display:none; }
+  .nav-links{ gap:0; }
+  .nav-hamburger{ display:flex; }
+  .nav-mobile{ display:none; }
+  .nav-mobile.open{ display:flex; }
+  li:has(.nav-cta){ display:none; }
+  .nav-links li.nav-phone-li{ display:list-item; }
+  .nav-links li.nav-phone-li a.nav-phone{ display:flex; padding:.5rem .55rem; }
+}
+
 @media (max-width: 640px) {
 
-  /* Nav — hide text links, keep logo and CTA */
+  /* Nav - hide text links, keep logo and CTA */
   .nav-links li:not(:last-child) a:not(.nav-cta){ display:none; }
   .nav-links{ gap:0; }
   /* Hamburger */
@@ -707,13 +1242,24 @@ footer{
   /* Hide desktop CTA on mobile to avoid duplication */
   li:has(.nav-cta){ display:none; }
 
+  /* Keep nav phone visible on mobile, icon only */
+  .nav-links li.nav-phone-li{ display:list-item; }
+  .nav-links li.nav-phone-li a.nav-phone{ display:flex; padding:.5rem .55rem; }
+  .nav-phone-text{ display:none; }
+
+  /* Method section stacks on mobile */
+  .method{padding:4rem 6vw;}
+  .method-grid{grid-template-columns:1fr;gap:1rem;}
+  .method-item{padding:1.4rem 1.3rem;}
+
   /* Hero */
-  .hero-left{ padding:2.5rem 5vw 2rem; text-align:center; align-items:center; }
+  .hero-left{ padding:calc(2.5rem + 68px) 5vw 2rem; text-align:center; align-items:center; }
   .hero-kicker{ justify-content:center; }
   .hero-btns{ justify-content:center; }
   h1{ font-size:clamp(2rem,8vw,2.8rem); }
   .hero-right{ min-height:260px; }
-  .hero-credentials{ padding:2rem 1.75rem 1.25rem; gap:1.1rem; }
+  .hero-quote{ padding:2rem 5vw 1.5rem; }
+  #hqForm{ max-width:460px; }
   .hcred{ padding-bottom:1.1rem; }
   .hero-stat-row{ grid-template-columns:repeat(3,1fr); }
   .hstat{ padding:1.1rem 1rem; }
@@ -767,7 +1313,7 @@ footer{
 
 /* ── ANIMATIONS ── */
 
-/* Hero entrance — staggered */
+/* Hero entrance - staggered */
 @keyframes heroFadeUp{
   from{opacity:0;transform:translateY(28px);}
   to{opacity:1;transform:translateY(0);}
@@ -793,7 +1339,7 @@ footer{
   to{width:28px;}
 }
 
-/* Hero left — staggered children */
+/* Hero left - staggered children */
 .hero-kicker{
   animation:slideInLeft .6s cubic-bezier(.16,1,.3,1) both;
   animation-delay:.1s;
@@ -822,7 +1368,7 @@ footer{
 .hcred:nth-child(4){animation:heroFadeUp .5s cubic-bezier(.16,1,.3,1) both;animation-delay:.84s;}
 .hero-stat-row{animation:heroFadeIn .6s ease both;animation-delay:1s;}
 
-/* Section headings — reveal underline on scroll */
+/* Section headings - reveal underline on scroll */
 .sec-kicker,.why-kicker,.c-kicker{
   opacity:0;transform:translateX(-12px);
   transition:opacity .5s ease,transform .5s ease;
@@ -871,7 +1417,7 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
 }
 .why-panel.revealed{opacity:1;transform:translateX(0);}
 
-/* Intro stats — count up feel */
+/* Intro stats - count up feel */
 .intro-stat{
   opacity:0;transform:translateY(16px);
   transition:opacity .5s ease,transform .5s ease;
@@ -927,6 +1473,75 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
     transition-duration:.01ms!important;
   }
 }
+/* ── FAQ ── */
+.faq{padding:5.5rem 7vw;background:var(--white);border-top:1px solid var(--border);}
+.faq-grid{max-width:760px;margin:0 auto;}
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-item:first-child{border-top:1px solid var(--border);}
+.faq-q{
+  width:100%;background:none;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
+  padding:1.35rem 0;text-align:left;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.97rem;font-weight:600;color:var(--navy);
+  transition:color .18s;
+}
+.faq-q:hover{color:var(--purple);}
+.faq-icon{width:20px;height:20px;stroke:var(--purple);fill:none;stroke-width:2.5;flex-shrink:0;transition:transform .28s cubic-bezier(.16,1,.3,1);}
+.faq-q.open .faq-icon{transform:rotate(180deg);}
+.faq-q.open{color:var(--purple);}
+.faq-a{overflow:hidden;max-height:0;transition:max-height .35s cubic-bezier(.16,1,.3,1);}
+.faq-a p{padding:.25rem 2rem 1.35rem 0;font-size:.92rem;line-height:1.8;color:var(--text-mid);}
+.faq-q.open + .faq-a{max-height:420px;}
+
+/* ── STORY BAND ── */
+.story-band{
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%, rgba(123,87,224,.14), transparent 60%),
+    var(--navy);
+  padding:5.5rem 7vw;
+}
+.story-inner{max-width:720px;margin:0 auto;text-align:center;}
+.story-kicker{font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--purple-mid);margin-bottom:1.25rem;}
+.story-kicker::before{content:'\2726  ';font-size:.85em;}
+.story-text{font-family:var(--display);font-weight:480;font-optical-sizing:auto;font-size:clamp(1.15rem,1.9vw,1.45rem);line-height:1.65;color:rgba(255,255,255,.85);margin-bottom:2rem;letter-spacing:.002em;}
+.story-promise{display:flex;flex-direction:column;gap:.6rem;margin:0 auto 2rem;max-width:460px;text-align:left;}
+.sp-item{display:flex;align-items:flex-start;gap:.75rem;font-size:.88rem;color:rgba(255,255,255,.7);line-height:1.5;}
+.sp-icon{color:var(--purple);font-weight:800;flex-shrink:0;font-size:1rem;}
+.story-review-link{
+  display:inline-block;font-size:.82rem;font-weight:600;
+  color:rgba(255,255,255,.38);text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.12);
+  padding-bottom:.15rem;transition:color .18s;
+}
+.story-review-link:hover{color:#fff;}
+
+/* ── GUARANTEE BADGE ── */
+.svc-guarantee{
+  display:flex;align-items:center;gap:.4rem;
+  font-size:.75rem;font-weight:600;color:var(--purple);
+  margin-top:.65rem;
+}
+.hq-guarantee{
+  font-size:.72rem;font-weight:600;color:var(--purple);
+  text-align:center;padding:.5rem 0 0;
+  display:flex;align-items:center;justify-content:center;gap:.35rem;
+}
+
+/* ── WHY ORIGIN ── */
+.why-origin{
+  font-size:.85rem;line-height:1.75;color:var(--text-light);
+  border-left:2px solid var(--purple);
+  padding:.6rem 0 .6rem 1rem;
+  margin:.35rem 0 1.35rem;
+}
+
+@media (max-width:640px){
+  .faq{padding:4rem 6vw;}
+  .faq-a p{padding-right:0;}
+  .story-band{padding:4rem 6vw;}
+}
+
 </style>
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -979,9 +1594,16 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#sectors">Sectors</a></li>
+    <li><a href="#included">Deep vs Regular</a></li>
     <li><a href="#why">About Us</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+    <li class="nav-phone-li">
+      <a href="tel:01279927101" class="nav-phone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="nav-phone-text">01279 927101</span>
+      </a>
+    </li>
+    <li><a href="#contact" class="nav-cta">Get Instant Quote</a></li>
   </ul>
   <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
     <span></span><span></span><span></span>
@@ -991,81 +1613,190 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
 <div class="nav-mobile" id="navMobile">
   <a href="#services" onclick="closeNav()">Services</a>
   <a href="#sectors" onclick="closeNav()">Sectors</a>
+  <a href="#included" onclick="closeNav()">Deep vs Regular</a>
   <a href="#why" onclick="closeNav()">About Us</a>
   <a href="#process" onclick="closeNav()">How We Work</a>
-  <a href="#contact" onclick="closeNav()" class="nav-cta-mob">Get a Quote</a>
+  <a href="#contact" onclick="closeNav()" class="nav-cta-mob">Get Instant Quote</a>
 </div>
 
-<!-- LOCATION BAR -->
-<div class="location-bar">
-  <span class="location-bar-inner">
-    <span>📍 Proudly serving Essex &amp; the surrounding areas</span>
-    <span class="lb-dot">·</span>
-    <span>📍 Proudly serving Essex &amp; the surrounding areas</span>
-    <span class="lb-dot">·</span>
-    <span>📍 Proudly serving Essex &amp; the surrounding areas</span>
-    <span class="lb-dot">·</span>
-    <span>📍 Proudly serving Essex &amp; the surrounding areas</span>
-    <span class="lb-dot">·</span>
-  </span>
-</div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-kicker"><span></span> Professional Commercial Cleaning</div>
-    <h1>Stop Chasing<br/>Your Cleaning<br/>Contractor.</h1>
-    <p class="hero-p">You're paying for a clean every week. You shouldn't have to check it was done. DNC Solutions gives businesses a reliable, professional cleaning service. One you can trust to show up, do the job properly, and never need chasing.</p>
+    <div class="hero-kicker">Domestic &amp; Commercial · Essex, Hertfordshire &amp; East London</div>
+    <h1>Cleaning in Essex<br/>You Never Have to <em class="h1-em">Chase</em></h1>
+    <p class="hero-p">You're paying for a clean every week. You shouldn't have to check it was done. DNC Solutions gives homes and businesses a reliable, professional cleaning service. One you can trust to show up, do the job properly, and never need chasing.</p>
     <div class="hero-btns">
-      <a href="#contact" class="btn-primary">Get a Free Quote</a>
+      <a href="#contact" class="btn-primary">Get Instant Quote</a>
       <a href="#services" class="btn-outline">See What We Do</a>
     </div>
 
   </div>
   <div class="hero-right">    <div class="hero-right-inner">
-      <div class="hero-credentials">
-        <div class="hcred">
-          <div class="hcred-num">£5m</div>
-          <div>
-            <div class="hcred-title">£5m Public Liability Insurance</div>
-            <div class="hcred-desc">You're covered. No surprises, no gaps.</div>
+      <div class="hero-quote">
+        <form id="hqForm" novalidate action="https://formspree.io/f/xrejnpew" method="POST">
+          <div class="hq-progress"><span id="hqBar"></span></div>
+
+          <!-- Phase: service -->
+          <div class="hq-phase active" data-phase="service">
+            <div class="hq-q">What do you need cleaned?</div>
+            <div class="hq-opts">
+              <button type="button" class="hq-opt" data-service="residential">Home / Domestic</button>
+              <button type="button" class="hq-opt" data-service="tenancy">End of Tenancy</button>
+              <button type="button" class="hq-opt" data-service="commercial">Commercial / Office</button>
+            </div>
           </div>
-        </div>
-        <div class="hcred">
-          <div class="hcred-num">DBS</div>
-          <div>
-            <div class="hcred-title">DBS-Checked, Uniformed Staff</div>
-            <div class="hcred-desc">People you're comfortable having on your site</div>
+
+          <!-- Phase: size -->
+          <div class="hq-phase" data-phase="size">
+            <button type="button" class="hq-back">← Back</button>
+            <div class="hq-q">How big is the property?</div>
+            <div class="hq-opts hq-grid">
+              <button type="button" class="hq-opt" data-size="studio">Studio / 1-bed</button>
+              <button type="button" class="hq-opt" data-size="2bed">2-bed</button>
+              <button type="button" class="hq-opt" data-size="3bed">3-bed</button>
+              <button type="button" class="hq-opt" data-size="4bed">4-bed</button>
+              <button type="button" class="hq-opt" data-size="5bed">5-bed</button>
+            </div>
           </div>
-        </div>
-        <div class="hcred">
-          <div class="hcred-num">24/7</div>
-          <div>
-            <div class="hcred-title">Built Around Your Schedule</div>
-            <div class="hcred-desc">Book online, get your quote in 24 hours, and choose your clean date.</div>
+
+          <!-- Phase: frequency (residential) -->
+          <div class="hq-phase" data-phase="freq">
+            <button type="button" class="hq-back">← Back</button>
+            <div class="hq-q">How often?</div>
+            <div class="hq-opts">
+              <button type="button" class="hq-opt" data-type="weekly">Weekly <span class="hq-badge">Best value</span></button>
+              <button type="button" class="hq-opt" data-type="fortnightly">Fortnightly</button>
+              <button type="button" class="hq-opt" data-type="monthly">Monthly</button>
+              <button type="button" class="hq-opt" data-type="oneoff">One-off</button>
+              <button type="button" class="hq-opt" data-type="deep">Deep clean</button>
+            </div>
           </div>
-        </div>
-        <div class="hcred">
-          <div class="hcred-num">📷</div>
-          <div>
-            <div class="hcred-title">Photo Reports After Every Clean</div>
-            <div class="hcred-desc">Proof it was done, every single visit</div>
+
+          <!-- Phase: addons -->
+          <div class="hq-phase" data-phase="addons">
+            <button type="button" class="hq-back">← Back</button>
+            <div class="hq-q">Any add-ons?</div>
+            <div class="hq-addon-q-sub">Optional. You can also add these when we confirm your booking.</div>
+
+            <!-- Residential add-ons -->
+            <div class="hq-addons" data-flow="residential">
+              <label class="hq-addon" data-hq-addon-deep="true">
+                <input type="checkbox" data-price="35" data-name="Oven Deep Clean &amp; Degrease">
+                <span class="hq-addon-name">Oven Deep Clean &amp; Degrease</span>
+                <span class="hq-addon-price">£35</span>
+              </label>
+              <label class="hq-addon" data-hq-addon-deep="true">
+                <input type="checkbox" data-price="18" data-name="Refrigerator Interior Detail">
+                <span class="hq-addon-name">Refrigerator Interior Detail</span>
+                <span class="hq-addon-price">£18</span>
+              </label>
+              <label class="hq-addon" data-hq-addon-deep="true">
+                <input type="checkbox" data-price="22" data-name="Freezer Defrost &amp; Sanitise">
+                <span class="hq-addon-name">Freezer Defrost &amp; Sanitise</span>
+                <span class="hq-addon-price">£22</span>
+              </label>
+              <label class="hq-addon" data-hq-addon-deep="true">
+                <input type="checkbox" data-price="28" data-name="Cupboard Interior Detail">
+                <span class="hq-addon-name">Cupboard Interior Detail</span>
+                <span class="hq-addon-price">£28</span>
+              </label>
+              <label class="hq-addon">
+                <input type="checkbox" data-price="40" data-name="Carpet Deep Clean &amp; Extraction (per room)">
+                <span class="hq-addon-name">Carpet Deep Clean &amp; Extraction <span style="color:var(--text-light);font-weight:500;">(per room)</span></span>
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn qty-down" aria-label="Fewer rooms">−</button>
+                  <span class="qty-num">1</span>
+                  <button type="button" class="qty-btn qty-up" aria-label="More rooms">+</button>
+                </div>
+                <span class="hq-addon-price">£40</span>
+              </label>
+              <label class="hq-addon">
+                <input type="checkbox" data-price="45" data-name="Upholstery Deep Clean &amp; Refresh (standard sofa)">
+                <span class="hq-addon-name">Upholstery Deep Clean &amp; Refresh <span style="color:var(--text-light);font-weight:500;">(standard sofa)</span></span>
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn qty-down" aria-label="Fewer sofas">−</button>
+                  <span class="qty-num">1</span>
+                  <button type="button" class="qty-btn qty-up" aria-label="More sofas">+</button>
+                </div>
+                <span class="hq-addon-price">£45</span>
+              </label>
+            </div>
+
+            <!-- End of Tenancy add-ons -->
+            <div class="hq-addons" data-flow="tenancy">
+              <label class="hq-addon">
+                <input type="checkbox" data-price="40" data-name="Carpet Deep Clean &amp; Extraction (per room)">
+                <span class="hq-addon-name">Carpet Deep Clean &amp; Extraction <span style="color:var(--text-light);font-weight:500;">(per room)</span></span>
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn qty-down" aria-label="Fewer rooms">−</button>
+                  <span class="qty-num">1</span>
+                  <button type="button" class="qty-btn qty-up" aria-label="More rooms">+</button>
+                </div>
+                <span class="hq-addon-price">£40</span>
+              </label>
+              <label class="hq-addon">
+                <input type="checkbox" data-price="45" data-name="Upholstery Deep Clean &amp; Refresh (standard sofa)">
+                <span class="hq-addon-name">Upholstery Deep Clean &amp; Refresh <span style="color:var(--text-light);font-weight:500;">(standard sofa)</span></span>
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn qty-down" aria-label="Fewer sofas">−</button>
+                  <span class="qty-num">1</span>
+                  <button type="button" class="qty-btn qty-up" aria-label="More sofas">+</button>
+                </div>
+                <span class="hq-addon-price">£45</span>
+              </label>
+              <label class="hq-addon">
+                <input type="checkbox" data-price="25" data-name="Surface Mould Treatment (per room)">
+                <span class="hq-addon-name">Surface Mould Treatment <span style="color:var(--text-light);font-weight:500;">(per room)</span></span>
+                <span class="hq-addon-price">£25</span>
+              </label>
+              <label class="hq-addon" data-hq-addon-steam="true">
+                <input type="checkbox" data-name="Whole-Property Steam Sanitisation">
+                <span class="hq-addon-name">Whole-Property Steam Sanitisation</span>
+                <span class="hq-addon-price" data-hq-steam-price>£120+</span>
+              </label>
+            </div>
+
+            <button type="button" class="hq-continue">Continue →</button>
           </div>
-        </div>
-      </div>
-      <div class="hero-stat-row">
-        <div class="hstat">
-          <div class="hstat-n">£5<em>m</em></div>
-          <div class="hstat-l">Public Liability</div>
-        </div>
-        <div class="hstat">
-          <div class="hstat-n">⚡</div>
-          <div class="hstat-l">Same-Day Response</div>
-        </div>
-        <div class="hstat">
-          <div class="hstat-n">98<em>%</em></div>
-          <div class="hstat-l">Retention Rate</div>
-        </div>
+
+          <!-- Phase: details + price -->
+          <div class="hq-phase" data-phase="details">
+            <button type="button" class="hq-back">← Back</button>
+            <div class="hq-price-box">
+              <div class="hq-price-label">Your fixed price</div>
+              <div class="hq-price" id="hqPrice">£...</div>
+              <div class="hq-price-note" id="hqNote"></div>
+            </div>
+            <input class="hq-in" type="text" name="hq_name" placeholder="Your name *" required>
+            <input class="hq-in" type="tel" name="hq_phone" placeholder="Phone *" required>
+            <input class="hq-in" type="email" name="hq_email" placeholder="Email *" required>
+            <input class="hq-in" type="text" name="hq_address" placeholder="Property address *" required>
+            <input type="hidden" name="hq_service" id="hqHidService">
+            <input type="hidden" name="hq_size" id="hqHidSize">
+            <input type="hidden" name="hq_type" id="hqHidType">
+            <input type="hidden" name="hq_addons" id="hqHidAddons">
+            <input type="hidden" name="hq_price" id="hqHidPrice">
+            <button type="submit" class="hq-submit">Get My Instant Quote →</button>
+            <div class="hq-guarantee"><span>✓</span> Not satisfied? We'll put it right at no charge.</div>
+          </div>
+
+          <!-- Phase: commercial -->
+          <div class="hq-phase" data-phase="com">
+            <button type="button" class="hq-back">← Back</button>
+            <div class="hq-q">Let's talk about your premises.</div>
+            <p class="hq-com-body">Commercial cleans are priced on what your site actually needs. Email us with a few details and we'll come back within one working day.</p>
+            <a class="hq-com-btn" href="mailto:contact@dncsolutionsltd.co.uk?subject=Commercial%20cleaning%20enquiry&amp;body=Hi%20DNC%2C%0A%0ACompany%3A%20%0APremises%20type%3A%20%0AApprox%20size%3A%20%0AFrequency%20needed%3A%20%0AAddress%3A%20%0A%0AThanks">Email contact@dncsolutionsltd.co.uk</a>
+            <a class="hq-com-call" href="tel:01279927101">or call 01279 927101</a>
+          </div>
+
+          <!-- Phase: done -->
+          <div class="hq-phase" data-phase="done">
+            <div class="hq-done-ico">✓</div>
+            <div class="hq-q">Quote request sent.</div>
+            <p class="hq-com-body">Thanks, we've got your details and your fixed price. We'll be in touch shortly to lock in your clean.</p>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -1074,19 +1805,19 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
 <!-- TICKER -->
 <div class="services-strip">
   <div class="strip-inner">
-    <span class="strip-item">Residential Cleaning</span>    <span class="strip-item">Commercial Cleaning</span>    <span class="strip-item">End of Tenancy Cleans</span>    <span class="strip-item">Offices · Gyms · Clinics</span>    <span class="strip-item">Weekly &amp; Fortnightly</span>    <span class="strip-item">Photo Reports Every Visit</span>    <span class="strip-item">Fixed-Price Contracts</span>    <span class="strip-item">Essex &amp; Surrounding Areas</span>    <span class="strip-item">Residential Cleaning</span>    <span class="strip-item">Commercial Cleaning</span>    <span class="strip-item">End of Tenancy Cleans</span>    <span class="strip-item">Offices · Gyms · Clinics</span>    <span class="strip-item">Weekly &amp; Fortnightly</span>    <span class="strip-item">Photo Reports Every Visit</span>    <span class="strip-item">Fixed-Price Contracts</span>    <span class="strip-item">Essex &amp; Surrounding Areas</span>  </div>
+    <span class="strip-item">Domestic Cleaning</span>    <span class="strip-item">Commercial Cleaning</span>    <span class="strip-item">End of Tenancy Cleans</span>    <span class="strip-item">Offices · Gyms · Clinics</span>    <span class="strip-item">Weekly &amp; Fortnightly</span>    <span class="strip-item">Photo Reports Every Visit</span>    <span class="strip-item">Fixed-Price Contracts</span>    <span class="strip-item">Essex &amp; Surrounding Areas</span>    <span class="strip-item">Domestic Cleaning</span>    <span class="strip-item">Commercial Cleaning</span>    <span class="strip-item">End of Tenancy Cleans</span>    <span class="strip-item">Offices · Gyms · Clinics</span>    <span class="strip-item">Weekly &amp; Fortnightly</span>    <span class="strip-item">Photo Reports Every Visit</span>    <span class="strip-item">Fixed-Price Contracts</span>    <span class="strip-item">Essex &amp; Surrounding Areas</span>  </div>
 </div>
 
 <!-- INTRO BAND -->
 <div class="intro fade-in">
   <div class="intro-left">
-    <p>Most businesses have the same cleaning story: <strong>a contractor who was great at first, then gradually started cutting corners. Until you were spending more time chasing them than running your business.</strong> DNC Solutions exists to be different. We've built a cleaning company that shows up, does it properly, and gives you proof it was done, so you can get back to work.</p>
+    <p>Most people have the same cleaning story: someone who was excellent at first, then slowly started cutting corners, until you were spending more time chasing them than getting on with your day. <strong>DNC Solutions was built to be the opposite.</strong> We show up, we do the job properly, and we give you proof it was done, so you can forget about it entirely.</p>
   </div>
   <div class="intro-divider"></div>
   <div class="intro-right">
     <div class="intro-stat">
-      <div class="intro-stat-n">98<em>%</em></div>
-      <div class="intro-stat-l">Client retention rate</div>
+      <div class="intro-stat-n">📸</div>
+      <div class="intro-stat-l">Photo proof after every clean</div>
     </div>
     <div class="intro-stat">
       <div class="intro-stat-n">£5<em>m</em></div>
@@ -1113,21 +1844,22 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
   <div class="services-grid">
     <div class="svc-card">
       <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-      <div class="svc-title">Residential Cleaning</div>
-      <p class="svc-desc">Weekly or fortnightly cleans for your home, done to a consistent standard every visit. You come back to a clean house without having to think about it. We work around you, your schedule and how you like things done.</p>
-      <a href="#contact" class="svc-link">Get a quote</a>
+      <div class="svc-title">Domestic Cleaning</div>
+      <p class="svc-desc">Weekly, fortnightly or monthly cleans for your home, done to a consistent standard every visit. We assign you a dedicated cleaner so the same person builds familiarity with your home. Every new client starts with a one-off deep clean to set the standard, and we maintain it from there.</p>
+      <a href="#contact" class="svc-link">Get instant quote</a>
     </div>
     <div class="svc-card">
       <div class="svc-ico"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
       <div class="svc-title">Commercial Cleaning</div>
       <p class="svc-desc">Contract cleaning for offices, gyms, clinics and more. Your space is ready before your team arrives, every single day. No chasing, no checking, just a clean you can rely on. We cover everything from desks and kitchens to changing rooms and waiting areas.</p>
-      <a href="#contact" class="svc-link">Get a quote</a>
+      <a href="#contact" class="svc-link">Get instant quote</a>
     </div>
     <div class="svc-card">
       <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M21 10H3"/><path d="M21 6H3"/><path d="M21 14H3"/><path d="M21 18H3"/></svg></div>
       <div class="svc-title">End of Tenancy Cleaning</div>
       <p class="svc-desc">A thorough, top-to-bottom clean that gives landlords and tenants the best chance of a full deposit return. We get into every corner, every appliance and every surface so the property is handed back in the condition it deserves.</p>
-      <a href="#contact" class="svc-link">Get a quote</a>
+      <div class="svc-guarantee"><span>✓</span> Not satisfied? We'll return within 72 hours at no charge.</div>
+      <a href="#contact" class="svc-link">Get instant quote</a>
     </div>
   </div>
 </section>
@@ -1183,6 +1915,234 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
   </div>
 </section>
 
+<!-- WHAT'S INCLUDED -->
+<section class="included fade-in" id="included">
+  <div class="inc-head">
+    <div class="inc-kicker">What's Included</div>
+    <h2 class="inc-title">Standard, deep or end of tenancy: exactly what you get.</h2>
+    <p class="inc-sub">No mystery, no surprises. Here's precisely what's covered at each tier, room by room. Pick the level that fits the job.</p>
+  </div>
+
+  <div class="scope-tabs" role="tablist">
+    <button class="scope-tab active" data-scope="standard" type="button">Standard Clean</button>
+    <button class="scope-tab" data-scope="deep" type="button">Deep Clean</button>
+    <button class="scope-tab" data-scope="eot" type="button">End of Tenancy</button>
+  </div>
+
+  <!-- STANDARD -->
+  <div class="scope-panel active" data-panel="standard">
+    <div class="scope-grid">
+      <div class="scope-card">
+        <div class="scope-card-head">
+          <svg viewBox="0 0 24 24"><path d="M3 12h18M5 12V6h14v6M5 12v6h14v-6M9 6V3h6v3"/></svg>
+          <div class="scope-card-title">Kitchen</div>
+        </div>
+        <ul class="scope-list">
+          <li>Wipe down surfaces &amp; worktops</li>
+          <li>Clean &amp; shine sink and tap</li>
+          <li>Clean hob &amp; splashback</li>
+          <li>Exterior of appliances</li>
+          <li>Oven door / front surface only</li>
+          <li>Interior windows &amp; windowsills</li>
+          <li>Hoover &amp; mop</li>
+          <li>Spot-clean surfaces that need it</li>
+          <li>Finishing touches</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-card-head">
+          <svg viewBox="0 0 24 24"><path d="M4 12V5a2 2 0 0 1 2-2h2v4M4 12h16M4 12v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6M8 20v2M16 20v2"/></svg>
+          <div class="scope-card-title">Bathroom</div>
+        </div>
+        <ul class="scope-list">
+          <li>Clean &amp; shine sink, toilet &amp; bath</li>
+          <li>Clean shower glass, tray &amp; shower</li>
+          <li>Clean mirrors</li>
+          <li>Internal windows &amp; sills</li>
+          <li>Shower trap &amp; sink plug</li>
+          <li>Empty bins</li>
+          <li>Hoover &amp; mop</li>
+          <li>Finishing touches</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-card-head">
+          <svg viewBox="0 0 24 24"><path d="M3 18v-6a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v6M3 18h18M3 18v2M21 18v2M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/></svg>
+          <div class="scope-card-title">Bedrooms</div>
+        </div>
+        <ul class="scope-list">
+          <li>All furniture polished</li>
+          <li>Mirrors cleaned</li>
+          <li>Beds neatened</li>
+          <li>Windows &amp; windowsills</li>
+          <li>Bins emptied</li>
+          <li>Hoover &amp; mop</li>
+          <li>Finishing touches</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-card-head">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2h-4v-7H10v7H6a2 2 0 0 1-2-2V9z"/></svg>
+          <div class="scope-card-title">Living &amp; Hallways</div>
+        </div>
+        <ul class="scope-list">
+          <li>All furniture polished</li>
+          <li>Mirrors cleaned</li>
+          <li>Sofa &amp; cushions neatened</li>
+          <li>Windows &amp; windowsills</li>
+          <li>Stairs hoovered</li>
+          <li>Bannisters</li>
+          <li>Hoover &amp; mop</li>
+          <li>Finishing touches</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEEP -->
+  <div class="scope-panel" data-panel="deep">
+    <div class="scope-grid">
+      <div class="scope-card">
+        <div class="scope-card-head">
+          <svg viewBox="0 0 24 24"><path d="M3 12h18M5 12V6h14v6M5 12v6h14v-6M9 6V3h6v3"/></svg>
+          <div class="scope-card-title">Kitchen</div>
+        </div>
+        <ul class="scope-list">
+          <li><em>Everything in standard, plus:</em></li>
+          <li>Full oven interior deep clean</li>
+          <li>Inside fridge &amp; freezer</li>
+          <li>Inside cupboards &amp; cupboard doors (in &amp; out)</li>
+          <li>Plinths &amp; underneath wall units</li>
+          <li>Tiles &amp; splashback (thorough)</li>
+          <li>Extractor fan</li>
+          <li>Hob cleaned thoroughly</li>
+          <li>Woodwork, plugs &amp; light switches</li>
+          <li>Limescale removal</li>
+          <li>Behind &amp; under movable appliances</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-card-head">
+          <svg viewBox="0 0 24 24"><path d="M4 12V5a2 2 0 0 1 2-2h2v4M4 12h16M4 12v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6M8 20v2M16 20v2"/></svg>
+          <div class="scope-card-title">Bathroom</div>
+        </div>
+        <ul class="scope-list">
+          <li><em>Everything in standard, plus:</em></li>
+          <li>Remove all limescale &amp; hard-water marks</li>
+          <li>Clean all tiles &amp; grout</li>
+          <li>Deep clean shower</li>
+          <li>Deep clean radiator</li>
+          <li>All woodwork</li>
+          <li>Plugs &amp; light switches</li>
+          <li>Blinds</li>
+          <li>Thorough dusting throughout</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-card-head">
+          <svg viewBox="0 0 24 24"><path d="M3 18v-6a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v6M3 18h18M3 18v2M21 18v2M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/></svg>
+          <div class="scope-card-title">Bedrooms</div>
+        </div>
+        <ul class="scope-list">
+          <li><em>Everything in standard, plus:</em></li>
+          <li>All woodwork &amp; skirting boards</li>
+          <li>Plugs &amp; light switches</li>
+          <li>Blinds</li>
+          <li>Radiators</li>
+          <li>Light fixtures &amp; high dusting</li>
+          <li>Behind &amp; under furniture</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-card-head">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2h-4v-7H10v7H6a2 2 0 0 1-2-2V9z"/></svg>
+          <div class="scope-card-title">Living &amp; Hallways</div>
+        </div>
+        <ul class="scope-list">
+          <li><em>Everything in standard, plus:</em></li>
+          <li>All woodwork, spindles &amp; skirting</li>
+          <li>Doors &amp; door frames</li>
+          <li>Radiators</li>
+          <li>Plugs &amp; light switches</li>
+          <li>Blinds</li>
+          <li>Light fixtures</li>
+          <li>Behind &amp; under furniture</li>
+          <li>Wall spot-washing (marks)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- END OF TENANCY -->
+  <div class="scope-panel" data-panel="eot">
+    <div class="scope-eot-note">
+      <strong>End of tenancy is a full deep clean:</strong> every item in the Deep Clean tab, delivered to letting-agent and deposit-return inspection standard. Where the property is empty, we also detail inside <strong>all cupboards, drawers, wardrobes and appliances</strong>, and address <strong>marks, scuffs and limescale</strong> throughout. If your agent raises any issues, we'll return within 72 hours at no charge.
+    </div>
+    <div class="scope-grid" style="margin-top:2rem;">
+      <div class="scope-card">
+        <div class="scope-card-head">
+          <svg viewBox="0 0 24 24"><path d="M3 12h18M5 12V6h14v6M5 12v6h14v-6M9 6V3h6v3"/></svg>
+          <div class="scope-card-title">Kitchen</div>
+        </div>
+        <ul class="scope-list">
+          <li>Full deep clean of every surface</li>
+          <li>Oven interior, hob, extractor</li>
+          <li>Inside fridge, freezer, all cupboards</li>
+          <li>Behind &amp; under all appliances</li>
+          <li>Limescale &amp; hard-water marks removed</li>
+          <li>Tiles, grout &amp; splashback</li>
+          <li>Woodwork &amp; plinths</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-card-head">
+          <svg viewBox="0 0 24 24"><path d="M4 12V5a2 2 0 0 1 2-2h2v4M4 12h16M4 12v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6M8 20v2M16 20v2"/></svg>
+          <div class="scope-card-title">Bathroom</div>
+        </div>
+        <ul class="scope-list">
+          <li>Full descale of every surface</li>
+          <li>Shower, screen, tray, grout</li>
+          <li>Toilet, basin, bath</li>
+          <li>Radiator &amp; woodwork</li>
+          <li>Tiles &amp; mirrors</li>
+          <li>Internal windows &amp; sills</li>
+          <li>All plugs, blinds &amp; light switches</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-card-head">
+          <svg viewBox="0 0 24 24"><path d="M3 18v-6a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v6M3 18h18M3 18v2M21 18v2M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/></svg>
+          <div class="scope-card-title">Bedrooms</div>
+        </div>
+        <ul class="scope-list">
+          <li>Inside all wardrobes &amp; drawers</li>
+          <li>Skirting, woodwork &amp; doors</li>
+          <li>Radiators &amp; light fixtures</li>
+          <li>High dusting throughout</li>
+          <li>Behind &amp; under all furniture</li>
+          <li>Windows, sills &amp; blinds</li>
+          <li>Wall spot-washing for marks</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-card-head">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2h-4v-7H10v7H6a2 2 0 0 1-2-2V9z"/></svg>
+          <div class="scope-card-title">Living &amp; Hallways</div>
+        </div>
+        <ul class="scope-list">
+          <li>All skirting, spindles &amp; bannisters</li>
+          <li>Doors &amp; door frames</li>
+          <li>Radiators &amp; light fixtures</li>
+          <li>Plugs, blinds &amp; switches</li>
+          <li>Behind &amp; under all furniture</li>
+          <li>Wall spot-washing throughout</li>
+          <li>Stairs &amp; hallways top to bottom</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- WHY -->
 <section class="why fade-in" id="why">
   <div class="why-panel">
@@ -1211,21 +2171,30 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
           <div class="wi-desc">Timestamped proof it was done, sent automatically after each clean.</div>
         </div>
       </div>
+      <div class="why-item">
+        <span class="wi-ico">🛡️</span>
+        <div>
+          <div class="wi-title">Damage Cover as Standard</div>
+          <div class="wi-desc">Every clean is covered by our £5m public liability policy. If anything is ever damaged, we deal with it directly.</div>
+          <!-- TODO: Once Nnamdi confirms underwriter, change "£5m public liability policy" → "£5m public liability policy underwritten by [Hiscox / AXA / etc]" -->
+        </div>
+      </div>
     </div>
   </div>
   <div class="why-right">
     <div class="why-kicker">Why DNC Solutions</div>
     <h2 class="why-title">We know how frustrating a bad cleaning contractor can be. We built DNC Solutions to be the better option.</h2>
-    <p class="why-body">Every client who comes to us has the same story. A contractor they trusted started cutting corners: missed areas, no-shows, excuses. They spent more time managing their cleaner than running their business. That's exactly the problem DNC Solutions was built to solve. We handle everything remotely — quotes, scheduling, reports — so the whole experience is as low-friction as possible.</p>
+    <p class="why-body">Almost everyone who comes to us has the same story. A cleaner they trusted slowly started cutting corners: missed areas, no-shows, excuses. Before long they were spending more time managing the cleaning than getting on with their day. That's exactly the problem DNC Solutions was built to solve. We handle everything remotely, from quotes to scheduling to photo reports, so the whole thing stays effortless for you.</p>
+    <p class="why-origin">Founded in Essex by two people who'd watched reliable cleaning be harder to find than it should be. Built around the things that were always missing: the same person every time, proof the job was done, and a team that actually turns up.</p>
     <ul class="check-list">
       <li>A direct line to us whenever you need it</li>
       <li>Photo reports after every single clean. No chasing.</li>
       <li>DBS-checked, uniformed staff on every site</li>
       <li>24-hour emergency response, 7 days a week</li>
       <li>Fixed-price contracts. No invoice surprises.</li>
-      <li>Proudly serving businesses across Essex &amp; Surrounding Areas</li>
+      <li>Proudly serving homes and businesses across Essex, Hertfordshire and East London</li>
     </ul>
-    <a href="#contact" class="btn-primary">Book Your Free Survey</a>
+    <a href="#contact" class="btn-primary">Get Your Instant Quote</a>
   </div>
 </section>
 
@@ -1234,23 +2203,23 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
   <div class="sec-head">
     <div class="sec-kicker">How We Start</div>
     <h2 class="sec-title">Booked and Sorted in Three Simple Steps</h2>
-    <p class="sec-sub">No site visits. No back and forth. Just fill in your details, get your quote, and get booked in.</p>
+    <p class="sec-sub">No site visits. No back and forth. Just pick your clean, see your price instantly, and get booked in.</p>
   </div>
   <div class="process-grid">
     <div class="pstep">
       <div class="pstep-n">01</div>
-      <div class="pstep-title">Get a Free Quote</div>
-      <p class="pstep-desc">Fill in our quick form with your property details. No site visit needed — we handle everything remotely.</p>
+      <div class="pstep-title">Get an Instant Quote</div>
+      <p class="pstep-desc">Fill in our quick form with your property details. No site visit needed. We handle everything remotely.</p>
     </div>
     <div class="pstep">
       <div class="pstep-n">02</div>
-      <div class="pstep-title">Receive Your Fixed-Price Quote</div>
-      <p class="pstep-desc">Within 24 hours you'll have a clear, fixed-price quote by email. No hidden extras. The price you see is the price you pay.</p>
+      <div class="pstep-title">We Confirm the Detail</div>
+      <p class="pstep-desc">We'll be in touch quickly to confirm the scope, date and access, so there are no surprises on the day. The price you saw is the price you pay.</p>
     </div>
     <div class="pstep">
       <div class="pstep-n">03</div>
       <div class="pstep-title">Confirm &amp; Book In</div>
-      <p class="pstep-desc">Happy with the quote? Confirm online or by email and we'll schedule your first clean at a time that suits you.</p>
+      <p class="pstep-desc">Happy with the quote? Confirm online or by email and we'll arrange your first clean at a time that suits you.</p>
     </div>
     <div class="pstep">
       <div class="pstep-n">04</div>
@@ -1260,18 +2229,176 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
   </div>
 </section>
 
-<!-- TESTIMONIAL -->
-<div class="testimonial fade-in">
-  <p class="t-quote">Switching to DNC was the best decision we made. The consistency and professionalism is something other contractors simply haven't matched.</p>
-  <div class="t-attr">— Operations Manager, Regional Logistics Company</div>
+<!-- STORY BAND -->
+<div class="story-band fade-in">
+  <div class="story-inner">
+    <div class="story-kicker">Why It Exists</div>
+    <p class="story-text">DNC Solutions was founded in Essex by two people who'd watched reliable cleaning be harder to find than it should be. We built the company around the things that were always missing: the same person every visit, proof the job was done, and a team that actually shows up. Every clean is documented and every query gets a same-day response. That's not a target. It's how we operate from day one.</p>
+    <div class="story-promise">
+      <div class="sp-item"><span class="sp-icon">✓</span><span>Dedicated cleaner assigned to your home or premises</span></div>
+      <div class="sp-item"><span class="sp-icon">✓</span><span>Timestamped photo reports sent after every single clean</span></div>
+      <div class="sp-item"><span class="sp-icon">✓</span><span>Not satisfied with an end of tenancy clean? We return within 72 hours at no charge</span></div>
+      <!-- TODO: Once Nnamdi confirms underwriter, change "£5m public liability insurance" → "£5m public liability via [Hiscox / AXA / etc]" -->
+      <div class="sp-item"><span class="sp-icon">✓</span><span>Every clean covered by £5m public liability insurance</span></div>
+    </div>
+    <!-- Update the link below with your Google Business Profile URL once you have reviews -->
+    <a href="#contact" class="story-review-link">Read our Google reviews →</a>
+  </div>
 </div>
+
+<!-- OUR METHOD -->
+<!-- TODO (Nnamdi/Danny): Verify each item below matches your actual practice before going live. Edit, remove, or reword anything you don't currently do. -->
+<section class="method fade-in" id="method">
+  <div class="method-head">
+    <span class="method-kicker">Our Method</span>
+    <h2 class="method-title">The standards behind every clean</h2>
+    <p class="method-lead">Most cleans look fine on the day. The differences show up over weeks: dust that's been spread instead of removed, surfaces that streak in side-light, allergens that recirculate every time the vacuum runs. These are the practices we use to make sure they don't.</p>
+  </div>
+  <div class="method-grid">
+    <div class="method-item">
+      <div class="method-num">✦</div>
+      <div class="method-body">
+        <h3 class="method-h">Colour-coded microfibre system</h3>
+        <p class="method-p">Red cloths for sanitary areas, blue for kitchens, green for living spaces, yellow for low-risk dusting. Nothing crosses zones. Cross-contamination is the single biggest source of bad cleans in our industry, and we engineer it out.</p>
+      </div>
+    </div>
+    <div class="method-item">
+      <div class="method-num">✦</div>
+      <div class="method-body">
+        <h3 class="method-h">HEPA-filter vacuums on every job</h3>
+        <p class="method-p">High-street vacuums recirculate dust below 2.5 microns: the size that matters most for allergens and asthma. HEPA-filter vacuums capture and contain it. Important if anyone in the home has allergies, asthma, or young children.</p>
+      </div>
+    </div>
+    <div class="method-item">
+      <div class="method-num">✦</div>
+      <div class="method-body">
+        <h3 class="method-h">Top-to-bottom, back-to-front</h3>
+        <p class="method-p">Gravity wins. We clean ceilings, high surfaces, and shelves first, then mid-height, then floors. We work outwards from the room furthest from the door. By the time we leave, nothing we've cleaned has been re-soiled.</p>
+      </div>
+    </div>
+    <div class="method-item">
+      <div class="method-num">✦</div>
+      <div class="method-body">
+        <h3 class="method-h">Two-cloth finish on polished surfaces</h3>
+        <p class="method-p">First cloth lifts dirt and product residue. Second cloth dries and polishes. No streaks on glass, stainless steel, or polished wood. Skipping this step is why most cleaned surfaces still streak when daylight catches them at an angle.</p>
+      </div>
+    </div>
+    <div class="method-item">
+      <div class="method-num">✦</div>
+      <div class="method-body">
+        <h3 class="method-h">Your choice on chemistry</h3>
+        <p class="method-p">We carry both. Eco-grade products (Method, Ecover and equivalents) for clients who prefer low-impact formulations. Professional trade chemistry (HG, Cif Pro) where heavy carbon, limescale, or set-in stains need real solvents. You tell us your preference; we don't decide for you.</p>
+      </div>
+    </div>
+    <div class="method-item">
+      <div class="method-num">✦</div>
+      <div class="method-body">
+        <h3 class="method-h">Documented finish, same day</h3>
+        <p class="method-p">Final walkthrough against a written checklist before we leave. Photographic record of completed areas sent to you the same day. If anything is short of standard, we know about it before you do, and we come back to put it right free within 72 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq fade-in" id="faq">
+  <div class="sec-head">
+    <div class="sec-kicker">Before You Book</div>
+    <h2 class="sec-title">Common Questions</h2>
+    <p class="sec-sub">Everything you'd want to know before letting someone into your home or handing over your property.</p>
+  </div>
+  <div class="faq-grid">
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">
+        <span>Do you bring your own products and equipment?</span>
+        <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">
+        <p>Yes, we arrive fully equipped with professional-grade products and everything needed for the job. You don't need to provide anything. If you have a product allergy, a preferred brand, or a surface that needs particular care, just let us know when you book and we'll accommodate.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">
+        <span>Is it the same cleaner every visit?</span>
+        <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">
+        <p>For recurring domestic clients, yes. We assign you a dedicated cleaner so the same person builds familiarity with your home, knows how you like things done, and you're never opening the door to a stranger. If your regular cleaner is unavailable, we will always let you know in advance and introduce any cover.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">
+        <span>What if I'm not happy with the clean?</span>
+        <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">
+        <p>Let us know within 24 hours and we'll return to put it right at no charge. For end of tenancy cleans specifically, if your letting agent or landlord raises any issues at the check-out inspection, we will come back within 72 hours free of charge. We send photo reports after every clean so there's a clear record of the condition we left the property in.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">
+        <span>Do I need to be home during the clean?</span>
+        <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">
+        <p>No. Most of our clients prefer to be out while we work. You can leave a key, use a key safe, or arrange access however suits you. We'll confirm the access arrangements before your first clean so there's nothing to figure out on the day.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">
+        <span>What happens if something gets damaged?</span>
+        <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">
+        <!-- TODO: Once Nnamdi confirms underwriter, change "£5m public liability insurance" → "£5m public liability insurance underwritten by [Hiscox / AXA / etc]" -->
+        <p>Every clean is covered by our £5m public liability insurance. If anything is damaged during a clean, we deal with it directly. You won't need to chase us or navigate a claims process yourself. The photo reports we send after every visit mean there's always a clear record of the condition of your property.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">
+        <span>Are your cleaners employees or self-employed contractors?</span>
+        <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">
+        <p>Our cleaners are vetted, trained and DBS-checked. We don't send strangers. Everyone who works under the DNC name goes through our own onboarding process and is introduced to the client before their first visit. We maintain a consistent team rather than rotating staff, so you're not dealing with a different person every time.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">
+        <span>How much notice do I need to cancel or change a booking?</span>
+        <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">
+        <p>For recurring bookings, we ask for 48 hours' notice to cancel or reschedule a visit without charge. For one-off and end of tenancy cleans, we ask for at least 72 hours. If something comes up, just drop us a message and we'll sort it. Full cancellation and refund terms are in our <a href="terms.html" style="color:var(--purple);">Terms of Service</a>.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">
+        <span>Do you cover Hertfordshire and East London as well as Essex?</span>
+        <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">
+        <p>Yes. We cover Essex, Hertfordshire and East London. If you're unsure whether we reach your specific area, get in touch and we'll confirm. We're building our coverage and will always tell you honestly if a location is outside our current range rather than waste your time.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <!-- CONTACT -->
 <section class="contact fade-in" id="contact">
   <div class="contact-left">
-    <div class="c-kicker">Get Your Quote</div>
-    <h2 class="c-title">Get a free quote in minutes.</h2>
-    <p class="c-body">No site visits needed. Just tell us about your property and we'll send you a fixed-price quote within 24 hours. No obligation, no hard sell. Everything handled remotely so you can get booked in fast.</p>
+    <div class="c-kicker">Instant Quote</div>
+    <h2 class="c-title">Get an instant fixed-price quote.</h2>
+    <p class="c-body">No site visits needed. Pick your property and clean type, see your fixed price instantly, and we'll get you booked in. No obligation and no hard sell, with everything handled remotely.</p>
     <div class="c-details">
       <div class="c-detail">
         <div class="cd-ico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6 19.79 19.79 0 0 1 1.64 5a2 2 0 0 1 1.95-2.18h3a2 2 0 0 1 2 1.72c.123.96.358 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.4a16 16 0 0 0 6.29 6.29l1.73-1.73a2 2 0 0 1 2.11-.45c.907.342 1.85.577 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
@@ -1283,7 +2410,7 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
       </div>
       <div class="c-detail">
         <div class="cd-ico"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <span class="cd-text">Serving Essex &amp; Surrounding Areas</span>
+        <span class="cd-text">Serving Essex, Hertfordshire &amp; East London</span>
       </div>
     </div>
   </div>
@@ -1292,9 +2419,9 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
 
     <!-- Step 1: Service type selector -->
     <div class="form-service-tabs">
-      <button type="button" class="svc-tab" data-svc="residential">Residential</button>
-      <button type="button" class="svc-tab" data-svc="commercial">Commercial</button>
+      <button type="button" class="svc-tab" data-svc="residential">Domestic</button>
       <button type="button" class="svc-tab" data-svc="tenancy">End of Tenancy</button>
+      <button type="button" class="svc-tab" data-svc="commercial">Commercial</button>
     </div>
 
     <!-- Always visible -->
@@ -1304,139 +2431,214 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
     </div>
     <input class="ci" type="email" name="email" placeholder="Email address" required/>
 
-    <!-- Residential fields -->
+    <!-- Residential calculator -->
     <div class="form-fields" id="fields-residential">
-      <div class="form-row">
-        <input class="ci" type="text" name="res_address" placeholder="Property address *" required/>
-        <select class="ci" name="res_frequency" required>
-          <option value="" disabled selected>Cleaning frequency *</option>
-          <option>Weekly</option>
-          <option>Fortnightly</option>
-          <option>One-off</option>
-        </select>
+      <div class="calc-section">
+        <div class="calc-label">Property size</div>
+        <div class="calc-chips" data-group="res-size">
+          <button type="button" class="calc-chip" data-size="studio">Studio / 1-bed</button>
+          <button type="button" class="calc-chip" data-size="2bed">2-bed</button>
+          <button type="button" class="calc-chip" data-size="3bed">3-bed</button>
+          <button type="button" class="calc-chip" data-size="4bed">4-bed</button>
+          <button type="button" class="calc-chip" data-size="5bed">5-bed</button>
+        </div>
       </div>
-      <div class="form-row">
-        <input class="ci" type="text" name="res_bedrooms" placeholder="Number of bedrooms *" required/>
-        <input class="ci" type="text" name="res_bathrooms" placeholder="Number of bathrooms (optional)"/>
+
+      <div class="calc-section">
+        <div class="calc-label">Clean type</div>
+        <div class="calc-chips" data-group="res-type">
+          <button type="button" class="calc-chip" data-type="weekly">Weekly <span class="chip-badge">Best value</span></button>
+          <button type="button" class="calc-chip" data-type="fortnightly">Fortnightly</button>
+          <button type="button" class="calc-chip" data-type="monthly">Monthly</button>
+          <button type="button" class="calc-chip" data-type="oneoff">One-off</button>
+          <button type="button" class="calc-chip" data-type="deep">Deep clean</button>
+        </div>
       </div>
-      <div class="form-row">
-        <select class="ci" name="res_clutter">
-          <option value="" disabled selected>Clutter level</option>
-          <option>Minimal — very tidy</option>
-          <option>Average — some clutter</option>
-          <option>Heavy — significant clutter throughout</option>
-        </select>
-        <select class="ci" name="res_pets">
-          <option value="" disabled selected>Do you have pets?</option>
-          <option>No pets</option>
-          <option>Yes — short hair</option>
-          <option>Yes — heavy shedding</option>
-        </select>
+
+      <div class="calc-section">
+        <div class="calc-label">Add-ons (optional)</div>
+        <div class="calc-addons" data-group="res-addons">
+          <label class="calc-addon" data-addon-deepincluded="true">
+            <input type="checkbox" data-price="35" data-name="Oven Deep Clean &amp; Degrease">
+            <span class="addon-name">Oven Deep Clean &amp; Degrease</span>
+            <button type="button" class="addon-info" aria-label="What this includes">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r=".4" fill="currentColor" stroke="none"/></svg>
+            </button>
+            <span class="addon-price">£35</span>
+            <div class="addon-desc">Full interior strip: racks, trays, glass and hinges, all degreased back to factory.</div>
+          </label>
+          <label class="calc-addon" data-addon-deepincluded="true">
+            <input type="checkbox" data-price="18" data-name="Refrigerator Interior Detail">
+            <span class="addon-name">Refrigerator Interior Detail</span>
+            <button type="button" class="addon-info" aria-label="What this includes">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r=".4" fill="currentColor" stroke="none"/></svg>
+            </button>
+            <span class="addon-price">£18</span>
+            <div class="addon-desc">Emptied, deep-cleaned and sanitised throughout: shelves, drawers and seals.</div>
+          </label>
+          <label class="calc-addon" data-addon-deepincluded="true">
+            <input type="checkbox" data-price="22" data-name="Freezer Defrost &amp; Sanitise">
+            <span class="addon-name">Freezer Defrost &amp; Sanitise</span>
+            <button type="button" class="addon-info" aria-label="What this includes">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r=".4" fill="currentColor" stroke="none"/></svg>
+            </button>
+            <span class="addon-price">£22</span>
+            <div class="addon-desc">Full defrost, deep clean inside, restored to even cold and odour-free.</div>
+          </label>
+          <label class="calc-addon" data-addon-deepincluded="true">
+            <input type="checkbox" data-price="28" data-name="Cupboard Interior Detail">
+            <span class="addon-name">Cupboard Interior Detail</span>
+            <button type="button" class="addon-info" aria-label="What this includes">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r=".4" fill="currentColor" stroke="none"/></svg>
+            </button>
+            <span class="addon-price">£28</span>
+            <div class="addon-desc">Every cupboard emptied, wiped and sanitised inside, including doors in and out.</div>
+          </label>
+          <label class="calc-addon">
+            <input type="checkbox" data-price="40" data-name="Carpet Deep Clean &amp; Extraction (per room)">
+            <span class="addon-name">Carpet Deep Clean &amp; Extraction <span style="color:var(--text-light);font-weight:500;">(per room)</span></span>
+            <button type="button" class="addon-info" aria-label="What this includes">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r=".4" fill="currentColor" stroke="none"/></svg>
+            </button>
+            <div class="qty-stepper">
+              <button type="button" class="qty-btn qty-down" aria-label="Fewer rooms">−</button>
+              <span class="qty-num">1</span>
+              <button type="button" class="qty-btn qty-up" aria-label="More rooms">+</button>
+            </div>
+            <span class="addon-price">£40</span>
+            <div class="addon-desc">Hot-water extraction per room: lifts embedded dirt and pet hair, dry within hours.</div>
+          </label>
+          <label class="calc-addon">
+            <input type="checkbox" data-price="45" data-name="Upholstery Deep Clean &amp; Refresh (standard sofa)">
+            <span class="addon-name">Upholstery Deep Clean &amp; Refresh <span style="color:var(--text-light);font-weight:500;">(standard sofa)</span></span>
+            <button type="button" class="addon-info" aria-label="What this includes">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r=".4" fill="currentColor" stroke="none"/></svg>
+            </button>
+            <div class="qty-stepper">
+              <button type="button" class="qty-btn qty-down" aria-label="Fewer sofas">−</button>
+              <span class="qty-num">1</span>
+              <button type="button" class="qty-btn qty-up" aria-label="More sofas">+</button>
+            </div>
+            <span class="addon-price">£45</span>
+            <div class="addon-desc">Hot-extraction clean for a standard sofa: lifts grime and refreshes fabric. Priced per seat for other items.</div>
+          </label>
+        </div>
       </div>
-      <div class="form-row">
-        <select class="ci" name="res_condition">
-          <option value="" disabled selected>General property condition</option>
-          <option>Well maintained — cleaned regularly</option>
-          <option>Average — not cleaned in a while</option>
-          <option>Needs attention — build-up of dirt or limescale</option>
-        </select>
-        <select class="ci" name="res_last_cleaned">
-          <option value="" disabled selected>Last professionally cleaned</option>
-          <option>Within the last month</option>
-          <option>1–3 months ago</option>
-          <option>3–6 months ago</option>
-          <option>Over 6 months ago</option>
-          <option>Never / unsure</option>
-        </select>
+
+      <div class="calc-price calc-empty" data-price-display="res">
+        <div class="calc-price-l">
+          <div class="calc-price-label">Your fixed price</div>
+          <div class="calc-price-amount">Select size &amp; clean type</div>
+        </div>
+        <div class="calc-price-r" data-price-note></div>
       </div>
-      <select class="ci" name="res_had_cleaner">
-        <option value="" disabled selected>Have you had a regular cleaner before?</option>
-        <option>Yes</option>
-        <option>No</option>
-      </select>
+
+      <!-- Hidden fields submitted with quote -->
+      <input type="hidden" name="res_size" data-hidden="res-size">
+      <input type="hidden" name="res_type" data-hidden="res-type">
+      <input type="hidden" name="res_addons" data-hidden="res-addons">
+      <input type="hidden" name="res_calculated_price" data-hidden="res-price">
+
+      <input class="ci" type="text" name="res_address" placeholder="Property address *" required/>
     </div>
 
-    <!-- Commercial fields -->
+    <!-- Commercial: email CTA (commercial pricing is bespoke) -->
     <div class="form-fields" id="fields-commercial">
-      <div class="form-row">
-        <input class="ci" type="text" name="com_company" placeholder="Company name (optional)"/>
-        <input class="ci" type="text" name="com_address" placeholder="Premises address *" required/>
+      <div class="com-cta">
+        <div class="com-cta-ico">
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <h3 class="com-cta-title">Let's talk about your premises.</h3>
+        <p class="com-cta-body">Commercial cleans are priced on what your site actually needs: frequency, hours, communal vs leased spaces, specialist equipment. We'd rather get it right than guess from a form.</p>
+        <a class="com-cta-btn" href="mailto:contact@dncsolutionsltd.co.uk?subject=Commercial%20cleaning%20enquiry&amp;body=Hi%20DNC%2C%0A%0ACompany%3A%20%0APremises%20type%3A%20%0AApprox%20size%3A%20%0AFrequency%20needed%3A%20%0AAddress%3A%20%0A%0AThanks">
+          Email contact@dncsolutionsltd.co.uk
+        </a>
+        <p class="com-cta-or">or call us on <a href="tel:01279927101">01279 927101</a></p>
+        <p class="com-cta-reply">We reply within one working day.</p>
       </div>
-      <div class="form-row">
-        <select class="ci" name="com_type" required>
-          <option value="" disabled selected>Type of premises *</option>
-          <option>Office</option>
-          <option>Gym / Leisure</option>
-          <option>Clinic / GP Surgery</option>
-          <option>Dental Practice</option>
-          <option>Salon / Spa</option>
-          <option>Retail</option>
-          <option>Other</option>
-        </select>
-        <select class="ci" name="com_frequency" required>
-          <option value="" disabled selected>Cleaning frequency *</option>
-          <option>Daily</option>
-          <option>Weekly</option>
-          <option>Fortnightly</option>
-          <option>One-off</option>
-        </select>
-      </div>
-      <input class="ci" type="text" name="com_size" placeholder="Approximate size (sq ft / m²) — optional"/>
     </div>
 
-    <!-- End of Tenancy fields -->
+    <!-- End of Tenancy calculator -->
     <div class="form-fields" id="fields-tenancy">
+      <div class="calc-section">
+        <div class="calc-label">Property size</div>
+        <div class="calc-chips" data-group="eot-size">
+          <button type="button" class="calc-chip" data-size="studio">Studio / 1-bed</button>
+          <button type="button" class="calc-chip" data-size="2bed">2-bed</button>
+          <button type="button" class="calc-chip" data-size="3bed">3-bed</button>
+          <button type="button" class="calc-chip" data-size="4bed">4-bed</button>
+          <button type="button" class="calc-chip" data-size="5bed">5-bed</button>
+        </div>
+      </div>
+
+      <div class="calc-section">
+        <div class="calc-label">Add-ons (optional)</div>
+        <div class="calc-addons" data-group="eot-addons">
+          <label class="calc-addon">
+            <input type="checkbox" data-price="40" data-name="Carpet Deep Clean &amp; Extraction (per room)">
+            <span class="addon-name">Carpet Deep Clean &amp; Extraction <span style="color:var(--text-light);font-weight:500;">(per room)</span></span>
+            <button type="button" class="addon-info" aria-label="What this includes">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r=".4" fill="currentColor" stroke="none"/></svg>
+            </button>
+            <div class="qty-stepper">
+              <button type="button" class="qty-btn qty-down" aria-label="Fewer rooms">−</button>
+              <span class="qty-num">1</span>
+              <button type="button" class="qty-btn qty-up" aria-label="More rooms">+</button>
+            </div>
+            <span class="addon-price">£40</span>
+            <div class="addon-desc">Hot-water extraction per room: lifts embedded dirt and pet hair, dry within hours.</div>
+          </label>
+          <label class="calc-addon">
+            <input type="checkbox" data-price="45" data-name="Upholstery Deep Clean &amp; Refresh (standard sofa)">
+            <span class="addon-name">Upholstery Deep Clean &amp; Refresh <span style="color:var(--text-light);font-weight:500;">(standard sofa)</span></span>
+            <button type="button" class="addon-info" aria-label="What this includes">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r=".4" fill="currentColor" stroke="none"/></svg>
+            </button>
+            <div class="qty-stepper">
+              <button type="button" class="qty-btn qty-down" aria-label="Fewer sofas">−</button>
+              <span class="qty-num">1</span>
+              <button type="button" class="qty-btn qty-up" aria-label="More sofas">+</button>
+            </div>
+            <span class="addon-price">£45</span>
+            <div class="addon-desc">Hot-extraction clean for a standard sofa: lifts grime and refreshes fabric. Priced per seat for other items.</div>
+          </label>
+          <label class="calc-addon">
+            <input type="checkbox" data-price="25" data-name="Surface Mould Treatment (per room)">
+            <span class="addon-name">Surface Mould Treatment <span style="color:var(--text-light);font-weight:500;">(per room)</span></span>
+            <button type="button" class="addon-info" aria-label="What this includes">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r=".4" fill="currentColor" stroke="none"/></svg>
+            </button>
+            <span class="addon-price">£25</span>
+            <div class="addon-desc">Light surface mould treated cosmetically per room: cleans the visible patch, not a damp cure.</div>
+          </label>
+          <label class="calc-addon" data-addon-steam="true">
+            <input type="checkbox" data-name="Whole-Property Steam Sanitisation">
+            <span class="addon-name">Whole-Property Steam Sanitisation</span>
+            <button type="button" class="addon-info" aria-label="What this includes">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r=".4" fill="currentColor" stroke="none"/></svg>
+            </button>
+            <span class="addon-price" data-steam-price>£120+</span>
+            <div class="addon-desc">High-temperature steam throughout the property: kills bacteria, fully chemical-free. Priced by size.</div>
+          </label>
+        </div>
+      </div>
+
+      <div class="calc-price calc-empty" data-price-display="eot">
+        <div class="calc-price-l">
+          <div class="calc-price-label">Your fixed price</div>
+          <div class="calc-price-amount">Select property size</div>
+        </div>
+        <div class="calc-price-r" data-price-note></div>
+      </div>
+
+      <!-- Hidden fields submitted with quote -->
+      <input type="hidden" name="eot_size" data-hidden="eot-size">
+      <input type="hidden" name="eot_addons" data-hidden="eot-addons">
+      <input type="hidden" name="eot_calculated_price" data-hidden="eot-price">
+
       <div class="form-row">
         <input class="ci" type="text" name="eot_address" placeholder="Property address *" required/>
-        <input class="ci" type="date" name="eot_date" required/>
-      </div>
-      <div class="form-row">
-        <select class="ci" name="eot_type" required>
-          <option value="" disabled selected>Property type *</option>
-          <option>Flat / Apartment</option>
-          <option>House</option>
-          <option>Studio</option>
-          <option>Commercial unit</option>
-        </select>
-        <select class="ci" name="eot_furnished" required>
-          <option value="" disabled selected>Furnished or unfurnished? *</option>
-          <option>Furnished</option>
-          <option>Unfurnished</option>
-          <option>Part-furnished</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <input class="ci" type="text" name="eot_bedrooms" placeholder="Number of bedrooms *" required/>
-        <input class="ci" type="text" name="eot_bathrooms" placeholder="Number of bathrooms (optional)"/>
-      </div>
-      <div class="form-row">
-        <select class="ci" name="eot_condition" required>
-          <option value="" disabled selected>Property condition *</option>
-          <option>Good — well maintained throughout</option>
-          <option>Average — standard wear and tear</option>
-          <option>Poor — significant build-up, limescale or neglect</option>
-        </select>
-        <select class="ci" name="eot_clutter">
-          <option value="" disabled selected>Clutter level</option>
-          <option>Clear — tenants have moved out fully</option>
-          <option>Some items remaining</option>
-          <option>Heavy — lots still to be removed</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <select class="ci" name="eot_pets">
-          <option value="" disabled selected>Were there pets in the property?</option>
-          <option>No</option>
-          <option>Yes — short hair</option>
-          <option>Yes — heavy shedding</option>
-        </select>
-        <select class="ci" name="eot_inventory_check">
-          <option value="" disabled selected>Is there an inventory check booked?</option>
-          <option>Yes — date confirmed</option>
-          <option>Yes — date TBC</option>
-          <option>No</option>
-          <option>Unsure</option>
-        </select>
+        <input class="ci" type="date" name="eot_date" placeholder="Move-out date" required/>
       </div>
     </div>
 
@@ -1456,7 +2658,7 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
       <span>Please select a service type above before submitting.</span>
     </div>
 
-    <button class="csub" type="submit">Get My Free Quote →</button>
+    <button class="csub" type="submit">Get My Instant Quote →</button>
 
     </form>
 
@@ -1468,7 +2670,7 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
           <path d="M14 27l9 9 15-16" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
-      <h3 class="ty-heading">Thank you — we'll be in touch.</h3>
+      <h3 class="ty-heading">Thank you. We'll be in touch.</h3>
       <p class="ty-body">Your enquiry has been received. A member of the DNC Solutions team will be in touch within 24 hours with your fixed-price quote.</p>
       <p class="ty-sub">In the meantime, feel free to email us at <a href="mailto:contact@dncsolutionsltd.co.uk">contact@dncsolutionsltd.co.uk</a></p>
     </div>
@@ -1492,12 +2694,16 @@ h2.sec-title.revealed,h2.why-title.revealed,h2.c-title.revealed{
           <path d="M280.14 158.63L280.14 158.63Q278.45 158.63 277.27 158.08Q276.09 157.53 275.48 156.56Q274.86 155.60 274.86 154.38L274.86 154.38L276.99 154.38Q276.99 154.93 277.29 155.47Q277.60 156.01 278.28 156.37Q278.97 156.72 280.14 156.72L280.14 156.72Q281.20 156.72 281.89 156.41Q282.59 156.10 282.92 155.60Q283.25 155.10 283.25 154.48L283.25 154.48Q283.25 153.73 282.60 153.25Q281.96 152.77 280.66 152.67L280.66 152.67L279.35 152.54Q277.53 152.40 276.45 151.42Q275.37 150.43 275.37 148.83L275.37 148.83Q275.37 147.61 275.95 146.71Q276.54 145.81 277.60 145.30Q278.66 144.78 280.07 144.78L280.07 144.78Q281.51 144.78 282.57 145.30Q283.63 145.81 284.21 146.74Q284.80 147.66 284.80 148.94L284.80 148.94L282.68 148.94Q282.68 148.36 282.40 147.85Q282.12 147.34 281.54 147.01Q280.97 146.69 280.07 146.69L280.07 146.69Q279.20 146.69 278.63 147.00Q278.07 147.30 277.78 147.79Q277.49 148.27 277.49 148.83L277.49 148.83Q277.49 149.50 278.00 150.01Q278.50 150.52 279.54 150.61L279.54 150.61L280.84 150.72Q282.23 150.83 283.24 151.31Q284.26 151.78 284.83 152.58Q285.39 153.37 285.39 154.48L285.39 154.48Q285.39 155.71 284.74 156.64Q284.08 157.58 282.90 158.10Q281.72 158.63 280.14 158.63Z M299.83 158.63L299.83 158.63Q298.05 158.63 296.76 158.00Q295.47 157.38 294.63 156.36Q293.78 155.33 293.38 154.15Q292.97 152.97 292.97 151.89L292.97 151.89L292.97 151.50Q292.97 150.31 293.39 149.12Q293.82 147.93 294.67 146.95Q295.53 145.97 296.81 145.38Q298.10 144.78 299.83 144.78L299.83 144.78Q301.56 144.78 302.84 145.38Q304.11 145.97 304.98 146.95Q305.84 147.93 306.26 149.12Q306.69 150.31 306.69 151.50L306.69 151.50L306.69 151.89Q306.69 152.97 306.27 154.15Q305.86 155.33 305.02 156.36Q304.19 157.38 302.89 158.00Q301.59 158.63 299.83 158.63ZM299.83 156.63Q300.91 156.63 301.77 156.23Q302.64 155.83 303.25 155.15Q303.86 154.47 304.18 153.58Q304.49 152.70 304.49 151.71Q304.49 150.67 304.17 149.78Q303.84 148.89 303.24 148.21Q302.64 147.54 301.77 147.16Q300.91 146.78 299.83 146.78Q298.75 146.78 297.89 147.16Q297.02 147.54 296.41 148.21Q295.80 148.89 295.48 149.78Q295.17 150.67 295.17 151.71Q295.17 152.70 295.48 153.58Q295.80 154.47 296.41 155.15Q297.02 155.83 297.89 156.23Q298.75 156.63 299.83 156.63Z M322.78 158.30L315.13 158.30L315.13 145.16L317.29 145.16L317.29 156.38L322.78 156.38L322.78 158.30Z M335.72 158.63Q333.90 158.63 332.67 157.93Q331.44 157.24 330.80 155.98Q330.16 154.72 330.16 153.04L330.16 145.16L332.32 145.16L332.32 153.22Q332.32 154.23 332.72 155.01Q333.11 155.78 333.87 156.20Q334.62 156.63 335.72 156.63Q336.82 156.63 337.57 156.21Q338.31 155.80 338.71 155.02Q339.11 154.25 339.11 153.22L339.11 145.16L341.27 145.16L341.27 153.04Q341.27 154.72 340.64 155.98Q340.01 157.24 338.77 157.93Q337.54 158.63 335.72 158.63Z M355.00 158.30L352.84 158.30L352.84 147.07L348.95 147.07L348.95 145.16L358.91 145.16L358.91 147.07L355.00 147.07L355.00 158.30Z M369.06 158.30L366.90 158.30L366.90 145.16L369.06 145.16L369.06 158.30Z M384.41 158.63Q382.63 158.63 381.34 158.00Q380.06 157.38 379.21 156.36Q378.36 155.33 377.96 154.15Q377.55 152.97 377.55 151.89L377.55 151.50Q377.55 150.31 377.98 149.12Q378.40 147.93 379.25 146.95Q380.11 145.97 381.40 145.38Q382.68 144.78 384.41 144.78Q386.14 144.78 387.42 145.38Q388.70 145.97 389.56 146.95Q390.42 147.93 390.85 149.12Q391.27 150.31 391.27 151.50L391.27 151.89Q391.27 152.97 390.86 154.15Q390.44 155.33 389.60 156.36Q388.77 157.38 387.47 158.00Q386.18 158.63 384.41 158.63ZM384.41 156.63Q385.49 156.63 386.36 156.23Q387.22 155.83 387.83 155.15Q388.44 154.47 388.76 153.58Q389.07 152.70 389.07 151.71Q389.07 150.67 388.75 149.78Q388.43 148.89 387.82 148.21Q387.22 147.54 386.36 147.16Q385.49 146.78 384.41 146.78Q383.33 146.78 382.47 147.16Q381.60 147.54 380.99 148.21Q380.38 148.89 380.06 149.78Q379.75 150.67 379.75 151.71Q379.75 152.70 380.06 153.58Q380.38 154.47 380.99 155.15Q381.60 155.83 382.47 156.23Q383.33 156.63 384.41 156.63Z M401.73 158.30L399.71 158.30L399.71 145.16L403.24 145.16L409.34 156.45L409.58 156.45L409.58 145.16L411.63 145.16L411.63 158.30L408.06 158.30L401.96 147.01L401.73 147.01L401.73 158.30Z M425.29 158.63Q423.60 158.63 422.42 158.08Q421.24 157.53 420.63 156.56Q420.02 155.60 420.02 154.38L422.14 154.38Q422.14 154.93 422.45 155.47Q422.75 156.01 423.44 156.37Q424.12 156.72 425.29 156.72Q426.35 156.72 427.04 156.41Q427.74 156.10 428.07 155.60Q428.40 155.10 428.40 154.48Q428.40 153.73 427.76 153.25Q427.11 152.77 425.81 152.67L424.50 152.54Q422.68 152.40 421.60 151.42Q420.52 150.43 420.52 148.83Q420.52 147.61 421.10 146.71Q421.69 145.81 422.75 145.30Q423.81 144.78 425.22 144.78Q426.66 144.78 427.72 145.30Q428.78 145.81 429.37 146.74Q429.95 147.66 429.95 148.94L427.83 148.94Q427.83 148.36 427.55 147.85Q427.27 147.34 426.69 147.01Q426.12 146.69 425.22 146.69Q424.35 146.69 423.79 147.00Q423.22 147.30 422.93 147.79Q422.64 148.27 422.64 148.83Q422.64 149.50 423.15 150.01Q423.65 150.52 424.70 150.61L425.99 150.72Q427.38 150.83 428.39 151.31Q429.41 151.78 429.98 152.58Q430.55 153.37 430.55 154.48Q430.55 155.71 429.89 156.64Q429.23 157.58 428.05 158.10Q426.87 158.63 425.29 158.63Z" fill="#ffffff" fill-opacity="0.82"/>
         </svg>
       </a>
-      <p class="fb-desc">Residential, commercial and end of tenancy cleaning across Essex &amp; Surrounding Areas. Quick quotes, fixed prices, no site visits needed.</p>
+      <p class="fb-desc">Domestic, commercial and end of tenancy cleaning across Essex, Hertfordshire and East London. Instant quotes, fixed prices, no site visits needed.</p>
+      <a href="tel:01279927101" class="fb-phone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>01279 927101</span>
+      </a>
     </div>
     <div>
       <div class="fc-head">Services</div>
       <ul class="flinks">
-        <li><a href="#services">Residential Cleaning</a></li>
+        <li><a href="#services">Domestic Cleaning</a></li>
         <li><a href="#services">Commercial Cleaning</a></li>
         <li><a href="#services">End of Tenancy</a></li>
       </ul>
@@ -1548,7 +2754,7 @@ function setFieldsState(svc) {
   });
 }
 
-// Initialise — all field sets disabled and hidden
+// Initialise - all field sets disabled and hidden
 setFieldsState(null);
 
 // Tab click
@@ -1557,6 +2763,7 @@ tabs.forEach(tab => {
     activeSvc = this.dataset.svc;
     tabs.forEach(t => t.classList.toggle('active', t === this));
     setFieldsState(activeSvc);
+    form.classList.toggle('mode-commercial', activeSvc === 'commercial');
     noSvcWarning.style.display = 'none';
   });
 });
@@ -1572,6 +2779,9 @@ form.addEventListener('submit', function(e) {
     return;
   }
   noSvcWarning.style.display = 'none';
+
+  // Calculator-specific validation for residential / tenancy
+  if (!validateCalculator()) return;
 
   // Validate required fields
   let valid = true;
@@ -1608,16 +2818,489 @@ form.addEventListener('submit', function(e) {
       ty.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } else {
       btn.disabled = false;
-      btn.textContent = 'Get My Free Quote →';
+      btn.textContent = 'Get My Instant Quote →';
       noSvcWarning.textContent = 'Something went wrong. Please try again or email us directly.';
       noSvcWarning.style.display = 'block';
     }
   })
   .catch(() => {
     btn.disabled = false;
-    btn.textContent = 'Get My Free Quote →';
+    btn.textContent = 'Get My Instant Quote →';
     noSvcWarning.textContent = 'Something went wrong. Please email us at contact@dncsolutionsltd.co.uk';
     noSvcWarning.style.display = 'block';
+  });
+});
+
+// ── CALCULATOR ──────────────────────────────────────────────
+const PRICING = {
+  residential: {
+    studio: { oneoff:80,  weekly:70,  fortnightly:70,  monthly:75,  deep:165 },
+    '2bed':  { oneoff:100, weekly:85,  fortnightly:90,  monthly:95,  deep:210 },
+    '3bed':  { oneoff:120, weekly:100, fortnightly:110, monthly:115, deep:250 },
+    '4bed':  { oneoff:160, weekly:135, fortnightly:145, monthly:150, deep:335 },
+    '5bed':  { oneoff:200, weekly:170, fortnightly:180, monthly:190, deep:415 }
+  },
+  eot:   { studio:180, '2bed':220, '3bed':265, '4bed':355, '5bed':445 },
+  steam: { studio:120, '2bed':180, '3bed':180, '4bed':240, '5bed':300 },
+  sizeLabel: { studio:'Studio / 1-bed', '2bed':'2-bed', '3bed':'3-bed', '4bed':'4-bed', '5bed':'5-bed' },
+  typeLabel: { weekly:'Weekly recurring', fortnightly:'Fortnightly recurring', monthly:'Monthly recurring', oneoff:'One-off', deep:'Deep clean' }
+};
+
+const calcState = {
+  residential: { size:null, type:null },
+  tenancy:     { size:null }
+};
+
+const fmt = n => '£' + n.toLocaleString('en-GB');
+
+function selectChip(groupEl, value, attr) {
+  groupEl.querySelectorAll('.calc-chip').forEach(c => {
+    c.classList.toggle('active', c.dataset[attr] === value);
+  });
+}
+
+function updateResCalc() {
+  const s = calcState.residential;
+  const display = document.querySelector('[data-price-display="res"]');
+  const amount  = display.querySelector('.calc-price-amount');
+  const note    = display.querySelector('[data-price-note]');
+
+  // Deep clean includes oven/fridge/freezer/cupboard - disable those add-ons
+  const isDeep = s.type === 'deep';
+  document.querySelectorAll('#fields-residential [data-addon-deepincluded]').forEach(label => {
+    const input = label.querySelector('input');
+    if (isDeep) {
+      label.classList.add('included-note');
+      label.querySelector('.addon-price').textContent = 'Included';
+      input.checked = false;
+    } else {
+      label.classList.remove('included-note');
+      const p = parseFloat(input.dataset.price);
+      label.querySelector('.addon-price').textContent = fmt(p);
+    }
+  });
+
+  if (!s.size || !s.type) {
+    display.classList.add('calc-empty');
+    amount.textContent = !s.size ? 'Select size & clean type' : 'Choose a clean type';
+    note.innerHTML = '';
+    setHidden('res', s);
+    return;
+  }
+
+  const base = PRICING.residential[s.size][s.type];
+  let addonsTotal = 0;
+  document.querySelectorAll('#fields-residential .calc-addon input:checked').forEach(inp => {
+    const qty = parseInt(inp.dataset.qty || '1', 10);
+    addonsTotal += parseFloat(inp.dataset.price) * qty;
+  });
+  const total = base + addonsTotal;
+
+  display.classList.remove('calc-empty');
+  const perVisit = (s.type === 'weekly' || s.type === 'fortnightly' || s.type === 'monthly');
+  amount.innerHTML = fmt(total) + (perVisit ? '<span class="small">/ visit</span>' : '');
+
+  let noteText = '';
+  if (perVisit) {
+    const deepFirst = PRICING.residential[s.size].deep;
+    const rate = PRICING.residential[s.size][s.type];
+    noteText = '<strong>First clean is a deep clean (' + fmt(deepFirst) + ')</strong>, then ' + fmt(rate) + ' per visit';
+  } else if (s.type === 'deep') {
+    noteText = '<strong>Includes</strong> oven, fridge, freezer &amp; cupboard interiors';
+  } else if (s.type === 'oneoff') {
+    noteText = 'One-time clean, no commitment';
+  }
+  note.innerHTML = noteText;
+
+  setHidden('res', s, total);
+}
+
+function updateEotCalc() {
+  const s = calcState.tenancy;
+  const display = document.querySelector('[data-price-display="eot"]');
+  const amount  = display.querySelector('.calc-price-amount');
+  const note    = display.querySelector('[data-price-note]');
+
+  // Update steam price label to reflect size
+  const steamPriceEl = document.querySelector('[data-steam-price]');
+  if (steamPriceEl) steamPriceEl.textContent = s.size ? fmt(PRICING.steam[s.size]) : '£120+';
+
+  if (!s.size) {
+    display.classList.add('calc-empty');
+    amount.textContent = 'Select property size';
+    note.innerHTML = '';
+    setHidden('eot', s);
+    return;
+  }
+
+  const base = PRICING.eot[s.size];
+  let addonsTotal = 0;
+  document.querySelectorAll('#fields-tenancy .calc-addon input:checked').forEach(inp => {
+    if (inp.closest('[data-addon-steam]')) {
+      addonsTotal += PRICING.steam[s.size];
+    } else {
+      const qty = parseInt(inp.dataset.qty || '1', 10);
+      addonsTotal += parseFloat(inp.dataset.price) * qty;
+    }
+  });
+
+  const total = base + addonsTotal;
+  display.classList.remove('calc-empty');
+  amount.innerHTML = fmt(total);
+  note.innerHTML = '<strong>Deposit-return standard</strong>, to letting-agent inspection level';
+
+  setHidden('eot', s, total);
+}
+
+function setHidden(prefix, s, total) {
+  const fieldId = prefix === 'res' ? 'fields-residential' : 'fields-tenancy';
+  const get = key => document.querySelector(`[data-hidden="${prefix}-${key}"]`);
+
+  if (get('size')) get('size').value = s.size ? PRICING.sizeLabel[s.size] : '';
+  if (get('type')) get('type').value = s.type ? PRICING.typeLabel[s.type] : '';
+  if (get('price')) {
+    let pv = total ? fmt(total) : '';
+    if (prefix === 'res' && s.type && ['weekly','fortnightly','monthly'].includes(s.type) && s.size) {
+      pv = fmt(total) + '/visit, first clean deep ' + fmt(PRICING.residential[s.size].deep);
+    }
+    get('price').value = pv;
+  }
+
+  const checked = [];
+  document.querySelectorAll(`#${fieldId} .calc-addon input:checked`).forEach(inp => {
+    let label = inp.dataset.name;
+    const qty = parseInt(inp.dataset.qty || '1', 10);
+    if (inp.closest('[data-addon-steam]') && s.size) {
+      label = 'Steam sanitisation (' + fmt(PRICING.steam[s.size]) + ')';
+    } else if (qty > 1) {
+      label += ' × ' + qty;
+    }
+    checked.push(label);
+  });
+  if (get('addons')) get('addons').value = checked.join(', ') || 'None';
+}
+
+// Wire residential
+document.querySelectorAll('[data-group="res-size"] .calc-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    calcState.residential.size = chip.dataset.size;
+    selectChip(chip.parentElement, chip.dataset.size, 'size');
+    updateResCalc();
+  });
+});
+document.querySelectorAll('[data-group="res-type"] .calc-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    calcState.residential.type = chip.dataset.type;
+    selectChip(chip.parentElement, chip.dataset.type, 'type');
+    updateResCalc();
+  });
+});
+document.querySelectorAll('#fields-residential .calc-addon input').forEach(inp => {
+  inp.addEventListener('change', updateResCalc);
+});
+
+// Wire EoT
+document.querySelectorAll('[data-group="eot-size"] .calc-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    calcState.tenancy.size = chip.dataset.size;
+    selectChip(chip.parentElement, chip.dataset.size, 'size');
+    updateEotCalc();
+  });
+});
+document.querySelectorAll('#fields-tenancy .calc-addon input').forEach(inp => {
+  inp.addEventListener('change', updateEotCalc);
+});
+
+// Add-on info toggles - reveal a brief description without ticking the box
+document.querySelectorAll('.addon-info').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    e.stopPropagation();
+    btn.closest('.calc-addon').classList.toggle('addon-expanded');
+  });
+});
+
+function validateCalculator() {
+  if (activeSvc === 'residential') {
+    if (!calcState.residential.size || !calcState.residential.type) {
+      noSvcWarning.textContent = 'Please pick a property size and clean type so we can lock in your fixed price.';
+      noSvcWarning.style.display = 'block';
+      document.getElementById('fields-residential').scrollIntoView({behavior:'smooth', block:'center'});
+      return false;
+    }
+  }
+  if (activeSvc === 'tenancy') {
+    if (!calcState.tenancy.size) {
+      noSvcWarning.textContent = 'Please pick a property size so we can lock in your fixed price.';
+      noSvcWarning.style.display = 'block';
+      document.getElementById('fields-tenancy').scrollIntoView({behavior:'smooth', block:'center'});
+      return false;
+    }
+  }
+  return true;
+}
+
+// ── WHAT'S INCLUDED TABS ────────────────────────────────────
+document.querySelectorAll('.scope-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.scope;
+    document.querySelectorAll('.scope-tab').forEach(t => t.classList.toggle('active', t === tab));
+    document.querySelectorAll('.scope-panel').forEach(p => p.classList.toggle('active', p.dataset.panel === target));
+  });
+});
+
+// ── HERO QUOTE WIZARD ───────────────────────────────────────
+(function(){
+  const form = document.getElementById('hqForm');
+  if(!form) return;
+  const bar = document.getElementById('hqBar');
+  const state = { service:null, size:null, type:null };
+
+  function go(phase, pct){
+    form.querySelectorAll('.hq-phase').forEach(p => p.classList.toggle('active', p.dataset.phase === phase));
+    if(pct != null) bar.style.width = pct + '%';
+  }
+
+  function resetAddons(){
+    form.querySelectorAll('.hq-addon input[type=checkbox]').forEach(i => i.checked = false);
+    form.querySelectorAll('.hq-addon').forEach(l => l.classList.remove('included-note'));
+  }
+
+  function updateDeepAddons(){
+    const isDeep = state.service === 'residential' && state.type === 'deep';
+    form.querySelectorAll('.hq-addons[data-flow="residential"] [data-hq-addon-deep]').forEach(label => {
+      const input = label.querySelector('input');
+      const priceEl = label.querySelector('.hq-addon-price');
+      if(isDeep){
+        label.classList.add('included-note');
+        priceEl.textContent = 'Included';
+        input.checked = false;
+      } else {
+        label.classList.remove('included-note');
+        priceEl.textContent = '£' + input.dataset.price;
+      }
+    });
+  }
+
+  function updateSteamPrice(){
+    const el = form.querySelector('[data-hq-steam-price]');
+    if(el) el.textContent = state.size ? '£' + PRICING.steam[state.size] : '£120+';
+  }
+
+  function sumAddons(){
+    let sum = 0;
+    const list = [];
+    const grp = form.querySelector('.hq-addons.active');
+    if(!grp) return { sum, list };
+    grp.querySelectorAll('input[type=checkbox]:checked').forEach(inp => {
+      const qty = parseInt(inp.dataset.qty || '1', 10);
+      let p, label;
+      if(inp.closest('[data-hq-addon-steam]') && state.size){
+        p = PRICING.steam[state.size];
+        label = 'Whole-Property Steam Sanitisation (£' + p + ')';
+      } else {
+        p = parseFloat(inp.dataset.price) * qty;
+        label = inp.dataset.name + (qty > 1 ? ' × ' + qty : '');
+      }
+      sum += p;
+      list.push(label);
+    });
+    return { sum, list };
+  }
+
+  function updateContinueLabel(){
+    const btn = form.querySelector('.hq-continue');
+    if(!btn) return;
+    const ready = (state.service === 'residential' && state.size && state.type) ||
+                  (state.service === 'tenancy' && state.size);
+    if(!ready){ btn.textContent = 'Continue →'; return; }
+    const { sum } = sumAddons();
+    let total;
+    if(state.service === 'residential'){
+      total = PRICING.residential[state.size][state.type] + sum;
+      const per = ['weekly','fortnightly','monthly'].includes(state.type);
+      btn.innerHTML = 'Continue (£' + total + (per ? '/visit' : '') + ') →';
+    } else {
+      total = PRICING.eot[state.size] + sum;
+      btn.innerHTML = 'Continue (£' + total + ') →';
+    }
+  }
+
+  function setActiveAddonGroup(){
+    form.querySelectorAll('.hq-addons').forEach(grp =>
+      grp.classList.toggle('active', grp.dataset.flow === state.service)
+    );
+  }
+
+  form.querySelectorAll('[data-service]').forEach(b => b.addEventListener('click', () => {
+    state.service = b.dataset.service;
+    state.size = null; state.type = null;
+    resetAddons();
+    document.getElementById('hqHidService').value = state.service === 'residential' ? 'Domestic' : state.service === 'tenancy' ? 'End of Tenancy' : 'Commercial';
+    if(state.service === 'commercial'){ go('com', 100); return; }
+    setActiveAddonGroup();
+    go('size', state.service === 'tenancy' ? 50 : 40);
+  }));
+
+  form.querySelectorAll('[data-size]').forEach(b => b.addEventListener('click', () => {
+    state.size = b.dataset.size;
+    document.getElementById('hqHidSize').value = PRICING.sizeLabel[state.size];
+    if(state.service === 'tenancy'){
+      updateSteamPrice();
+      updateContinueLabel();
+      go('addons', 75);
+    } else {
+      go('freq', 60);
+    }
+  }));
+
+  form.querySelectorAll('[data-type]').forEach(b => b.addEventListener('click', () => {
+    state.type = b.dataset.type;
+    document.getElementById('hqHidType').value = PRICING.typeLabel[state.type];
+    updateDeepAddons();
+    updateContinueLabel();
+    go('addons', 80);
+  }));
+
+  form.querySelectorAll('.hq-addon input[type=checkbox]').forEach(inp => {
+    inp.addEventListener('change', updateContinueLabel);
+  });
+
+  form.querySelectorAll('.hq-continue').forEach(btn => btn.addEventListener('click', () => {
+    computePrice();
+    go('details', 100);
+  }));
+
+  form.querySelectorAll('.hq-back').forEach(b => b.addEventListener('click', () => {
+    const cur = b.closest('.hq-phase').dataset.phase;
+    if(cur === 'size') go('service', 20);
+    else if(cur === 'com') go('service', 50);
+    else if(cur === 'freq') go('size', 40);
+    else if(cur === 'addons'){
+      if(state.service === 'tenancy') go('size', 50);
+      else go('freq', 60);
+    }
+    else if(cur === 'details'){
+      go('addons', state.service === 'tenancy' ? 75 : 80);
+    }
+  }));
+
+  function computePrice(){
+    const { sum: addonsTotal, list: addonsList } = sumAddons();
+    let note = '', hiddenPrice = '', total = 0;
+    const priceEl = document.getElementById('hqPrice');
+
+    if(state.service === 'residential'){
+      const base = PRICING.residential[state.size][state.type];
+      total = base + addonsTotal;
+      const per = ['weekly','fortnightly','monthly'].includes(state.type);
+      priceEl.innerHTML = '£' + total + (per ? '<span class="hq-per">/visit</span>' : '');
+      if(per){
+        const deepFirst = PRICING.residential[state.size].deep;
+        note = '<strong>First clean is a deep clean (£' + deepFirst + ')</strong>, then £' + total + ' per visit';
+        hiddenPrice = '£' + total + '/visit, first clean deep £' + deepFirst;
+      } else if(state.type === 'deep'){
+        note = 'Includes oven, fridge, freezer &amp; cupboard interiors';
+        hiddenPrice = '£' + total;
+      } else {
+        note = 'One-time clean, no commitment';
+        hiddenPrice = '£' + total;
+      }
+    } else {
+      const base = PRICING.eot[state.size];
+      total = base + addonsTotal;
+      priceEl.textContent = '£' + total;
+      note = 'Letting-agent / deposit-return standard';
+      hiddenPrice = '£' + total;
+    }
+
+    document.getElementById('hqNote').innerHTML = note;
+    document.getElementById('hqHidPrice').value = hiddenPrice;
+    document.getElementById('hqHidAddons').value = addonsList.length ? addonsList.join(', ') : 'None';
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const reqs = [...form.querySelectorAll('.hq-phase[data-phase="details"] [required]')];
+    let ok = true;
+    reqs.forEach(i => {
+      if(!i.value.trim()){ i.classList.add('hq-err'); ok = false; }
+      else i.classList.remove('hq-err');
+    });
+    if(!ok) return;
+    const btn = form.querySelector('.hq-submit');
+    const label = btn.textContent;
+    btn.textContent = 'Sending…'; btn.disabled = true;
+    fetch(form.action, { method:'POST', body:new FormData(form), headers:{ 'Accept':'application/json' } })
+      .then(r => {
+        if(r.ok){ go('done', 100); }
+        else { btn.textContent = label; btn.disabled = false; alert('Something went wrong. Please call us on 01279 927101.'); }
+      })
+      .catch(() => { btn.textContent = label; btn.disabled = false; alert('Something went wrong. Please call us on 01279 927101.'); });
+  });
+})();
+
+// ── QTY STEPPERS (carpet rooms / upholstery sofas) ──────────
+(function setupQtyAddons(){
+  document.querySelectorAll('.qty-stepper').forEach(stepper => {
+    const label = stepper.closest('label');
+    if(!label) return;
+    const input = label.querySelector('input[type=checkbox]');
+    if(!input) return;
+    const num = stepper.querySelector('.qty-num');
+    const priceEl = label.querySelector('.addon-price, .hq-addon-price');
+    const downBtn = stepper.querySelector('.qty-down');
+    const upBtn = stepper.querySelector('.qty-up');
+    const unitPrice = parseFloat(input.dataset.price);
+
+    input.dataset.qty = input.dataset.qty || '1';
+
+    function render(){
+      const qty = parseInt(input.dataset.qty || '1', 10);
+      num.textContent = qty;
+      if(input.checked){
+        priceEl.textContent = '£' + (qty * unitPrice);
+      } else {
+        priceEl.textContent = '£' + unitPrice;
+      }
+      downBtn.disabled = qty <= 1;
+    }
+
+    // Stepper-area clicks must not bubble to the parent label (which would toggle the checkbox)
+    stepper.addEventListener('click', e => e.stopPropagation());
+
+    upBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      const qty = parseInt(input.dataset.qty || '1', 10) + 1;
+      input.dataset.qty = String(qty);
+      render();
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+
+    downBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      const qty = Math.max(1, parseInt(input.dataset.qty || '1', 10) - 1);
+      input.dataset.qty = String(qty);
+      render();
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+
+    // Reset qty when the user unchecks; refresh the display either way
+    input.addEventListener('change', () => {
+      if(!input.checked) input.dataset.qty = '1';
+      render();
+    });
+
+    render();
+  });
+})();
+
+// ── FAQ ACCORDION ────────────────────────────────────────────
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const isOpen = btn.classList.contains('open');
+    document.querySelectorAll('.faq-q').forEach(b => b.classList.remove('open'));
+    if(!isOpen) btn.classList.add('open');
   });
 });
 
